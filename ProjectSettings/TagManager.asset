@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Enemy
+  - Bullet
+  - Gold
+  - TurretBullet
+  - RangeTriangle
+  - Mine
+  - Effect
+  - Enhance
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Enemy
+  - Building
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ThirdWall
+    uniqueID: 2395332319
+    locked: 0
+  - name: SecondWall
+    uniqueID: 4289932655
+    locked: 0
+  - name: FirstWall
+    uniqueID: 588942701
+    locked: 0
+  - name: ThirdLineTurret
+    uniqueID: 1906116919
+    locked: 0
+  - name: SecondLineTurret
+    uniqueID: 2269615907
+    locked: 0
+  - name: FirstLineTurret
+    uniqueID: 2222620353
+    locked: 0
+  - name: HPBack
+    uniqueID: 563421043
+    locked: 0
+  - name: HPBar
+    uniqueID: 885777675
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  - Light Layer 1
+  - Light Layer 2
+  - Light Layer 3
+  - Light Layer 4
+  - Light Layer 5
+  - Light Layer 6
+  - Light Layer 7
