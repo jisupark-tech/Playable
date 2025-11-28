@@ -63,6 +63,8 @@ public class WallController : MonoBehaviour, IHealth
     private GameObject activeWall;
     private MainCenterController mainCenterController;
 
+    [Header("Wall Boundary Rotation")]
+    public float boundaryRotation = 0f;
     [Header("Wall Boundary Gate")]
     public Vector2 boundaryLeftMin = new Vector2(-15f, -15f); // 최소 경계
     public Vector2 boundaryLeftMax = new Vector2(15f, 15f);   // 최대 경계
@@ -71,6 +73,16 @@ public class WallController : MonoBehaviour, IHealth
     [Header("Wall Boundary No Gate")]
     public Vector2 boundaryCenterMin = new Vector2(-15f, -15f); // 최소 경계
     public Vector2 boundaryCenterMax = new Vector2(15f, 15f);   // 최대 경계
+
+    // 회전된 경계 캐시 변수 (성능 최적화용)
+    private Vector2 rotatedBoundaryLeftMin;
+    private Vector2 rotatedBoundaryLeftMax;
+    private Vector2 rotatedBoundaryRightMin;
+    private Vector2 rotatedBoundaryRightMax;
+    private Vector2 rotatedBoundaryCenterMin;
+    private Vector2 rotatedBoundaryCenterMax;
+    private float cachedRotation = float.NaN;
+
     // 문 관련 변수들
     private bool isGateOpen = false;
     private bool isPlayerNearby = false;
@@ -78,6 +90,82 @@ public class WallController : MonoBehaviour, IHealth
     private Vector3 Gate_R_ClosedPos;
     private Vector3 Gate_L_OpenPos;
     private Vector3 Gate_R_OpenPos;
+
+    //=====================================================
+    // 회전 계산 메서드
+    //=====================================================
+
+    /// <summary>
+    /// 2D 벡터를 주어진 각도(라디안)만큼 회전시킵니다.
+    /// </summary>
+    private Vector2 RotateVector2(Vector2 vector, float angleInRadians)
+    {
+        float cos = Mathf.Cos(angleInRadians);
+        float sin = Mathf.Sin(angleInRadians);
+
+        return new Vector2(
+            vector.x * cos - vector.y * sin,
+            vector.x * sin + vector.y * cos
+        );
+    }
+
+    /// <summary>
+    /// 회전된 경계값들을 계산합니다. (성능 최적화를 위해 캐싱)
+    /// </summary>
+    private void CalculateRotatedBoundaries()
+    {
+        // 회전값이 변경되지 않았으면 재계산하지 않음
+        if (Mathf.Approximately(cachedRotation, boundaryRotation))
+            return;
+
+        float angle = boundaryRotation * Mathf.Deg2Rad;
+
+        // 각 경계점들을 회전
+        rotatedBoundaryLeftMin = RotateVector2(boundaryLeftMin, angle);
+        rotatedBoundaryLeftMax = RotateVector2(boundaryLeftMax, angle);
+        rotatedBoundaryRightMin = RotateVector2(boundaryRightMin, angle);
+        rotatedBoundaryRightMax = RotateVector2(boundaryRightMax, angle);
+        rotatedBoundaryCenterMin = RotateVector2(boundaryCenterMin, angle);
+        rotatedBoundaryCenterMax = RotateVector2(boundaryCenterMax, angle);
+
+        // 회전 후에는 min/max 관계가 바뀔 수 있으므로 정리
+        NormalizeBoundaries();
+
+        cachedRotation = boundaryRotation;
+    }
+
+    /// <summary>
+    /// 회전 후 min/max 값들을 올바르게 정렬합니다.
+    /// </summary>
+    private void NormalizeBoundaries()
+    {
+        // Left boundary 정규화
+        float leftMinX = Mathf.Min(rotatedBoundaryLeftMin.x, rotatedBoundaryLeftMax.x);
+        float leftMaxX = Mathf.Max(rotatedBoundaryLeftMin.x, rotatedBoundaryLeftMax.x);
+        float leftMinY = Mathf.Min(rotatedBoundaryLeftMin.y, rotatedBoundaryLeftMax.y);
+        float leftMaxY = Mathf.Max(rotatedBoundaryLeftMin.y, rotatedBoundaryLeftMax.y);
+
+        rotatedBoundaryLeftMin = new Vector2(leftMinX, leftMinY);
+        rotatedBoundaryLeftMax = new Vector2(leftMaxX, leftMaxY);
+
+        // Right boundary 정규화
+        float rightMinX = Mathf.Min(rotatedBoundaryRightMin.x, rotatedBoundaryRightMax.x);
+        float rightMaxX = Mathf.Max(rotatedBoundaryRightMin.x, rotatedBoundaryRightMax.x);
+        float rightMinY = Mathf.Min(rotatedBoundaryRightMin.y, rotatedBoundaryRightMax.y);
+        float rightMaxY = Mathf.Max(rotatedBoundaryRightMin.y, rotatedBoundaryRightMax.y);
+
+        rotatedBoundaryRightMin = new Vector2(rightMinX, rightMinY);
+        rotatedBoundaryRightMax = new Vector2(rightMaxX, rightMaxY);
+
+        // Center boundary 정규화
+        float centerMinX = Mathf.Min(rotatedBoundaryCenterMin.x, rotatedBoundaryCenterMax.x);
+        float centerMaxX = Mathf.Max(rotatedBoundaryCenterMin.x, rotatedBoundaryCenterMax.x);
+        float centerMinY = Mathf.Min(rotatedBoundaryCenterMin.y, rotatedBoundaryCenterMax.y);
+        float centerMaxY = Mathf.Max(rotatedBoundaryCenterMin.y, rotatedBoundaryCenterMax.y);
+
+        rotatedBoundaryCenterMin = new Vector2(centerMinX, centerMinY);
+        rotatedBoundaryCenterMax = new Vector2(centerMaxX, centerMaxY);
+    }
 
     //=====================================================
     // 초기화
@@ -98,7 +186,6 @@ public class WallController : MonoBehaviour, IHealth
         if (noneGateWall_Wood != null && noneGateWall_Wood.activeSelf) noneGateWall_Wood.SetActive(false);
         if (gateWall != null && gateWall.activeSelf) gateWall.SetActive(false);
         if (noneGateWall != null && noneGateWall.activeSelf) noneGateWall.SetActive(false);
-
 
         // 체력 초기화
         currentHealth = maxHealth;
@@ -122,7 +209,7 @@ public class WallController : MonoBehaviour, IHealth
 
     void InitializeDamageEffect()
     {
-        if(activeWall != null)
+        if (activeWall != null)
         {
             buildingRenderers = activeWall.GetComponentsInChildren<Renderer>();
 
@@ -959,16 +1046,27 @@ public class WallController : MonoBehaviour, IHealth
     {
         return isUpgraded;
     }
-    public bool ClampToBoundary(Vector3 _pos, bool _hasGate =false, bool _isplayer =true)
+
+    /// <summary>
+    /// 주어진 위치가 벽의 경계 내부에 있는지 확인합니다. (회전 적용)
+    /// </summary>
+    public bool ClampToBoundary(Vector3 _pos, bool _hasGate = false, bool _isplayer = true)
     {
+        // 벽의 중심을 기준으로 상대 위치 계산
+        Vector2 relativePos = new Vector2(_pos.x - transform.position.x, _pos.z - transform.position.z);
+
+        // 회전의 역변환을 적용하여 원래 좌표계로 변환
+        float angle = -boundaryRotation * Mathf.Deg2Rad; // 역회전
+        Vector2 rotatedRelativePos = RotateVector2(relativePos, angle);
+
         if (_hasGate)
         {
-            bool _leftX = IsInRange(_pos.x, transform.position.x + boundaryLeftMin.x, transform.position.x + boundaryLeftMax.x);
-            bool _leftY = IsInRange(_pos.z, transform.position.z + boundaryLeftMin.y, transform.position.z + boundaryLeftMax.y);
-            bool _centerX = IsInRange(_pos.x, transform.position.x + boundaryCenterMin.x, transform.position.x + boundaryCenterMax.x);
-            bool _centerY = IsInRange(_pos.z, transform.position.z + boundaryCenterMin.y, transform.position.z + boundaryCenterMax.y);
-            bool _rightX = IsInRange(_pos.x, transform.position.x + boundaryRightMin.x, transform.position.x + boundaryRightMax.x);
-            bool _rightY = IsInRange(_pos.z, transform.position.z + boundaryRightMin.y, transform.position.z + boundaryRightMax.y);
+            bool _leftX = IsInRange(rotatedRelativePos.x, boundaryLeftMin.x, boundaryLeftMax.x);
+            bool _leftY = IsInRange(rotatedRelativePos.y, boundaryLeftMin.y, boundaryLeftMax.y);
+            bool _centerX = IsInRange(rotatedRelativePos.x, boundaryCenterMin.x, boundaryCenterMax.x);
+            bool _centerY = IsInRange(rotatedRelativePos.y, boundaryCenterMin.y, boundaryCenterMax.y);
+            bool _rightX = IsInRange(rotatedRelativePos.x, boundaryRightMin.x, boundaryRightMax.x);
+            bool _rightY = IsInRange(rotatedRelativePos.y, boundaryRightMin.y, boundaryRightMax.y);
 
             if (_isplayer)
             {
@@ -977,15 +1075,16 @@ public class WallController : MonoBehaviour, IHealth
             else
             {
                 return (_rightX && _rightY) || (_leftX && _leftY);
-            }  
+            }
         }
         else
         {
-            bool _noneGateX = IsInRange(_pos.x, transform.position.x + boundaryCenterMin.x, transform.position.x + boundaryCenterMax.x);
-            bool _noneGateY = IsInRange(_pos.z, transform.position.z + boundaryCenterMin.y, transform.position.z + boundaryCenterMax.y);
+            bool _noneGateX = IsInRange(rotatedRelativePos.x, boundaryCenterMin.x, boundaryCenterMax.x);
+            bool _noneGateY = IsInRange(rotatedRelativePos.y, boundaryCenterMin.y, boundaryCenterMax.y);
             return (_noneGateX && _noneGateY);
         }
     }
+
     //=====================================================
     // Helper
     //=====================================================
@@ -993,6 +1092,7 @@ public class WallController : MonoBehaviour, IHealth
     {
         return _min <= _target && _target <= _max;
     }
+
     //=====================================================
     // 디버그 및 Gizmos
     //=====================================================
@@ -1017,37 +1117,56 @@ public class WallController : MonoBehaviour, IHealth
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + hpBarOffset, new Vector3(hpBarSize.x, hpBarSize.y, 0.1f));
 
+        // 회전된 경계 영역 그리기
+        DrawRotatedBoundaryGizmos();
+    }
+
+    /// <summary>
+    /// 회전된 경계 영역을 Gizmos로 그립니다.
+    /// </summary>
+    void DrawRotatedBoundaryGizmos()
+    {
+        float angle = boundaryRotation * Mathf.Deg2Rad;
+
+        // Left boundary (빨간색)
         Gizmos.color = Color.red;
-        Vector3 LeftWallbottomLeft = new Vector3(boundaryLeftMin.x, transform.position.y, boundaryLeftMin.y) + transform.position;
-        Vector3 LeftWallbottomRight = new Vector3(boundaryLeftMax.x, transform.position.y, boundaryLeftMin.y) + transform.position;
-        Vector3 LeftWalltopLeft = new Vector3(boundaryLeftMin.x, transform.position.y, boundaryLeftMax.y) + transform.position;
-        Vector3 LeftWalltopRight = new Vector3(boundaryLeftMax.x, transform.position.y, boundaryLeftMax.y) + transform.position;
+        DrawRotatedBoundaryBox(boundaryLeftMin, boundaryLeftMax, angle);
 
-        Gizmos.DrawLine(LeftWallbottomLeft, LeftWallbottomRight);
-        Gizmos.DrawLine(LeftWallbottomRight, LeftWalltopRight);
-        Gizmos.DrawLine(LeftWalltopRight, LeftWalltopLeft);
-        Gizmos.DrawLine(LeftWalltopLeft, LeftWallbottomLeft);
-
+        // Right boundary (빨간색)  
         Gizmos.color = Color.red;
-        Vector3 RightWallbottomLeft = new Vector3(boundaryRightMin.x, transform.position.y, boundaryRightMin.y) + transform.position;
-        Vector3 RightWallbottomRight = new Vector3(boundaryRightMax.x, transform.position.y, boundaryRightMin.y) + transform.position;
-        Vector3 RightWalltopLeft = new Vector3(boundaryRightMin.x, transform.position.y, boundaryRightMax.y) + transform.position;
-        Vector3 RightWalltopRight = new Vector3(boundaryRightMax.x, transform.position.y, boundaryRightMax.y) + transform.position;
+        DrawRotatedBoundaryBox(boundaryRightMin, boundaryRightMax, angle);
 
-        Gizmos.DrawLine(RightWallbottomLeft, RightWallbottomRight);
-        Gizmos.DrawLine(RightWallbottomRight, RightWalltopRight);
-        Gizmos.DrawLine(RightWalltopRight, RightWalltopLeft);
-        Gizmos.DrawLine(RightWalltopLeft, RightWallbottomLeft);
-
+        // Center boundary (노란색)
         Gizmos.color = Color.yellow;
-        Vector3 CenterWallbottomLeft = new Vector3(boundaryCenterMin.x, transform.position.y, boundaryCenterMin.y) + transform.position;
-        Vector3 CenterWallbottomRight = new Vector3(boundaryCenterMax.x, transform.position.y, boundaryCenterMin.y) + transform.position;
-        Vector3 CenterWalltopLeft = new Vector3(boundaryCenterMin.x, transform.position.y, boundaryCenterMax.y) + transform.position;
-        Vector3 CenterWalltopRight = new Vector3(boundaryCenterMax.x, transform.position.y, boundaryCenterMax.y) + transform.position;
+        DrawRotatedBoundaryBox(boundaryCenterMin, boundaryCenterMax, angle);
+    }
 
-        Gizmos.DrawLine(CenterWallbottomLeft, CenterWallbottomRight);
-        Gizmos.DrawLine(CenterWallbottomRight, CenterWalltopRight);
-        Gizmos.DrawLine(CenterWalltopRight, CenterWalltopLeft);
-        Gizmos.DrawLine(CenterWalltopLeft, CenterWallbottomLeft);
+    /// <summary>
+    /// 중심축을 기준으로 회전된 경계 박스를 그립니다.
+    /// </summary>
+    void DrawRotatedBoundaryBox(Vector2 min, Vector2 max, float angleInRadians)
+    {
+        // 원본 경계의 4개 모서리 점
+        Vector2[] corners = new Vector2[]
+        {
+            new Vector2(min.x, min.y), // 좌하단
+            new Vector2(max.x, min.y), // 우하단
+            new Vector2(max.x, max.y), // 우상단
+            new Vector2(min.x, max.y)  // 좌상단
+        };
+
+        // 각 모서리를 중심축 기준으로 회전
+        Vector3[] rotatedCorners = new Vector3[4];
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 rotated = RotateVector2(corners[i], angleInRadians);
+            rotatedCorners[i] = new Vector3(rotated.x, transform.position.y, rotated.y) + transform.position;
+        }
+
+        // 회전된 박스 그리기
+        Gizmos.DrawLine(rotatedCorners[0], rotatedCorners[1]); // 하단
+        Gizmos.DrawLine(rotatedCorners[1], rotatedCorners[2]); // 우측
+        Gizmos.DrawLine(rotatedCorners[2], rotatedCorners[3]); // 상단
+        Gizmos.DrawLine(rotatedCorners[3], rotatedCorners[0]); // 좌측
     }
 }

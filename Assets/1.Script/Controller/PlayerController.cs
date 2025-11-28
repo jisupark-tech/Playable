@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour,IHealth
     {
         Vector2 inputVector = VirtualPad.GetInputDirection();
        
-        float angle = -45f * Mathf.Deg2Rad;
+        float angle = /*-45f * */Mathf.Deg2Rad;
         float rotatedX = inputVector.x * Mathf.Cos(angle) - inputVector.y * Mathf.Sin(angle);
         float rotatedY = inputVector.x * Mathf.Sin(angle) + inputVector.y * Mathf.Cos(angle);
 
