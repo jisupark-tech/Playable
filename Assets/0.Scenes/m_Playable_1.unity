@@ -4078,6 +4078,7 @@ MonoBehaviour:
   gameTime: 200
   goldStartAmount: 0
   killTarget: 400
+  FirstSpawnCnt: 7
   goldText: {fileID: 1242314855}
   timerText: {fileID: 73121220}
   winUI: {fileID: 1560689578}
@@ -4235,7 +4236,6 @@ MonoBehaviour:
     disableWallIndices: 0600000007000000
   m_IsTouched: 0
   UiGuide: {fileID: 1432784588}
-  m_IsFirst: 1
   enableGuideLine: 1
   buildingCollisionRadius: 1.1
   enableBuildingCollision: 1
