@@ -16,6 +16,10 @@ public class GoldPickup : MonoBehaviour
     public float pickupRange = 1.5f;
     public float delayBeforeFly = 0.5f;
     public float rotationSpeed = 90f; // 회전 속도
+    [Header("Fly to Player Speed")]
+    public float GoldAccerate = 1.1f;
+    [Header("Fly to Target Speed")]
+    public float TargetAccerate = 15f;
 
     [Header("Animation and the other thing")]
     public bool SetFlytoPlayer = false;
@@ -175,7 +179,7 @@ public class GoldPickup : MonoBehaviour
             transform.position += direction * flySpeed * Time.deltaTime;
 
             // 속도 점진적으로 증가 (자석 효과)
-            flySpeed += Time.deltaTime * 1.1f;
+            flySpeed += Time.deltaTime * GoldAccerate;
 
             yield return null;
         }
@@ -245,7 +249,7 @@ public class GoldPickup : MonoBehaviour
             transform.position += direction * flySpeed * Time.deltaTime;
 
             // 속도 점진적으로 증가
-            flySpeed += Time.deltaTime * 10f;
+            flySpeed += Time.deltaTime * TargetAccerate;
 
             yield return null;
         }

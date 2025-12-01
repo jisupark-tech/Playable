@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;   // New Input System
+using UnityEngine.InputSystem; 
 
 [System.Serializable]
 public class Paths
@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
     public float gameTime = 30f;
     public int goldStartAmount = 0;
     public int killTarget = 10;
-
+    public int FirstSpawnCnt = 7;
+    private List<EnemyController> m_firstEnemies = new List<EnemyController>();
     [Header("UI References")]
     public Text goldText;
     public Text timerText;
@@ -142,16 +143,12 @@ public class GameManager : MonoBehaviour
     [Header("GUIDE UI")]
     [SerializeField] private GameObject UiGuide;
     #endregion
-    #region First Guide
-    [SerializeField] private bool m_IsFirst = true;
-    #endregion
     [Header("Guide Line")]
     public bool enableGuideLine = true;
     private GuideController _currentGuide;
 
     [Header("Building Collision Settings")]
     [SerializeField] private float buildingCollisionRadius = 1.5f; // 건물 충돌 반경
-    [SerializeField] private float WallCollisionRadius = 2.5f;
     [SerializeField] private bool enableBuildingCollision = true; // 건물 충돌 활성화
 
     [Header("Enemy Scaling Settings")]
@@ -252,6 +249,23 @@ public class GameManager : MonoBehaviour
         if (UiGuide != null)
             UiGuide.SetActive(true);
 
+
+        
+        for (int i = 0; i < FirstSpawnCnt; i++)
+        {
+            Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
+
+            // 3D 위치 (Vector3)로 변환 (y값은 고정)
+            //TODO 거리
+            //상수로 박아놓은것은 플레이어와의 거리값
+            Vector3 _randomPos = m_Player.transform.position + new Vector3(_randomOffset.x, 0, _randomOffset.y - 8);
+            GameObject _enemy = ObjectPool.Instance.SpawnFromPool("Enemy", _randomPos, Quaternion.identity);
+            m_firstEnemies.Add(_enemy.GetComponent<EnemyController>());
+        }
+
+        
+
+
         UpdateGuideLine();
     }
 
@@ -292,6 +306,22 @@ public class GameManager : MonoBehaviour
 
         if (AudioManager.Instance != null)
             AudioManager.Instance.EnableAudio();
+
+        for(int i= 0; i < m_firstEnemies.Count; i++)
+        {
+            if (m_firstEnemies[i] != null)
+            {
+                EnemyController _enemyController = m_firstEnemies[i];
+                _enemyController.Initialize(m_MainCenter.transform);
+
+                // Phase에 맞는 스탯 적용
+                int phaseHealth = GetEnemyHealthForCurrentPhase();
+                float phaseSpeed = GetEnemySpeedForCurrentPhase();
+
+                _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
+            }
+        }
+        
 
         StartCoroutine(CheckAllBuildingBuilt());
         StartCoroutine(SpawnEnemies());
@@ -369,36 +399,36 @@ public class GameManager : MonoBehaviour
     {
         while (!gameEnded)
         {
-            //TODO 첫시작할때 소환해달라함.
-            if(m_IsFirst)
-            {
-                if(m_spawnWay==EnemySpawnWay.Seperate)
-                {
-                    for(int i= 0; i < 7; i++)
-                    {
-                        Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
+            ////TODO 첫시작할때 소환해달라함.
+            //if(m_IsFirst)
+            //{
+            //    if(m_spawnWay==EnemySpawnWay.Seperate)
+            //    {
+            //        for(int i= 0; i < 7; i++)
+            //        {
+            //            Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
 
-                        // 3D 위치 (Vector3)로 변환 (y값은 고정)
-                        //TODO 거리
-                        //상수로 박아놓은것은 플레이어와의 거리값
-                        Vector3 _randomPos = m_Player.transform.position + new Vector3(_randomOffset.x, 0, _randomOffset.y -8);
-                        GameObject _enemy = ObjectPool.Instance.SpawnFromPool("Enemy", _randomPos, Quaternion.identity);
+            //            // 3D 위치 (Vector3)로 변환 (y값은 고정)
+            //            //TODO 거리
+            //            //상수로 박아놓은것은 플레이어와의 거리값
+            //            Vector3 _randomPos = m_Player.transform.position + new Vector3(_randomOffset.x, 0, _randomOffset.y -8);
+            //            GameObject _enemy = ObjectPool.Instance.SpawnFromPool("Enemy", _randomPos, Quaternion.identity);
 
-                        if (_enemy != null)
-                        {
-                            EnemyController _enemyController = _enemy.GetComponent<EnemyController>();
-                            _enemyController.Initialize(m_MainCenter.transform);
+            //            if (_enemy != null)
+            //            {
+            //                EnemyController _enemyController = _enemy.GetComponent<EnemyController>();
+            //                _enemyController.Initialize(m_MainCenter.transform);
 
-                            // Phase에 맞는 스탯 적용
-                            int phaseHealth = GetEnemyHealthForCurrentPhase();
-                            float phaseSpeed = GetEnemySpeedForCurrentPhase();
+            //                // Phase에 맞는 스탯 적용
+            //                int phaseHealth = GetEnemyHealthForCurrentPhase();
+            //                float phaseSpeed = GetEnemySpeedForCurrentPhase();
 
-                            _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
-                        }
-                    }
-                    m_IsFirst = false;
-                }
-            }
+            //                _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
+            //            }
+            //        }
+            //        m_IsFirst = false;
+            //    }
+            //}
 
             yield return new WaitForSeconds(enemySpawnInterval);
             switch (m_spawnWay)

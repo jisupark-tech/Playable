@@ -49,6 +49,8 @@ MonoBehaviour:
   pickupRange: 3
   delayBeforeFly: 1
   rotationSpeed: 0
+  GoldAccerate: 5
+  TargetAccerate: 25
   SetFlytoPlayer: 0
   HorizontalStand: 1
   bounceCount: 2
