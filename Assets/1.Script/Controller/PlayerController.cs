@@ -486,7 +486,7 @@ public class PlayerController : MonoBehaviour,IHealth
 
     public void OnGoldStackCall(int _currentGold)
     {
-        float _spacing = 0.2f;
+        float _spacing = 0.1f;
         if (GoldBag)
         {
             GameObject _gold = ObjectPool.Instance.SpawnFromPool("Gold", GoldBag.position + new Vector3(0, _currentGold * _spacing, 0), Quaternion.Euler(90, 0, 0), GoldBag);
