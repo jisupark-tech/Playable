@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9a9401550be1d454b886f0fe3da56a70
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82232
+  packageName: Scene Bookmarks
+  packageVersion: 1.0.9
+  assetPath: Assets/Plugins/SceneBookmarks/Editor/Core/CamBookmark.cs
+  uploadId: 548584

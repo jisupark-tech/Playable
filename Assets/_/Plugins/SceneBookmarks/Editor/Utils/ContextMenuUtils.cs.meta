@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 17fc1517e0c505049b6517e931b81b0c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82232
+  packageName: Scene Bookmarks
+  packageVersion: 1.0.9
+  assetPath: Assets/Plugins/SceneBookmarks/Editor/Utils/ContextMenuUtils.cs
+  uploadId: 548584

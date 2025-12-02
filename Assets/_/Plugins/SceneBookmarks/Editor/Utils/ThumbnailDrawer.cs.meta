@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d969eb662c2fde144a467f2fe93f4b1b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82232
+  packageName: Scene Bookmarks
+  packageVersion: 1.0.9
+  assetPath: Assets/Plugins/SceneBookmarks/Editor/Utils/ThumbnailDrawer.cs
+  uploadId: 548584

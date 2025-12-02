@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3da2f5f55ac41624ebc51a84be05377a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 82232
+  packageName: Scene Bookmarks
+  packageVersion: 1.0.9
+  assetPath: Assets/Plugins/SceneBookmarks/Editor/Utils/IconUtils.cs
+  uploadId: 548584
