@@ -337,12 +337,12 @@ public class TurretController : MonoBehaviour, IHealth
         Vector3 originalGoldScale = goldStoragePoint.transform.localScale;
         goldStoragePoint.transform.localScale = Vector3.zero;
 
-        //EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
-        //if (_effect)
-        //    _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
 
         yield return new WaitForSeconds(0.5f);
-       
+
+        EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
+        if (_effect)
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
 
         if (float.IsNaN(originalTurretScale.x) || float.IsNaN(originalTurretScale.y) || float.IsNaN(originalTurretScale.z))
         {

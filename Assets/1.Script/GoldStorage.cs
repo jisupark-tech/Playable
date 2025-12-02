@@ -170,17 +170,6 @@ public class GoldStorage : MonoBehaviour
         StartCoroutine(CheckPlayerNear());
     }
 
-    // 외부에서 강제로 코루틴 시작 (SetVisibility에서 호출용)
-    public void StartPlayerCheck()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            // 기존 코루틴이 실행 중이면 중단하고 새로 시작
-            StopAllCoroutines();
-            StartCoroutine(CheckPlayerNear());
-        }
-    }
-
     // 플레이어가 가까이 오면 골드를 자동으로 전송
     IEnumerator CheckPlayerNear()
     {
@@ -203,15 +192,6 @@ public class GoldStorage : MonoBehaviour
             }
 
             yield return new WaitForSeconds(checkInterval);
-        }
-    }
-
-    // 외부에서 강제로 골드 수집 (기존 TurretController, MineController와의 호환성)
-    public void ForceCollectGold()
-    {
-        if (totalGoldCount > 0 && playerController != null)
-        {
-            TransferGoldTo(playerController.transform, totalGoldCount);
         }
     }
 

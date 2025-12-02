@@ -5503,7 +5503,7 @@ Camera:
   far clip plane: 150
   field of view: 60.000004
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5818,6 +5818,10 @@ PrefabInstance:
       value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.13
       objectReference: {fileID: 0}
@@ -5958,6 +5962,14 @@ PrefabInstance:
       value: -2072346943
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -5973,7 +5985,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -11961,8 +11974,8 @@ MonoBehaviour:
     canExpand: 1
     maxSize: 100
   - tag: Effect
-    prefab: {fileID: 5121804608419314050, guid: f7ac5b39894c9674591deb1a41c908e7, type: 3}
-    size: 10
+    prefab: {fileID: 896825539390854365, guid: 599df2a28262a0645b8077700cabef0b, type: 3}
+    size: 50
     canExpand: 1
     maxSize: 100
   - tag: HittedEffect
@@ -12549,6 +12562,10 @@ PrefabInstance:
       value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 4.8
       objectReference: {fileID: 0}
@@ -12689,6 +12706,14 @@ PrefabInstance:
       value: -2072346943
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -12704,7 +12729,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -14010,6 +14036,10 @@ PrefabInstance:
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.86
       objectReference: {fileID: 0}
@@ -14150,6 +14180,14 @@ PrefabInstance:
       value: 1906116919
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -14165,7 +14203,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -54561,6 +54600,10 @@ PrefabInstance:
       value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 6.05
       objectReference: {fileID: 0}
@@ -54701,6 +54744,14 @@ PrefabInstance:
       value: -2072346943
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -54716,7 +54767,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -56323,6 +56375,10 @@ PrefabInstance:
       value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 6.34
       objectReference: {fileID: 0}
@@ -56463,6 +56519,14 @@ PrefabInstance:
       value: -2072346943
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -56478,7 +56542,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -78856,7 +78921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -78864,7 +78929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.42
+      value: -0.265
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78898,6 +78963,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1907240947533435294, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d72689d5b0dbdf043b279ba681d23574, type: 2}
     - target: {fileID: 2497486952921596694, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -80649,6 +80718,10 @@ PrefabInstance:
       value: -3.15
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.53
       objectReference: {fileID: 0}
@@ -80789,6 +80862,14 @@ PrefabInstance:
       value: -2025351389
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -80804,7 +80885,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -81426,6 +81508,10 @@ PrefabInstance:
       value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.85
       objectReference: {fileID: 0}
@@ -81566,6 +81652,14 @@ PrefabInstance:
       value: -2025351389
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -81581,7 +81675,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -83977,6 +84072,10 @@ PrefabInstance:
       value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.94
       objectReference: {fileID: 0}
@@ -84117,6 +84216,14 @@ PrefabInstance:
       value: -2072346943
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
       value: 1
       objectReference: {fileID: 0}
@@ -84132,7 +84239,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
@@ -85365,6 +85473,10 @@ PrefabInstance:
       value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.93
       objectReference: {fileID: 0}
@@ -85492,6 +85604,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1151946452, guid: 2cd2602b48f0927448a417761c6af29b, type: 3}
+    - target: {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7336775820911097941, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
       value: 5
@@ -85503,6 +85619,14 @@ PrefabInstance:
     - target: {fileID: 7336775820911097941, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayerID
       value: -2025351389
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: layerHeight
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: maxGoldPerLayer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
@@ -85520,7 +85644,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 563421043
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7055551986726306818, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7990240584235501479, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
     - {fileID: 7767589020555949594, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}

@@ -1,6 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+public enum GimmicKType
+{
+    None,
+    Arrow,
+    NPC,
+    Pet,
+}
+
 public class EnhanceController : MonoBehaviour , IHealth
 {
 
@@ -8,6 +16,7 @@ public class EnhanceController : MonoBehaviour , IHealth
     public int enhanceCost = 20;
     public int currPaidCost = 0;
     public float ditectDistance = 2f;
+    public GimmicKType m_type = GimmicKType.None;
 
     [Header("Health Settings")]
     public int maxHealth = 80;
@@ -136,13 +145,11 @@ public class EnhanceController : MonoBehaviour , IHealth
 
         enhanceOBJ.transform.localScale = Vector3.zero;
 
-        //EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
-        //if (_effect)
-        //    _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
-
         yield return new WaitForSeconds(0.5f);
 
-
+        EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
+        if (_effect)
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
 
         if (float.IsNaN(originalenhnaceScale.x) || float.IsNaN(originalenhnaceScale.y) || float.IsNaN(originalenhnaceScale.z))
         {

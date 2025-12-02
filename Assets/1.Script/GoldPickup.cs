@@ -173,6 +173,8 @@ public class GoldPickup : MonoBehaviour
         isFlying = true;
 
         // 플레이어를 향해 날아감
+        //TODO 2025-12-02
+        // 플레이어의 등에 있는 동전 더미의 꼭대기
         while (Vector3.Distance(transform.position, player.position) < pickupRange && gameObject.activeInHierarchy)
         {
             Vector3 direction = (player.position - transform.position).normalized;
