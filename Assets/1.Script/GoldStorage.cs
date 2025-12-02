@@ -146,7 +146,7 @@ public class GoldStorage : MonoBehaviour
         // 같은 층 내에서 위치 계산 (사각형 배치)
         Vector3 basePosition = storageCenter.position;
         basePosition.y = yPosition;
-        Debug.Log($"=====GoldStrorage() positionInLayer : {positionInLayer} currentLayer : {currentLayer}");
+        Debug.Log($"=====GoldStrorage() positionInLayer : {positionInLayer} currentLayer : {currentLayer}  y : {yPosition}");
         switch (positionInLayer)
         {
             case 0: return basePosition + new Vector3(-goldSpacing / 2, 0.1f, -goldSpacing / 2);

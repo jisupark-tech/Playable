@@ -831,6 +831,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 225231121}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!4 &33945432 stripped
 Transform:
@@ -1594,6 +1597,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 785424650}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!4 &50922839 stripped
 Transform:
@@ -3560,6 +3566,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1329425991}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!4 &205141445 stripped
 Transform:
@@ -3851,6 +3860,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 491970757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &225231119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 33945431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &225231120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 33945431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &225231121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225231119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 225231120}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!1 &232620385
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,9 +4516,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   masterVolume: 0.535
   sfxVolume: 0.546
-  goldSpawnSound: {fileID: 8300000, guid: ec0174946e8196d4a915598b503c0140, type: 3}
-  goldCollectSound: {fileID: 8300000, guid: c5f3fcc1910463f49927f36dc15c85c6, type: 3}
-  arrowAttackSound: {fileID: 8300000, guid: 6f4cd42d3a2cb6a44ab5fbb5afc6e527, type: 3}
+  goldSpawnSound: {fileID: 8300000, guid: 1000cc611969fa643b1ca7a4784336a1, type: 3}
+  goldCollectSound: {fileID: 8300000, guid: 1786e877cdcbddc4db88e4b9bc249efd, type: 3}
+  arrowAttackSound: {fileID: 8300000, guid: 615b564db4286f0439e2103229ada952, type: 3}
   audioSourcePoolSize: 5
 --- !u!1 &306024033
 GameObject:
@@ -8808,6 +8845,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1967722755}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!4 &533064502 stripped
 Transform:
@@ -11374,6 +11414,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 491970757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &785424648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 50922838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &785424649 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 50922838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &785424650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785424648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 785424649}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!114 &789732929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55821,6 +55889,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1642670291}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!4 &1284990725 stripped
 Transform:
@@ -55943,6 +56014,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 491970757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1329425989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 205141444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1329425990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 205141444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1329425991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329425989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 1329425990}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!1 &1334676704
 GameObject:
   m_ObjectHideFlags: 0
@@ -58677,6 +58776,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ca10481d4356a4193bde3626c60775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!1 &1596348427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 8332331199272011807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1596348428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 8332331199272011807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1596348429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596348427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 1596348428}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!1 &1605182029
 GameObject:
   m_ObjectHideFlags: 0
@@ -78931,6 +79058,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ba813bfe4c5f34e9e2905412751042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallController
+--- !u!1 &1642670289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 1284990724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1642670290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 1284990724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1642670291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642670289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 1642670290}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!1 &1647711324
 GameObject:
   m_ObjectHideFlags: 0
@@ -82541,6 +82696,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 491970757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1967722753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 533064501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1967722754 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3521941853122356741, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+  m_PrefabInstance: {fileID: 533064501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1967722755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967722753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7935faf11f97b418fc9fdfc77fae77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldStorage
+  storageCenter: {fileID: 1967722754}
+  maxGoldPerLayer: 4
+  layerHeight: 0.12
+  goldSpacing: 0.4
+  playerDetectionRange: 1.5
+  checkInterval: 0.1
 --- !u!1 &1973796223
 GameObject:
   m_ObjectHideFlags: 0
@@ -85730,7 +85913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3534930970571331407, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -86172,6 +86355,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3768541916569637165, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6204798968896727577, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1596348429}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
