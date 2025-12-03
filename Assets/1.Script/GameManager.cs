@@ -740,8 +740,8 @@ public class GameManager : MonoBehaviour
             if (IsValidIndex(turretIndex, m_Turrets.Count) && !disabledTurretIndices.Contains(turretIndex))
             {
                 TurretController turret = m_Turrets[turretIndex];
-                turret.Init();
                 turret.SetVisibility(true);
+                turret.Init();
                 Debug.Log($"Enabled turret[{turretIndex}]: {turret.name}");
             }
         }
@@ -964,8 +964,8 @@ public class GameManager : MonoBehaviour
 
             if (currentAvailableTurretIndex < m_Turrets.Count)
             {
-                m_Turrets[currentAvailableTurretIndex].Init();
                 m_Turrets[currentAvailableTurretIndex].SetVisibility(true);
+                m_Turrets[currentAvailableTurretIndex].Init();
                 Debug.Log($"Sequential: Next turret {currentAvailableTurretIndex} available");
             }
             else
@@ -1162,8 +1162,8 @@ public class GameManager : MonoBehaviour
         {
             if (i == currentAvailableTurretIndex)
             {
-                m_Turrets[i].Init();
                 m_Turrets[i].SetVisibility(true);
+                m_Turrets[i].Init();
                 Debug.Log($"Sequential: Turret {i} available");
             }
             else
@@ -1207,8 +1207,8 @@ public class GameManager : MonoBehaviour
         {
             if (turret != null)
             {
-                turret.Init();
                 turret.SetVisibility(true);
+                turret.Init();
             }
         }
 

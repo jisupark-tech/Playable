@@ -4301,25 +4301,53 @@ MonoBehaviour:
     ignoreWallRequirements: 0
   - phaseName: 
     turretIndices: 0400000005000000
-    mineIndices: 0000000001000000
+    mineIndices: 
     wallIndices: 050000000600000007000000
     enhances: 
-    requiredCompletions: 7
+    requiredCompletions: 4
     ignoreWallRequirements: 0
+  - phaseName: 
+    turretIndices: 
+    mineIndices: 0000000001000000
+    wallIndices: 
+    enhances: 
+    requiredCompletions: 2
+    ignoreWallRequirements: 1
   - phaseName: 
     turretIndices: 0600000007000000
-    mineIndices: 0200000003000000
-    wallIndices: 08000000090000000a000000
-    enhances: 0000000001000000
-    requiredCompletions: 9
-    ignoreWallRequirements: 0
-  - phaseName: 
-    turretIndices: 08000000
-    mineIndices: 0400000005000000
+    mineIndices: 
     wallIndices: 0a0000000b000000
     enhances: 
-    requiredCompletions: 5
+    requiredCompletions: 2
     ignoreWallRequirements: 0
+  - phaseName: 
+    turretIndices: 
+    mineIndices: 0200000003000000
+    wallIndices: 
+    enhances: 
+    requiredCompletions: 2
+    ignoreWallRequirements: 1
+  - phaseName: 
+    turretIndices: 
+    mineIndices: 
+    wallIndices: 
+    enhances: 0000000001000000
+    requiredCompletions: 2
+    ignoreWallRequirements: 1
+  - phaseName: 
+    turretIndices: 08000000
+    mineIndices: 
+    wallIndices: 0a0000000b000000
+    enhances: 
+    requiredCompletions: 3
+    ignoreWallRequirements: 0
+  - phaseName: 
+    turretIndices: 
+    mineIndices: 0400000005000000
+    wallIndices: 
+    enhances: 
+    requiredCompletions: 2
+    ignoreWallRequirements: 1
   buildingRules:
   - ruleName: 
     triggerBuildings:
@@ -8139,7 +8167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: haveGate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
@@ -10040,7 +10068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: haveGate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
@@ -79324,7 +79352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: -0.117
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.y
