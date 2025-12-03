@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _EMISSION_FIX_ON
   - _OUTLINE_ONOFF_ON
   - _USE_RIM_COLOR_ON
   m_LightmapFlags: 0
@@ -90,20 +89,20 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.5
     - _Emission_Amount: 1
-    - _Emission_Fix: 1
+    - _Emission_Fix: 0
     - _Glossiness: 0.5
     - _Metallic: 0.5
     - _Metallic_Amount: 0
     - _Opacity: 1
     - _Outline_OnOff: 1
-    - _Outline_Thickness: 0.03
+    - _Outline_Thickness: 0.04
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Rim_Emission: 0.6
-    - _Rim_Power: 0.5
-    - _Rim_Scale: 1.5
+    - _Rim_Emission: 0.4
+    - _Rim_Power: 0.4
+    - _Rim_Scale: 1
     - _Roughness_Amount: 0
-    - _Shadow_ScaleOffset: 0.5
+    - _Shadow_ScaleOffset: 0.4
     - _UseColorMap: 1
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 1
