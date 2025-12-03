@@ -87,14 +87,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _Emission_Amount: 1
+    - _Emission_Amount: 0.85
     - _Emission_Fix: 0
     - _Glossiness: 0.5
     - _Metallic: 0.5
     - _Metallic_Amount: 0
     - _Opacity: 1
     - _Outline_OnOff: 1
-    - _Outline_Thickness: 0.04
+    - _Outline_Thickness: 0.03
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Rim_Emission: 0.4
