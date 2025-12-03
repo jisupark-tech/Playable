@@ -61,7 +61,7 @@ public class BuildingRule
 
 public enum EnemySpawnWay
 {
-    Load,
+    Road,
     Seperate,
 }
 
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     public VirtualPad m_VirtualPad;
 
     [Header("Enemy Spawning")]
-    public EnemySpawnWay m_spawnWay = EnemySpawnWay.Load;
+    public EnemySpawnWay m_spawnWay = EnemySpawnWay.Road;
     public int m_PerSpawnEnemyCnt = 5;
     public List<Paths> m_Roots = new List<Paths>();
     [Tooltip("Spawn Way 가 Load일때 1.2f, Seperate 일떄 4.5f")]
@@ -433,7 +433,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(enemySpawnInterval);
             switch (m_spawnWay)
             {
-                case EnemySpawnWay.Load:
+                case EnemySpawnWay.Road:
                     if (m_Roots.Count > 0)
                     {
                         int maxRoot = Mathf.Clamp(activeRootCount, 1, m_Roots.Count);

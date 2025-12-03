@@ -135,6 +135,8 @@ public class GoldStorage : MonoBehaviour
         }
     }
 
+    //TODO 2025-12-02
+    //마이너스로 되는 Y 값의 좌표 위치 수정
     Vector3 GetNextGoldPosition()
     {
         int currentLayer = totalGoldCount / maxGoldPerLayer;
