@@ -14,11 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp-Editor-firstpass::SceneBookmarks.SceneViewBookmarks
   groups:
   - scenePath: 
-    bookmarks:
-    - name: Playable GameView R45
-      position: {x: 1.9, y: 13, z: -18.62}
-      rotation: {x: 45, y: 0, z: 0}
-      isOrthographic: 1
-      is2D: 0
-      size: 10
-      thumbnail: {fileID: 0}
+    bookmarks: []
