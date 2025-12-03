@@ -160,6 +160,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool bossModeEnabled = false;       // 보스 모드 활성화 여부
     [Range(0,1)]
     [SerializeField] private float bossPercent = 0;
+
+    [Header("Boss Setting")]
+    [Tooltip("Boss 몬스터 체력 세팅")]
+    [SerializeField] private float BossHpMultiple = 8.5f;
     // Game State
     private int currentGold;
     private float currentTime;
@@ -466,7 +470,7 @@ public class GameManager : MonoBehaviour
                                     // 보스인 경우 스탯을 더 강화
                                     if (enemyType == "Boss")
                                     {
-                                        phaseHealth = Mathf.RoundToInt(phaseHealth * 2.5f); // 보스는 2.5배 체력
+                                        phaseHealth = Mathf.RoundToInt(phaseHealth * BossHpMultiple); // 보스는 2.5배 체력
                                         phaseSpeed *= 0.8f; // 보스는 80% 속도
                                     }
 
@@ -510,7 +514,7 @@ public class GameManager : MonoBehaviour
                                     // 보스인 경우 스탯을 더 강화
                                     if (enemyType == "Boss")
                                     {
-                                        phaseHealth = Mathf.RoundToInt(phaseHealth * 2.5f); // 보스는 2.5배 체력
+                                        phaseHealth = Mathf.RoundToInt(phaseHealth * BossHpMultiple); // 보스는 2.5배 체력
                                         phaseSpeed *= 0.8f; // 보스는 80% 속도
                                     }
 

@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour, IHealth
     {
         path = new Transform[1];
         path[0] = _targetPos;
-        if (path != null && path.Length > 0)
+        if (path != null && path.Length > 0 && this.gameObject.activeInHierarchy)
         {
             StartCoroutine(TraceTarget());
         }

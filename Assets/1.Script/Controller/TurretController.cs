@@ -12,7 +12,7 @@ public class TurretController : MonoBehaviour, IHealth
     public float fireRate = 1f; // 발사 속도 (초당)
     public int currPaidCost = 0; // 현재 지불된 비용
     public float ditectDIsatnce = 2f; // 플레이어 감지 거리
-
+    public bool canCollectGold = true;
     [Header("Health Settings")]
     public int maxHealth = 100; // 터렛의 체력
     private int currentHealth;
@@ -117,27 +117,38 @@ public class TurretController : MonoBehaviour, IHealth
 
     void InitializeGoldStorage()
     {
-        // 골드 저장소 포인트가 없으면 자동 생성
-        if (goldStoragePoint == null)
+        if(canCollectGold)
         {
-            GameObject storagePoint = new GameObject("GoldStoragePoint");
-            storagePoint.transform.SetParent(transform);
-            storagePoint.transform.localPosition = Vector3.right * 1.5f; // 터렛 오른쪽에 위치
-            goldStoragePoint = storagePoint;
-        }
+            // 골드 저장소 포인트가 없으면 자동 생성
+            if (goldStoragePoint == null)
+            {
+                GameObject storagePoint = new GameObject("GoldStoragePoint");
+                storagePoint.transform.SetParent(transform);
+                storagePoint.transform.localPosition = Vector3.right * 1.5f; // 터렛 오른쪽에 위치
+                goldStoragePoint = storagePoint;
+            }
 
-        // GoldStorage 컴포넌트 확인 및 추가
-        goldStorage = goldStoragePoint.GetComponent<GoldStorage>();
-        if (goldStorage == null)
+            // GoldStorage 컴포넌트 확인 및 추가
+            goldStorage = goldStoragePoint.GetComponent<GoldStorage>();
+            if (goldStorage == null)
+            {
+                goldStorage = goldStoragePoint.AddComponent<GoldStorage>();
+            }
+
+            // 골드 저장소 초기화 및 중심점 설정
+            goldStorage.storageCenter = goldStoragePoint.transform;
+            goldStorage.Init();
+
+            Debug.Log($"TurretController: GoldStorage initialized on {goldStoragePoint.name}");
+        }
+        else
         {
-            goldStorage = goldStoragePoint.AddComponent<GoldStorage>();
+            if(goldStoragePoint!=null)
+            {
+                goldStoragePoint.SetActive(false);
+                Debug.Log($"TurretController: goldStoragePoint is Disabled {goldStoragePoint.name}");
+            }
         }
-
-        // 골드 저장소 초기화 및 중심점 설정
-        goldStorage.storageCenter = goldStoragePoint.transform;
-        goldStorage.Init();
-
-        Debug.Log($"TurretController: GoldStorage initialized on {goldStoragePoint.name}");
     }
 
     void InitializeCostDisplay()
@@ -274,7 +285,7 @@ public class TurretController : MonoBehaviour, IHealth
         if (coin != null)
             coin.SetActive(!built && isVisible); // 가시성도 고려
 
-        if (goldStoragePoint != null)
+        if (goldStoragePoint != null && canCollectGold)
             goldStoragePoint.SetActive(built && isVisible);
         // 비용 표시 업데이트
         UpdateCostDisplay();
@@ -285,7 +296,7 @@ public class TurretController : MonoBehaviour, IHealth
         }
     }
 
-    public void SetVisibility(bool visible)
+    public void SetVisibility(bool visible,bool _all = false)
     {
         isVisible = visible;
 
@@ -315,13 +326,19 @@ public class TurretController : MonoBehaviour, IHealth
             if (textMeshPro != null) textMeshPro.gameObject.SetActive(false);
             if (goldslider != null) goldslider.SetActive(false); // 슬라이더도 숨김
 
-            // 건설되지 않은 터렛은 완전히 비활성화
-            if (!isBuilt)
+            if (_all)
             {
-                gameObject.SetActive(false);
+                StopAllCoroutines();
+                Debug.Log($"Turret {gameObject.name} is now hidden");
             }
 
-            Debug.Log($"Turret {gameObject.name} is now hidden");
+            // 건설되지 않은 터렛은 완전히 비활성화
+            //if (!isBuilt)
+            //{
+            gameObject.SetActive(false);
+            //}
+
+            
         }
     }
 
