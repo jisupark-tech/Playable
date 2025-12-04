@@ -88,13 +88,13 @@ public class MineController : MonoBehaviour, IHealth
     void InitializeGoldStorage()
     {
         // 골드 저장소 포인트가 없으면 자동 생성
-        if (goldStoragePoint == null)
-        {
-            GameObject storagePoint = new GameObject("GoldStoragePoint");
-            storagePoint.transform.SetParent(transform);
-            storagePoint.transform.localPosition = Vector3.right * 1.5f; // 광산 오른쪽에 위치
-            goldStoragePoint = storagePoint;
-        }
+        //if (goldStoragePoint == null)
+        //{
+        //    GameObject storagePoint = new GameObject("GoldStoragePoint");
+        //    storagePoint.transform.SetParent(transform);
+        //    storagePoint.transform.localPosition = Vector3.right * 1.5f; // 광산 오른쪽에 위치
+        //    goldStoragePoint = storagePoint;
+        //}
 
         // GoldStorage 컴포넌트 확인 및 추가
         goldStorage = goldStoragePoint.GetComponent<GoldStorage>();

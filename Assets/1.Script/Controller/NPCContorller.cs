@@ -117,7 +117,7 @@ public class NPCController : MonoBehaviour
             }
 
             // Update animation
-            UpdateAnimation(true);
+            //UpdateAnimation(true);
 
             // Check for obstacles and calculate movement
             Vector3 moveDirection = CalculateMovementDirection();
@@ -461,19 +461,19 @@ public class NPCController : MonoBehaviour
                obj.CompareTag("Obstacle");
     }
 
-    void UpdateAnimation(bool isMoving)
-    {
-        if (anim != null && !string.IsNullOrEmpty(MoveParameter))
-        {
-            anim.SetBool(MoveParameter, isMoving);
-        }
-    }
+    //void UpdateAnimation(bool isMoving)
+    //{
+    //    if (anim != null && !string.IsNullOrEmpty(MoveParameter))
+    //    {
+    //        anim.SetFloat(MoveParameter, 1);
+    //    }
+    //}
 
     void ReachTarget()
     {
         // Stop movement
         isMovingToTarget = false;
-        UpdateAnimation(false);
+        //UpdateAnimation(false);
 
         // Check if target is a TurretController and enhance it
         if (m_targetTransform != null)

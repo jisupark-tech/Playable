@@ -227,32 +227,32 @@ public class WallController : MonoBehaviour, IHealth
 
     void InitializeHealthBar()
     {
-        if (hpBarParent == null)
-        {
-            // HP 바 부모 오브젝트가 없으면 자동 생성
-            GameObject hpBarObj = new GameObject("HPBar");
-            hpBarObj.transform.SetParent(transform);
-            hpBarObj.transform.localPosition = hpBarOffset;
-            hpBarParent = hpBarObj.transform;
-        }
+        //if (hpBarParent == null)
+        //{
+        //    // HP 바 부모 오브젝트가 없으면 자동 생성
+        //    GameObject hpBarObj = new GameObject("HPBar");
+        //    hpBarObj.transform.SetParent(transform);
+        //    hpBarObj.transform.localPosition = hpBarOffset;
+        //    hpBarParent = hpBarObj.transform;
+        //}
 
-        // HP 배경 설정
-        if (hpBackgroundRenderer == null)
-        {
-            GameObject hpBg = new GameObject("HPBackground");
-            hpBg.transform.SetParent(hpBarParent);
-            hpBg.transform.localPosition = Vector3.zero;
-            hpBackgroundRenderer = hpBg.AddComponent<SpriteRenderer>();
-        }
+        //// HP 배경 설정
+        //if (hpBackgroundRenderer == null)
+        //{
+        //    GameObject hpBg = new GameObject("HPBackground");
+        //    hpBg.transform.SetParent(hpBarParent);
+        //    hpBg.transform.localPosition = Vector3.zero;
+        //    hpBackgroundRenderer = hpBg.AddComponent<SpriteRenderer>();
+        //}
 
-        // HP 채우기 설정
-        if (hpFillRenderer == null)
-        {
-            GameObject hpFill = new GameObject("HPFill");
-            hpFill.transform.SetParent(hpBarParent);
-            hpFill.transform.localPosition = Vector3.zero;
-            hpFillRenderer = hpFill.AddComponent<SpriteRenderer>();
-        }
+        //// HP 채우기 설정
+        //if (hpFillRenderer == null)
+        //{
+        //    GameObject hpFill = new GameObject("HPFill");
+        //    hpFill.transform.SetParent(hpBarParent);
+        //    hpFill.transform.localPosition = Vector3.zero;
+        //    hpFillRenderer = hpFill.AddComponent<SpriteRenderer>();
+        //}
 
         // 스프라이트 설정
         if (hpBackgroundSprite != null)
