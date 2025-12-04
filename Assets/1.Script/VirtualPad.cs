@@ -314,6 +314,7 @@ public class VirtualPad : MonoBehaviour
         return isActive;
     }
 
+    public GameObject OnGettouchOverlay() => touchOverlay;
     /// <summary>
     /// 패드 모드 전환 (동적/고정)
     /// </summary>

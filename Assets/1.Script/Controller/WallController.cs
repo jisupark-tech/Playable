@@ -305,8 +305,8 @@ public class WallController : MonoBehaviour, IHealth
             Gate_R_ClosedPos = Gate_R_Parent.localPosition;
 
             // 열린 위치 계산 (왼쪽은 더 왼쪽으로, 오른쪽은 더 오른쪽으로)
-            Gate_L_OpenPos = Gate_L_ClosedPos + Vector3.left * 1f;
-            Gate_R_OpenPos = Gate_R_ClosedPos + Vector3.right * 1f;
+            Gate_L_OpenPos = Gate_L_ClosedPos + Vector3.left * 0.65f;
+            Gate_R_OpenPos = Gate_R_ClosedPos + Vector3.right * 0.65f;
 
             DebugLog("Gate positions initialized");
         }
@@ -1031,8 +1031,14 @@ public class WallController : MonoBehaviour, IHealth
         activeWall = null;
         currentHealth = maxHealth;
 
+        if (GameManager.Instance != null)
+            GameManager.Instance.EndGame(false);
+
+        //TODO 2025-12-04
+        //아래 조건 삭제
         // 건설 조건 다시 체크 시작
-        StartCoroutine(CheckBuildCondition());
+        //StartCoroutine(CheckBuildCondition());
+
     }
 
     //=====================================================

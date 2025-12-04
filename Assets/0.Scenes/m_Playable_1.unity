@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: maxHealth
-      value: 1000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: AnimationDuration
@@ -1107,7 +1107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -1664,7 +1664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: maxHealth
-      value: 50000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: QuestPrice
@@ -1694,6 +1694,10 @@ PrefabInstance:
       propertyPath: TxtMaxQuestCnt
       value: 
       objectReference: {fileID: 1576020006}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: AnimationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4540080337532472728, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -2306,7 +2310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -2508,7 +2512,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 2.82, y: 13, z: -14.8}
+  m_LocalPosition: {x: 1.44, y: 13, z: -14.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2673,7 +2677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -3659,7 +3663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -4220,7 +4224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -5154,7 +5158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -5937,7 +5941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -6588,7 +6592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -7321,7 +7325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -7660,8 +7664,8 @@ RectTransform:
   - {fileID: 73121218}
   - {fileID: 411885246}
   - {fileID: 658370764}
-  - {fileID: 1560689579}
   - {fileID: 1432784589}
+  - {fileID: 1560689579}
   m_Father: {fileID: 694496142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7890,7 +7894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -8700,7 +8704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -9557,7 +9561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -10192,7 +10196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -10697,7 +10701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -10928,7 +10932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3770301918638931578, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: weaponData.fireRate
-      value: 0.1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4965614648752867846, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_Name
@@ -11366,7 +11370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -11891,7 +11895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -12651,7 +12655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -12919,7 +12923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1973796226}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 257595894}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickBtnOpenURL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1973796226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13424,7 +13440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -49155,7 +49171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -49536,7 +49552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: maxHealth
-      value: 50000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: QuestPrice
@@ -49566,6 +49582,10 @@ PrefabInstance:
       propertyPath: TxtMaxQuestCnt
       value: 
       objectReference: {fileID: 2083540601}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: AnimationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4540080337532472728, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -50202,7 +50222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -50712,7 +50732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
-      value: 2000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -51209,7 +51229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: maxHealth
-      value: 1000
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: goldStoragePoint

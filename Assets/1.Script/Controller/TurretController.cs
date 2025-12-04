@@ -133,14 +133,6 @@ public class TurretController : MonoBehaviour, IHealth
     {
         if (canCollectGold)
         {
-            // 골드 저장소 포인트가 없으면 자동 생성
-            //if (goldStoragePoint == null)
-            //{
-            //    GameObject storagePoint = new GameObject("GoldStoragePoint");
-            //    storagePoint.transform.SetParent(transform);
-            //    storagePoint.transform.localPosition = Vector3.right * 1.5f; // 터렛 오른쪽에 위치
-            //    goldStoragePoint = storagePoint;
-            //}
 
             // GoldStorage 컴포넌트 확인 및 추가
             goldStorage = goldStoragePoint.GetComponent<GoldStorage>();
@@ -888,6 +880,9 @@ public class TurretController : MonoBehaviour, IHealth
     void DestroyTurret()
     {
         gameObject.SetActive(false);
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.EndGame(false);
     }
 
     public bool IsBuild => isBuilt;

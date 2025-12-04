@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     public Text timerText;
     public GameObject winUI;
 
-    public string downloadUrl = "https://play.google.com/store/apps";
+    public string downloadUrl = "https://play.google.com/store/apps/details?id=com.Eclipse.Neuphoria";
 
     [Header("Virtual Pad")]
     public VirtualPad m_VirtualPad;
@@ -403,37 +403,6 @@ public class GameManager : MonoBehaviour
     {
         while (!gameEnded)
         {
-            ////TODO 첫시작할때 소환해달라함.
-            //if(m_IsFirst)
-            //{
-            //    if(m_spawnWay==EnemySpawnWay.Seperate)
-            //    {
-            //        for(int i= 0; i < 7; i++)
-            //        {
-            //            Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
-
-            //            // 3D 위치 (Vector3)로 변환 (y값은 고정)
-            //            //TODO 거리
-            //            //상수로 박아놓은것은 플레이어와의 거리값
-            //            Vector3 _randomPos = m_Player.transform.position + new Vector3(_randomOffset.x, 0, _randomOffset.y -8);
-            //            GameObject _enemy = ObjectPool.Instance.SpawnFromPool("Enemy", _randomPos, Quaternion.identity);
-
-            //            if (_enemy != null)
-            //            {
-            //                EnemyController _enemyController = _enemy.GetComponent<EnemyController>();
-            //                _enemyController.Initialize(m_MainCenter.transform);
-
-            //                // Phase에 맞는 스탯 적용
-            //                int phaseHealth = GetEnemyHealthForCurrentPhase();
-            //                float phaseSpeed = GetEnemySpeedForCurrentPhase();
-
-            //                _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
-            //            }
-            //        }
-            //        m_IsFirst = false;
-            //    }
-            //}
-
             yield return new WaitForSeconds(enemySpawnInterval);
             switch (m_spawnWay)
             {
@@ -1306,21 +1275,20 @@ public class GameManager : MonoBehaviour
 
     public VirtualPad GetVirtualPad() => m_VirtualPad;
 
-    void EndGame(bool isWin)
+    public void EndGame(bool isWin)
     {
         gameEnded = true;
 
-        if (isWin)
-        {
-            StartCoroutine(ShowWinUI());
-        }
+        StartCoroutine(ShowWinUI());
+        
 
         ClearGuideLine();
     }
 
     IEnumerator ShowWinUI()
     {
-        yield return new WaitForSeconds(1f);
+        GetVirtualPad().OnGettouchOverlay().SetActive(false);
+        yield return new WaitForSeconds(0.2f);
         if (winUI != null)
             winUI.SetActive(true);
     }
@@ -1697,5 +1665,10 @@ public class GameManager : MonoBehaviour
             currentPos += new Vector3(0.1f, 0, 0.1f);
         }
         return currentPos;
+    }
+
+    public void OnClickBtnOpenURL()
+    {
+        Application.OpenURL(downloadUrl);
     }
 }
