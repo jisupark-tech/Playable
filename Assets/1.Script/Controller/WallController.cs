@@ -41,6 +41,8 @@ public class WallController : MonoBehaviour, IHealth
     [Header("Animation Settings")]
     public float riseAnimationDuration = 2f; // 상승 애니메이션 시간
     public float upgradeAnimationDuration = 2f; // 업그레이드 애니메이션 시간
+    public float SpawnwaitTime = 0.3f;
+
     public AnimationCurve riseAnimationCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public AnimationCurve upgradeAnimationCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
@@ -330,7 +332,9 @@ public class WallController : MonoBehaviour, IHealth
                 HideWall(); // 건물 자체를 숨김
             }
 
-            yield return new WaitForSeconds(0.5f); // 0.5초마다 체크
+            //TODO Check
+            //2025-12-04
+            yield return new WaitForSeconds(0.1f); // 0.5초마다 체크
         }
     }
 
@@ -537,7 +541,7 @@ public class WallController : MonoBehaviour, IHealth
         //TODO 2025-11-26
         //소현님 0.5f정도 대기
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(SpawnwaitTime);
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)

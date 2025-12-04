@@ -1110,6 +1110,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -1507,7 +1511,7 @@ MonoBehaviour:
     mineIndices: 
     wallIndices: 0a0000000b000000
     enhances: 
-    requiredCompletions: 3
+    requiredCompletions: 1
     ignoreWallRequirements: 0
   - phaseName: 
     turretIndices: 
@@ -1515,7 +1519,7 @@ MonoBehaviour:
     wallIndices: 
     enhances: 01000000
     requiredCompletions: 1
-    ignoreWallRequirements: 1
+    ignoreWallRequirements: 0
   buildingRules:
   - ruleName: 
     triggerBuildings:
@@ -2311,6 +2315,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -3666,6 +3674,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -4225,6 +4237,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -5161,6 +5177,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -5942,6 +5962,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -9564,6 +9588,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -10199,6 +10227,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -10702,6 +10734,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -12658,6 +12694,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
       value: 0
       objectReference: {fileID: 0}
@@ -13441,6 +13481,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs
@@ -50223,6 +50267,10 @@ PrefabInstance:
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: SpawnwaitTime
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: enableDebugLogs

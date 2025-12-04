@@ -959,12 +959,14 @@ public class GameManager : MonoBehaviour
         // Phase Building System 체크 (우선순위)
         CheckPhaseBuildingCompletion("Mine", builtMine.gameObject);
 
+        //TODO CHECK
+        //2025-12-04
         // 기존 Sequential Building 로직도 유지
-        if (!enableSequentialBuilding)
-        {
-            CheckWallConditions();
-            return;
-        }
+        //if (!enableSequentialBuilding)
+        //{
+        //    CheckWallConditions();
+        //    return;
+        //}
 
         int builtIndex = m_Mines.IndexOf(builtMine);
         if (builtIndex == currentAvailableMineIndex)
@@ -985,7 +987,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        CheckWallConditions();
+        //CheckWallConditions();
     }
 
     public void OnWallBuilt(WallController builtWall)
@@ -1003,11 +1005,11 @@ public class GameManager : MonoBehaviour
         // Phase Building System 체크 (우선순위)
         CheckPhaseBuildingCompletion("Enhance", builtEnhance.gameObject);
 
-        if (!enableSequentialBuilding)
-        {
-            CheckWallConditions();
-            return;
-        }
+        //if (!enableSequentialBuilding)
+        //{
+        //    CheckWallConditions();
+        //    return;
+        //}
 
         int builtIndex = m_Enhances.IndexOf(builtEnhance);
         if (builtIndex == currentAvailableEnhanceIndex)
@@ -1028,7 +1030,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        CheckWallConditions();
+        //CheckWallConditions();
     }
 
     void UpdateActiveRootsByTurrets()
@@ -1210,6 +1212,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("벽 건설 조건 재검사 중...");
 
+        //TODO CHECK
+        //2025-12-04
+        //foreach 삭제
         foreach (WallController wall in m_walls)
         {
             if (wall != null)

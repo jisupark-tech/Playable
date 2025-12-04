@@ -348,7 +348,9 @@ public class TurretController : MonoBehaviour, IHealth
         if (goldStoragePoint != null)
             goldStoragePoint.transform.localScale = Vector3.zero;
 
-        yield return new WaitForSeconds(0.5f);
+        //TODO CHECK
+        //2025-12-04
+        yield return new WaitForSeconds(0.125f);
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
@@ -372,6 +374,10 @@ public class TurretController : MonoBehaviour, IHealth
         float _animationDuration = AnimationDuration; // 1초로 단축
         float elapsedTime = 0f;
 
+        //TODO TEST
+        //2025-12-04
+        //일단 80퍼센트 정도 됐을때 건설됬다는 신호 보내기
+        bool _sendQue = false;
         // 땅 아래서 위로 올라오면서 크기 변화하는 애니메이션
         while (elapsedTime < _animationDuration)
         {
@@ -390,6 +396,18 @@ public class TurretController : MonoBehaviour, IHealth
             }
             else if (progress <= 0.8f)
             {
+                //TODO TEST
+                //2025-12-04
+                //일단 80퍼센트 정도 됐을때 건설됬다는 신호 보내기
+                if (!_sendQue)
+                {
+                    // 건설 완료 알림을 GameManager에 전송
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.OnTurretBuilt(this);
+                        _sendQue = true;
+                    }
+                }
                 // 50~80%: 1.15 → 0.9 (탄성 수축)
                 float t = (progress - 0.5f) / 0.3f;
                 t = Mathf.Clamp01(t);
@@ -434,11 +452,11 @@ public class TurretController : MonoBehaviour, IHealth
         // 애니메이션 완료 후 전투 시작
         StartCombat();
 
-        // 건설 완료 알림을 GameManager에 전송
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnTurretBuilt(this);
-        }
+        //// 건설 완료 알림을 GameManager에 전송
+        //if (GameManager.Instance != null)
+        //{
+        //    GameManager.Instance.OnTurretBuilt(this);
+        //}
     }
 
     void StartCombat()
