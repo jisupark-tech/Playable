@@ -6353,44 +6353,44 @@ MonoBehaviour:
   pools:
   - tag: Enemy
     prefab: {fileID: 7390992033119130706, guid: a7760c24a5e395d4b9754e88a7347b23, type: 3}
-    size: 100
-    canExpand: 1
+    size: 500
+    canExpand: 0
     maxSize: 1000
   - tag: Boss
     prefab: {fileID: 8974169756872784899, guid: 74319a53b96ca53459d6e0ac8fd2f2d2, type: 3}
-    size: 50
-    canExpand: 1
+    size: 300
+    canExpand: 0
     maxSize: 1000
   - tag: Gold
     prefab: {fileID: 4142226637013042446, guid: 518b12926be3084459edcd43c3a2a8ec, type: 3}
     size: 800
-    canExpand: 1
+    canExpand: 0
     maxSize: 1200
   - tag: Bullet
     prefab: {fileID: 4692177343681316649, guid: 093ff38b0053a9c4eb6eba40fb5e6165, type: 3}
-    size: 100
+    size: 150
     canExpand: 0
     maxSize: 1000
   - tag: TurretBullet
     prefab: {fileID: 4692177343681316649, guid: 093ff38b0053a9c4eb6eba40fb5e6165, type: 3}
-    size: 100
+    size: 150
     canExpand: 0
     maxSize: 1000
   - tag: RangeTriangle
     prefab: {fileID: 8938897041881936247, guid: 9dc55bc598def9d4aba87602093fc678, type: 3}
-    size: 30
-    canExpand: 1
+    size: 40
+    canExpand: 0
     maxSize: 100
   - tag: Effect
     prefab: {fileID: 896825539390854365, guid: 599df2a28262a0645b8077700cabef0b, type: 3}
     size: 50
-    canExpand: 1
+    canExpand: 0
     maxSize: 100
   - tag: HittedEffect
     prefab: {fileID: 5121804608419314050, guid: 06e1ea55724df674eaa93e1e2384bc13, type: 3}
-    size: 20
-    canExpand: 1
-    maxSize: 100
+    size: 100
+    canExpand: 0
+    maxSize: 1000
   - tag: GuideController
     prefab: {fileID: 171545273085292062, guid: 817b5f289a6f3cf4383183cdeddab70a, type: 3}
     size: 1
