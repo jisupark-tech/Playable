@@ -48,7 +48,8 @@ public class EnhanceController : MonoBehaviour, IHealth
     private int CurQuestCnt;
     [SerializeField] private int QuestPrice;
     private int CurQuestPaid;
-
+    private bool isWaitForSpawning = false;
+    [SerializeField] private float m_interverSpawnTime = 5f;
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
     private Vector3 originalScale;
@@ -268,7 +269,6 @@ public class EnhanceController : MonoBehaviour, IHealth
             if (TxtCurQuestCnt != null)
                 TxtCurQuestCnt.text = CurQuestCnt.ToString();
 
-            //// ��ǥ ��뿡 �����ϸ� 
             if (CurQuestPaid >= QuestPrice)
             {
                 SpawnNPC();
@@ -279,14 +279,13 @@ public class EnhanceController : MonoBehaviour, IHealth
 
     IEnumerator CheckAndBuildBehavior()
     {
-        while (!isBuilt && isVisible) // ���ü� üũ �߰�
+        while (!isBuilt && isVisible) 
         {
             if (_player != null)
             {
                 float distance = Vector3.Distance(_player.transform.position, transform.position);
-                if (distance <= ditectDistance) // �Ǽ� ����
+                if (distance <= ditectDistance) 
                 {
-                    // �÷��̾� ��带 ������ �ְ� ���� �Ǽ��� �Ϸ���� ���� ���
                     if (GameManager.Instance.GetCurrentGold() > 0 && currPaidCost < enhanceCost)
                     {
                         SendGoldToEnhance();
@@ -300,8 +299,7 @@ public class EnhanceController : MonoBehaviour, IHealth
     {
         if (GameManager.Instance.SpendGold(1))
         {
-            // �÷��̾�κ��� ��带 �ð������� ������ �޼��� ȣ��
-            _player.OnSendGoldToTurret(transform); // ���� �޼��� ����
+            _player.OnSendGoldToTurret(transform); 
 
             currPaidCost++;
             if (TxtGold != null)
@@ -311,7 +309,6 @@ public class EnhanceController : MonoBehaviour, IHealth
             }
             Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
 
-            // ��ǥ ��뿡 �����ϸ� �Ǽ� �Ϸ�
             if (currPaidCost >= enhanceCost)
             {
                 BuildEnhance();
@@ -353,6 +350,17 @@ public class EnhanceController : MonoBehaviour, IHealth
             CurQuestPaid = 0;
             CurQuestCnt++;
         }
+    }
+    IEnumerator WaitInterverSpawnTime()
+    {
+        float _curTime = 0;
+        while(m_interverSpawnTime>=_curTime)
+        {
+            _curTime += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        isWaitForSpawning = false;
     }
     public bool IsBuilt() => isBuilt;
 
