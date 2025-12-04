@@ -235,14 +235,17 @@ public class EnhanceController : MonoBehaviour, IHealth
         {
             if (_player != null)
             {
-                if (CurQuestCnt <= MaxQuestCnt)
+                if(!isWaitForSpawning)
                 {
-                    float distance = Vector3.Distance(_player.transform.position, transform.position);
-                    if (distance <= ditectDistance)
+                    if (CurQuestCnt <= MaxQuestCnt)
                     {
-                        if (GameManager.Instance.GetCurrentGold() > 0 && CurQuestPaid < QuestPrice)
+                        float distance = Vector3.Distance(_player.transform.position, transform.position);
+                        if (distance <= ditectDistance)
                         {
-                            SendGoldToQuest();
+                            if (GameManager.Instance.GetCurrentGold() > 0 && CurQuestPaid < QuestPrice)
+                            {
+                                SendGoldToQuest();
+                            }
                         }
                     }
                 }
@@ -349,15 +352,17 @@ public class EnhanceController : MonoBehaviour, IHealth
 
             CurQuestPaid = 0;
             CurQuestCnt++;
+            StartCoroutine(WaitInterverSpawnTime());
         }
     }
     IEnumerator WaitInterverSpawnTime()
     {
-        float _curTime = 0;
-        while(m_interverSpawnTime>=_curTime)
+        float _curTime = 0f;
+        isWaitForSpawning = true;
+        while (_curTime <= m_interverSpawnTime)
         {
-            _curTime += 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            _curTime += Time.deltaTime;
+            yield return null;
         }
 
         isWaitForSpawning = false;

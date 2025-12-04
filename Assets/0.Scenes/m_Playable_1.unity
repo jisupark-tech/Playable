@@ -1119,35 +1119,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -1155,19 +1155,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -2318,35 +2318,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -2354,19 +2354,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -2694,6 +2694,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
@@ -3666,28 +3670,56 @@ PrefabInstance:
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMax.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: 0.85
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryRightMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMax.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -4199,28 +4231,56 @@ PrefabInstance:
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMax.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: 0.85
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryRightMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMax.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -4594,7 +4654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &658370764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5110,31 +5170,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -4
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryRightMin.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMax.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -5869,35 +5949,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -5905,19 +5985,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -6288,13 +6368,13 @@ MonoBehaviour:
     maxSize: 1200
   - tag: Bullet
     prefab: {fileID: 4692177343681316649, guid: 093ff38b0053a9c4eb6eba40fb5e6165, type: 3}
-    size: 10
+    size: 100
     canExpand: 0
     maxSize: 1000
   - tag: TurretBullet
     prefab: {fileID: 4692177343681316649, guid: 093ff38b0053a9c4eb6eba40fb5e6165, type: 3}
-    size: 10
-    canExpand: 1
+    size: 100
+    canExpand: 0
     maxSize: 1000
   - tag: RangeTriangle
     prefab: {fileID: 8938897041881936247, guid: 9dc55bc598def9d4aba87602093fc678, type: 3}
@@ -6529,6 +6609,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
@@ -7255,6 +7339,10 @@ PrefabInstance:
       propertyPath: AnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
       value: Turret_4
@@ -7823,6 +7911,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
@@ -8629,6 +8721,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
@@ -9472,8 +9568,20 @@ PrefabInstance:
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMax.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
@@ -10096,35 +10204,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -10132,19 +10240,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -10600,28 +10708,56 @@ PrefabInstance:
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMax.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryLeftMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: 0.85
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryRightMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMax.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 1
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: boundaryCenterMin.y
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -11252,6 +11388,10 @@ PrefabInstance:
       propertyPath: AnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
       value: Turret_3
@@ -11776,6 +11916,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
@@ -12519,35 +12663,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -12555,19 +12699,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -13292,35 +13436,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -13328,19 +13472,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -0.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -49033,6 +49177,10 @@ PrefabInstance:
       propertyPath: AnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name
       value: Turret_7
@@ -50070,23 +50218,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.x
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryLeftMin.y
-      value: -0.1
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.x
@@ -50094,7 +50242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryRightMin.y
-      value: -0.1
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: gateDetectionRange
@@ -50102,19 +50250,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.x
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: boundaryCenterMin.y
-      value: -0.1
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: riseAnimationDuration
@@ -50589,6 +50737,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: FirstShowGoldStack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125273265026696431, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_Name

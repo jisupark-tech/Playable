@@ -180,7 +180,7 @@ public class NPCController : MonoBehaviour
         // 건물 충돌 체크
         if (GameManager.Instance != null)
         {
-            return !GameManager.Instance.IsPositionCollidingWithBuilding(position, transform);
+            return !GameManager.Instance.IsPositionCollidingWithBuilding(position, transform,false,true);
         }
 
         return true;

@@ -1579,7 +1579,7 @@ public class GameManager : MonoBehaviour
     /// <param name="position">확인할 위치</param>
     /// <param name="excludeTransform">제외할 Transform (자기 자신)</param>
     /// <returns>충돌하면 true</returns>
-    public bool IsPositionCollidingWithBuilding(Vector3 position, Transform excludeTransform = null, bool _isPlayer = false)
+    public bool IsPositionCollidingWithBuilding(Vector3 position, Transform excludeTransform = null, bool _isPlayer = false, bool _isNPC = false)
     {
         if (!enableBuildingCollision) return false;
 
@@ -1598,7 +1598,7 @@ public class GameManager : MonoBehaviour
         foreach (var turret in m_Turrets)
         {
             if (turret != null && turret.transform != excludeTransform &&
-                turret.gameObject.activeInHierarchy && turret.IsBuilt())
+                turret.gameObject.activeInHierarchy && turret.IsBuilt() && !_isNPC)
             {
                 float distance = Vector3.Distance(position, turret.transform.position);
                 if (distance <= buildingCollisionRadius)
@@ -1638,7 +1638,7 @@ public class GameManager : MonoBehaviour
         foreach (var enhance in m_Enhances)
         {
             if (enhance != null && enhance.transform != excludeTransform &&
-                enhance.gameObject.activeInHierarchy && enhance.IsBuilt())
+                enhance.gameObject.activeInHierarchy && enhance.IsBuilt()&&!_isNPC)
             {
                 float distance = Vector3.Distance(position, enhance.transform.position);
                 if (distance <= buildingCollisionRadius)

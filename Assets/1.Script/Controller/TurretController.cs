@@ -333,6 +333,8 @@ public class TurretController : MonoBehaviour, IHealth
         if (coin != null)
             coin.SetActive(!built && isVisible); // 가시성도 고려
 
+        if (goldStoragePoint != null)
+            goldStoragePoint.SetActive(built);
         // 건설 완료 시 올라오는 애니메이션 및 채굴 시작
         if (built)
         {
@@ -671,18 +673,6 @@ public class TurretController : MonoBehaviour, IHealth
                 break;
             }
         }
-
-        // 터렛을 주요 타겟 방향으로 회전
-        if (availableTargets.Count > 0 && availableTargets[0] != null)
-        {
-            Vector3 direction = (availableTargets[0].position - transform.position).normalized;
-            direction.y = 0;
-            if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
-        }
-
         Debug.Log($"Upgraded turret {gameObject.name} fired {successfulShots} bullets at {bulletsToFire} targets");
     }
 
