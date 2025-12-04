@@ -14,14 +14,24 @@ public class CombatComponent : MonoBehaviour, ICombat
     [SerializeField] private bool usePhysicsDetection = false; // WebGL에서는 false로 설정
     [SerializeField] private float maxTargetSearchDistance = 12f; // 최대 타겟 검색 거리
 
+    [Header("Safety Settings")]
+    [SerializeField] private float maxCombatTime = 300f; // 최대 전투 시간 (5분) - 무한루프 방지
+    [SerializeField] private int maxAttacksPerSecond = 10; // 초당 최대 공격 횟수 제한
+
+    public WeaponComponent weaponComponent; // Public으로 변경 (TurretController에서 접근용)
     private IWeapon currentWeapon;
     private Transform currentTarget;
-    private WeaponComponent weaponComponent;
     private bool isInitialized = false;
 
     // 자체적인 쿨다운 관리
     private float lastAttackTime = 0f;
     private float attackCooldown = 1f;
+
+    // 안전성 추가 변수들
+    private float combatStartTime = 0f;
+    private int attacksThisSecond = 0;
+    private float secondStartTime = 0f;
+    private bool isCombatActive = true;
 
     void Awake()
     {
@@ -37,28 +47,58 @@ public class CombatComponent : MonoBehaviour, ICombat
     {
         if (isInitialized) return;
 
+        combatStartTime = Time.time;
+        secondStartTime = Time.time;
+        isCombatActive = true;
+
         if (autoTarget)
         {
             StartCoroutine(AutoTargeting());
         }
 
-        // 쿨다운 기반 공격 코루틴
+        // 쿨다운 기반 공격 코루틴 (업그레이드되지 않은 터렛용)
         StartCoroutine(AttackCooldownCoroutine());
 
         isInitialized = true;
     }
 
-    // 쿨다운 기반 공격 시스템
+    // 쿨다운 기반 공격 시스템 - 안전성 강화
     IEnumerator AttackCooldownCoroutine()
     {
-        while (true)
+        while (isCombatActive && gameObject.activeInHierarchy)
         {
-            if (currentTarget != null && IsValidTarget(currentTarget))
+            // 최대 전투 시간 체크 (무한 루프 방지)
+            if (Time.time - combatStartTime > maxCombatTime)
             {
-                Attack(currentTarget);
+                Debug.LogWarning($"Combat time limit reached for {gameObject.name}. Stopping combat.");
+                break;
+            }
 
-                // 공격 후 쿨다운만큼 대기
-                yield return new WaitForSeconds(targetUpdateRate);
+            // 업그레이드된 터렛인지 확인 (중복 공격 방지)
+            TurretController turret = GetComponent<TurretController>();
+            if (turret != null && turret.IsUpgraded())
+            {
+                // 업그레이드된 터렛은 자체 전투 시스템 사용하므로 일반 공격 중지
+                yield return new WaitForSeconds(1f); // 1초 대기 후 다시 체크
+                continue;
+            }
+
+            if (currentTarget != null && IsValidTarget(currentTarget) && CanAttack())
+            {
+                // 초당 공격 횟수 제한 체크
+                if (CheckAttackRateLimit())
+                {
+                    Attack(currentTarget);
+                    lastAttackTime = Time.time; // 공격 시간 업데이트
+
+                    // 공격 후 쿨다운만큼 대기
+                    yield return new WaitForSeconds(attackCooldown);
+                }
+                else
+                {
+                    // 공격 제한에 걸린 경우 잠시 대기
+                    yield return new WaitForSeconds(0.1f);
+                }
             }
             else
             {
@@ -66,6 +106,31 @@ public class CombatComponent : MonoBehaviour, ICombat
                 yield return new WaitForSeconds(0.1f);
             }
         }
+    }
+
+    /// <summary>
+    /// 초당 공격 횟수 제한 체크 (무한 공격 방지)
+    /// </summary>
+    bool CheckAttackRateLimit()
+    {
+        float currentTime = Time.time;
+
+        // 새로운 1초가 시작되면 카운터 리셋
+        if (currentTime - secondStartTime >= 1f)
+        {
+            secondStartTime = currentTime;
+            attacksThisSecond = 0;
+        }
+
+        // 이번 초에 너무 많이 공격했는지 체크
+        if (attacksThisSecond >= maxAttacksPerSecond)
+        {
+            Debug.LogWarning($"Attack rate limit reached for {gameObject.name}. Attacks this second: {attacksThisSecond}");
+            return false;
+        }
+
+        attacksThisSecond++;
+        return true;
     }
 
     bool IsValidTarget(Transform target)
@@ -106,9 +171,11 @@ public class CombatComponent : MonoBehaviour, ICombat
         ForceFireWeapon(firePosition, target, owner);
     }
 
-    // 쿨다운 무시하고 강제 발사
+    // 쿨다운 무시하고 강제 발사 - 안전성 강화
     void ForceFireWeapon(Vector3 startPosition, Transform target, BulletOwner owner)
     {
+        if (weaponComponent == null) return;
+
         string bulletType = weaponComponent.GetBulletType();
         GameObject bullet = ObjectPool.Instance.SpawnFromPool(bulletType, startPosition, weaponComponent.GetFirePoint().rotation);
 
@@ -131,7 +198,7 @@ public class CombatComponent : MonoBehaviour, ICombat
         else
         {
             // 오브젝트 풀에서 총알을 가져오지 못한 경우 디버그
-            Debug.LogWarning($"Failed to spawn bullet: {bulletType} from ObjectPool");
+            Debug.LogWarning($"Failed to spawn bullet: {bulletType} from ObjectPool. Pool may be exhausted.");
         }
     }
 
@@ -170,14 +237,32 @@ public class CombatComponent : MonoBehaviour, ICombat
         attackRange = Mathf.Max(0f, range);
     }
 
+    /// <summary>
+    /// 전투 시스템 중지 (안전성)
+    /// </summary>
+    public void StopCombat()
+    {
+        isCombatActive = false;
+        StopAllCoroutines(); // 모든 코루틴 중지
+        Debug.Log($"Combat stopped for {gameObject.name}");
+    }
+
     IEnumerator AutoTargeting()
     {
-        while (true)
+        while (isCombatActive && gameObject.activeInHierarchy)
         {
+            // 최대 전투 시간 체크
+            if (Time.time - combatStartTime > maxCombatTime)
+            {
+                Debug.LogWarning($"Auto targeting time limit reached for {gameObject.name}");
+                break;
+            }
+
             if (autoTarget)
             {
                 FindNearestTargetWebGL();
             }
+
             yield return new WaitForSeconds(targetUpdateRate);
         }
     }
@@ -198,12 +283,18 @@ public class CombatComponent : MonoBehaviour, ICombat
         Transform nearestTarget = null;
         float nearestDistance = float.MaxValue;
 
-        // 모든 적들을 거리 기반으로 검사
+        // 모든 적들을 거리 기반으로 검사 (성능 제한 추가)
         EnemyController[] allEnemies = FindObjectsOfType<EnemyController>();
+
+        int checkedCount = 0;
+        const int maxCheckPerFrame = 20; // 프레임당 최대 20개만 체크 (성능 보호)
 
         foreach (EnemyController enemy in allEnemies)
         {
+            if (checkedCount >= maxCheckPerFrame) break; // 성능 제한
+
             if (enemy == null || !enemy.gameObject.activeInHierarchy) continue;
+            checkedCount++;
 
             // 최대 검색 거리로 먼저 필터링 (성능 최적화)
             float roughDistance = Vector3.Distance(transform.position, enemy.transform.position);
@@ -286,6 +377,8 @@ public class CombatComponent : MonoBehaviour, ICombat
             return BulletOwner.Player;
     }
 
+    public WeaponComponent GetWeaponComponent() => weaponComponent;
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -303,5 +396,17 @@ public class CombatComponent : MonoBehaviour, ICombat
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, currentTarget.position);
         }
+    }
+
+    void OnDestroy()
+    {
+        // 오브젝트가 파괴될 때 전투 중지
+        isCombatActive = false;
+    }
+
+    void OnDisable()
+    {
+        // 오브젝트가 비활성화될 때 전투 중지
+        isCombatActive = false;
     }
 }

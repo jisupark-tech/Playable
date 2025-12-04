@@ -13,6 +13,13 @@ public class TurretController : MonoBehaviour, IHealth
     public int currPaidCost = 0; // 현재 지불된 비용
     public float ditectDIsatnce = 2f; // 플레이어 감지 거리
     public bool canCollectGold = true;
+
+    [Header("Upgrade Settings")]
+    public bool isUpgraded = false; // 업그레이드 여부
+    public int maxBulletCount = 2; // 업그레이드 후 최대 발사 개수
+    public float multiShotAngle = 15f; // 멀티샷 사이 각도 (degree)
+    public float upgradedFireRate = 1.5f; // 업그레이드된 터렛의 발사 간격
+
     [Header("Health Settings")]
     public int maxHealth = 100; // 터렛의 체력
     private int currentHealth;
@@ -24,6 +31,7 @@ public class TurretController : MonoBehaviour, IHealth
     public GameObject goldStoragePoint; // 골드 저장소 위치
     public GameObject goldslider;
     private float origoldSliderSize = 1.9f;
+
     [Header("Visual Effects")]
     [SerializeField] private float damageFlashDuration = 0.15f;
     [SerializeField] private float damageScaleDuration = 0.2f;
@@ -31,6 +39,7 @@ public class TurretController : MonoBehaviour, IHealth
 
     [Header("Animation")]
     [SerializeField] private float AnimationDuration = 1f;
+
     // 피격 연출용 원본 데이터 저장
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
@@ -46,6 +55,10 @@ public class TurretController : MonoBehaviour, IHealth
     private CombatComponent combatComponent;
     private PlayerController _player;
     public TextMeshPro textMeshPro; // 비용 표시용 텍스트
+
+    // 업그레이드된 터렛 전용 변수들
+    private bool isUpgradedCombatRunning = false;
+    private float lastUpgradedAttackTime = 0f;
 
     public void Init()
     {
@@ -73,6 +86,7 @@ public class TurretController : MonoBehaviour, IHealth
             StartCoroutine(CheckAndBuildBehavior());
         }
     }
+
     void InitializeGoldSlider()
     {
         if (goldslider != null)
@@ -117,7 +131,7 @@ public class TurretController : MonoBehaviour, IHealth
 
     void InitializeGoldStorage()
     {
-        if(canCollectGold)
+        if (canCollectGold)
         {
             // 골드 저장소 포인트가 없으면 자동 생성
             if (goldStoragePoint == null)
@@ -143,7 +157,7 @@ public class TurretController : MonoBehaviour, IHealth
         }
         else
         {
-            if(goldStoragePoint!=null)
+            if (goldStoragePoint != null)
             {
                 goldStoragePoint.SetActive(false);
                 Debug.Log($"TurretController: goldStoragePoint is Disabled {goldStoragePoint.name}");
@@ -272,31 +286,7 @@ public class TurretController : MonoBehaviour, IHealth
         }
     }
 
-    void SetBuildState(bool built)
-    {
-        isBuilt = built;
-
-        if (turretOBJ != null)
-            turretOBJ.SetActive(built);
-
-        if (outLine != null)
-            outLine.SetActive(!built && isVisible); // 가시성도 고려
-
-        if (coin != null)
-            coin.SetActive(!built && isVisible); // 가시성도 고려
-
-        if (goldStoragePoint != null && canCollectGold)
-            goldStoragePoint.SetActive(built && isVisible);
-        // 비용 표시 업데이트
-        UpdateCostDisplay();
-
-        if (built)
-        {
-            StartCoroutine(TurretRiseAnimation());
-        }
-    }
-
-    public void SetVisibility(bool visible,bool _all = false)
+    public void SetVisibility(bool visible)
     {
         isVisible = visible;
 
@@ -305,10 +295,6 @@ public class TurretController : MonoBehaviour, IHealth
             // 터렛을 보이게 할 때
             gameObject.SetActive(true);
             SetBuildState(isBuilt); // 현재 건설 상태에 맞게 UI 업데이트
-
-            // 다시 활성화: GoldStorage 및 텍스트 재초기화
-            InitializeGoldStorage();
-            InitializeCostDisplay();
 
             // 아직 건설되지 않았고 건설 체크가 실행 중이 아니라면 시작
             if (!isBuilt)
@@ -323,22 +309,34 @@ public class TurretController : MonoBehaviour, IHealth
             // 터렛을 숨길 때
             if (outLine != null) outLine.SetActive(false);
             if (coin != null) coin.SetActive(false);
-            if (textMeshPro != null) textMeshPro.gameObject.SetActive(false);
-            if (goldslider != null) goldslider.SetActive(false); // 슬라이더도 숨김
-
-            if (_all)
-            {
-                StopAllCoroutines();
-                Debug.Log($"Turret {gameObject.name} is now hidden");
-            }
 
             // 건설되지 않은 터렛은 완전히 비활성화
-            //if (!isBuilt)
-            //{
-            gameObject.SetActive(false);
-            //}
+            if (!isBuilt)
+            {
+                gameObject.SetActive(false);
+            }
 
-            
+            Debug.Log($"Turret {gameObject.name} is now hidden");
+        }
+    }
+
+    void SetBuildState(bool built)
+    {
+        isBuilt = built;
+
+        if (turretOBJ != null)
+            turretOBJ.SetActive(built);
+
+        if (outLine != null)
+            outLine.SetActive(!built && isVisible); // 가시성도 고려
+
+        if (coin != null)
+            coin.SetActive(!built && isVisible); // 가시성도 고려
+
+        // 건설 완료 시 올라오는 애니메이션 및 채굴 시작
+        if (built)
+        {
+            StartCoroutine(TurretRiseAnimation());
         }
     }
 
@@ -346,14 +344,15 @@ public class TurretController : MonoBehaviour, IHealth
     {
         if (turretOBJ == null) yield break;
 
-        //TODO 2025-11-26
-        //소현님 0.5f정도 대기
         Vector3 originalTurretScale = turretOBJ.transform.localScale;
+        Vector3 originalGoldScale = Vector3.one;
+
+        if (goldStoragePoint != null)
+            originalGoldScale = goldStoragePoint.transform.localScale;
+
         turretOBJ.transform.localScale = Vector3.zero;
-
-        Vector3 originalGoldScale = goldStoragePoint.transform.localScale;
-        goldStoragePoint.transform.localScale = Vector3.zero;
-
+        if (goldStoragePoint != null)
+            goldStoragePoint.transform.localScale = Vector3.zero;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -371,8 +370,10 @@ public class TurretController : MonoBehaviour, IHealth
             originalGoldScale = Vector3.one;
         }
 
+        // 터렛을 땅 아래로 이동하고 작은 크기로 설정
         turretOBJ.transform.localScale = originalTurretScale * 0.3f;
-        goldStoragePoint.transform.localScale = originalGoldScale*0.3f;
+        if (goldStoragePoint != null)
+            goldStoragePoint.transform.localScale = originalGoldScale * 0.3f;
 
         float _animationDuration = AnimationDuration; // 1초로 단축
         float elapsedTime = 0f;
@@ -411,16 +412,16 @@ public class TurretController : MonoBehaviour, IHealth
             // 안전한 스케일 계산
             scaleMultiplier = Mathf.Clamp(scaleMultiplier, 0.1f, 2.0f); // 안전 범위 제한
             Vector3 currentTurretScale = originalTurretScale * scaleMultiplier;
-            Vector3 currentGoldScal = originalGoldScale * scaleMultiplier;
+            Vector3 currentGoldScale = originalGoldScale * scaleMultiplier;
 
             if (!float.IsNaN(currentTurretScale.x) && !float.IsNaN(currentTurretScale.y) && !float.IsNaN(currentTurretScale.z))
             {
                 turretOBJ.transform.localScale = currentTurretScale;
             }
 
-            if (!float.IsNaN(currentGoldScal.x) && !float.IsNaN(currentGoldScal.y) && !float.IsNaN(currentGoldScal.z))
+            if (goldStoragePoint != null && !float.IsNaN(currentGoldScale.x) && !float.IsNaN(currentGoldScale.y) && !float.IsNaN(currentGoldScale.z))
             {
-                goldStoragePoint.transform.localScale = currentGoldScal;
+                goldStoragePoint.transform.localScale = currentGoldScale;
             }
 
             yield return null;
@@ -446,13 +447,12 @@ public class TurretController : MonoBehaviour, IHealth
         }
     }
 
-
     void StartCombat()
     {
         if (combatComponent != null)
         {
             combatComponent.Initialize();
-            Debug.Log($"Turret {gameObject.name} started combat");
+            Debug.Log($"Turret {gameObject.name} started combat (Upgraded: {isUpgraded})");
         }
     }
 
@@ -522,12 +522,240 @@ public class TurretController : MonoBehaviour, IHealth
     }
 
     public GoldStorage GetgoldStorage() => goldStorage == null ? null : goldStorage;
+
     // 순차 건설 시스템용 확인 메서드들
     public bool IsBuilt() => isBuilt;
     public bool IsVisible() => isVisible;
     public int GetPaidCost() => currPaidCost;
     public float GetBuildProgress() => (float)currPaidCost / turretCost;
 
+    /// <summary>
+    /// 터렛이 업그레이드되었는지 확인
+    /// </summary>
+    /// <returns>업그레이드 여부</returns>
+    public bool IsUpgraded() => isUpgraded;
+
+    /// <summary>
+    /// NPC에 의한 터렛 업그레이드 (화살 개수 증가)
+    /// </summary>
+    public void UpgradeTurret()
+    {
+        if (!isUpgraded && isBuilt)
+        {
+            isUpgraded = true;
+            Debug.Log($"Turret {gameObject.name} has been upgraded! Now fires {maxBulletCount} bullets!");
+
+            // 업그레이드된 전투 시작 (중복 실행 방지)
+            if (!isUpgradedCombatRunning)
+            {
+                StartCoroutine(UpgradedTurretCombat());
+            }
+
+            // 업그레이드 시각적 효과
+            StartCoroutine(UpgradeEffect());
+        }
+    }
+
+    /// <summary>
+    /// 업그레이드 시각적 효과
+    /// </summary>
+    IEnumerator UpgradeEffect()
+    {
+        if (turretOBJ == null) yield break;
+
+        // 간단한 스케일 애니메이션
+        Vector3 originalScale = turretOBJ.transform.localScale;
+        Vector3 targetScale = originalScale * 1.2f;
+
+        // 커지기
+        float duration = 0.3f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            turretOBJ.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            yield return null;
+        }
+
+        // 원래 크기로
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            turretOBJ.transform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            yield return null;
+        }
+
+        turretOBJ.transform.localScale = originalScale;
+    }
+
+    /// <summary>
+    /// 업그레이드된 터렛 전용 전투 로직 (멀티샷) - 무한 루프 방지
+    /// </summary>
+    IEnumerator UpgradedTurretCombat()
+    {
+        isUpgradedCombatRunning = true;
+
+        while (isBuilt && !IsDead() && isUpgraded && gameObject.activeInHierarchy)
+        {
+            // 시간 기반 공격 체크 (무한 루프 방지)
+            if (Time.time - lastUpgradedAttackTime >= upgradedFireRate)
+            {
+                // 적 찾기
+                List<Transform> nearbyEnemies = FindNearbyEnemies();
+
+                if (nearbyEnemies.Count > 0)
+                {
+                    PerformMultiShot(nearbyEnemies);
+                    lastUpgradedAttackTime = Time.time; // 공격 시간 업데이트
+                }
+            }
+
+            // 프레임 레이트 제한 (CPU 사용량 절약)
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        isUpgradedCombatRunning = false;
+        Debug.Log($"Upgraded turret combat stopped for {gameObject.name}");
+    }
+
+    /// <summary>
+    /// 멀티샷 공격 (여러 개의 총알을 서로 다른 타겟에 발사) - 안전성 강화
+    /// </summary>
+    void PerformMultiShot(List<Transform> availableTargets)
+    {
+        if (availableTargets == null || availableTargets.Count == 0) return;
+        if (combatComponent == null || combatComponent.weaponComponent == null) return;
+
+        Vector3 firePosition = combatComponent.weaponComponent.GetFirePoint().position;
+
+        // 발사할 총알 개수 결정 (최대 maxBulletCount개, 실제 타겟 수에 맞춤)
+        int bulletsToFire = Mathf.Min(maxBulletCount, availableTargets.Count);
+
+        int successfulShots = 0; // 성공적으로 발사된 총알 수 추적
+
+        for (int i = 0; i < bulletsToFire && i < availableTargets.Count; i++)
+        {
+            Transform target = availableTargets[i];
+            if (target == null || !target.gameObject.activeInHierarchy) continue;
+
+            // 총알 생성 및 발사 (ObjectPool 실패 시 무한 루프 방지)
+            string bulletType = combatComponent.weaponComponent.GetBulletType();
+
+            // 멀티샷일 때 약간의 각도 조정
+            Quaternion fireRotation = combatComponent.weaponComponent.GetFirePoint().rotation;
+            if (bulletsToFire > 1)
+            {
+                float angleOffset = (i - (bulletsToFire - 1) * 0.5f) * multiShotAngle;
+                fireRotation *= Quaternion.Euler(0, angleOffset, 0);
+            }
+
+            GameObject bullet = ObjectPool.Instance.SpawnFromPool(bulletType, firePosition, fireRotation);
+
+            if (bullet != null)
+            {
+                BulletController bulletController = bullet.GetComponent<BulletController>();
+                if (bulletController != null)
+                {
+                    bulletController.SetTarget(target, BulletOwner.Turret, this);
+                    AudioManager.Instance.PlayArrowAttackSound();
+                    successfulShots++;
+                }
+            }
+            else
+            {
+                // ObjectPool에서 총알을 가져오지 못한 경우 경고 후 중단 (무한 생성 방지)
+                Debug.LogWarning($"Failed to spawn bullet from ObjectPool for upgraded turret {gameObject.name}. Pool may be exhausted.");
+                break;
+            }
+        }
+
+        // 터렛을 주요 타겟 방향으로 회전
+        if (availableTargets.Count > 0 && availableTargets[0] != null)
+        {
+            Vector3 direction = (availableTargets[0].position - transform.position).normalized;
+            direction.y = 0;
+            if (direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+        }
+
+        Debug.Log($"Upgraded turret {gameObject.name} fired {successfulShots} bullets at {bulletsToFire} targets");
+    }
+
+    /// <summary>
+    /// 주변의 적들을 찾아서 거리순으로 정렬된 리스트 반환 (성능 최적화)
+    /// </summary>
+    List<Transform> FindNearbyEnemies()
+    {
+        List<Transform> enemies = new List<Transform>();
+
+        // 성능 최적화: 모든 적을 찾는 대신 combatComponent의 타겟팅 시스템 활용
+        if (combatComponent != null)
+        {
+            Transform primaryTarget = combatComponent.GetCurrentTarget();
+            if (primaryTarget != null && IsTargetValid(primaryTarget))
+            {
+                enemies.Add(primaryTarget);
+            }
+        }
+
+        // 추가 타겟들 찾기 (최대 5개까지만 - 성능 제한)
+        EnemyController[] allEnemies = FindObjectsOfType<EnemyController>();
+        int foundCount = 0;
+        const int maxSearch = 10; // 성능을 위해 최대 10개까지만 검색
+
+        foreach (EnemyController enemy in allEnemies)
+        {
+            if (foundCount >= maxSearch) break; // 성능 제한
+            if (enemy == null || !enemy.gameObject.activeInHierarchy) continue;
+
+            // 이미 추가된 타겟은 건너뛰기
+            if (enemies.Contains(enemy.transform)) continue;
+
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance <= detectionRange && IsTargetValid(enemy.transform))
+            {
+                enemies.Add(enemy.transform);
+                foundCount++;
+
+                // 멀티샷에 필요한 만큼만 찾기
+                if (enemies.Count >= maxBulletCount) break;
+            }
+        }
+
+        // 거리 순으로 정렬 (가까운 적부터)
+        enemies.Sort((a, b) =>
+        {
+            if (a == null || b == null) return 0;
+            float distA = Vector3.Distance(transform.position, a.position);
+            float distB = Vector3.Distance(transform.position, b.position);
+            return distA.CompareTo(distB);
+        });
+
+        return enemies;
+    }
+
+    /// <summary>
+    /// 타겟이 유효한지 확인 (안전성 체크)
+    /// </summary>
+    bool IsTargetValid(Transform target)
+    {
+        if (target == null || !target.gameObject.activeInHierarchy) return false;
+
+        // 거리 체크
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance > detectionRange) return false;
+
+        // 생존 체크
+        IHealth health = target.GetComponent<IHealth>();
+        if (health != null && health.IsDead()) return false;
+
+        return true;
+    }
 
     /// <summary>
     /// 피격 시 화이트 플래시 + 크기 변화 연출
@@ -647,6 +875,9 @@ public class TurretController : MonoBehaviour, IHealth
 
     public void OnDeath()
     {
+        // 업그레이드된 전투 중지
+        isUpgradedCombatRunning = false;
+
         if (goldStorage != null && goldStorage.GetStoredGoldCount() > 0)
         {
             int goldToDrop = goldStorage.GetStoredGoldCount() / 2;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class Paths
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int enemyCountIncrease = 1;         // 페이즈당 적 수 증가
     [SerializeField] private float spawnIntervalDecrease = 0.1f; // 페이즈당 스폰 간격 감소
     [SerializeField] private bool bossModeEnabled = false;       // 보스 모드 활성화 여부
-    [Range(0,1)]
+    [Range(0, 1)]
     [SerializeField] private float bossPercent = 0;
 
     [Header("Boss Setting")]
@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
             UiGuide.SetActive(true);
 
 
-        
+
         for (int i = 0; i < FirstSpawnCnt; i++)
         {
             Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
@@ -267,7 +267,7 @@ public class GameManager : MonoBehaviour
             m_firstEnemies.Add(_enemy.GetComponent<EnemyController>());
         }
 
-        
+
 
 
         UpdateGuideLine();
@@ -311,7 +311,7 @@ public class GameManager : MonoBehaviour
         if (AudioManager.Instance != null)
             AudioManager.Instance.EnableAudio();
 
-        for(int i= 0; i < m_firstEnemies.Count; i++)
+        for (int i = 0; i < m_firstEnemies.Count; i++)
         {
             if (m_firstEnemies[i] != null)
             {
@@ -325,7 +325,7 @@ public class GameManager : MonoBehaviour
                 _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
             }
         }
-        
+
 
         StartCoroutine(CheckAllBuildingBuilt());
         StartCoroutine(SpawnEnemies());
@@ -336,7 +336,7 @@ public class GameManager : MonoBehaviour
     //=====================================================
     IEnumerator CheckAllBuildingBuilt()
     {
-        while(!gameEnded)
+        while (!gameEnded)
         {
             bool _completed = true;
             int _builtTurretCnt = 0;
@@ -344,17 +344,17 @@ public class GameManager : MonoBehaviour
             int _builtEnhanceCnt = 0;
             foreach (TurretController _turret in m_Turrets)
             {
-                if(_turret.IsBuilt())
-                { 
-                    _builtTurretCnt++;   
+                if (_turret.IsBuilt())
+                {
+                    _builtTurretCnt++;
                 }
 
                 if (_turret.IsBuilt() == false)
                 {
                     _completed = false;
-                    break; 
+                    break;
                 }
-                    
+
             }
 
             foreach (MineController _mine in m_Mines)
@@ -393,10 +393,10 @@ public class GameManager : MonoBehaviour
             {
                 EndGame(true);
             }
-                
+
         }
 
-        
+
     }
 
     IEnumerator SpawnEnemies()
@@ -535,7 +535,7 @@ public class GameManager : MonoBehaviour
         Transform _targetPos = null;
         bool _search = false;
 
-        if(!_search)
+        if (!_search)
         {
             foreach (var _turret in m_Turrets)
             {
@@ -574,11 +574,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(!_search)
+        if (!_search)
         {
-            foreach(var _enhance in m_Enhances)
+            foreach (var _enhance in m_Enhances)
             {
-                if(_enhance.IsBuilt() && _enhance.gameObject.activeInHierarchy)
+                if (_enhance.IsBuilt() && _enhance.gameObject.activeInHierarchy)
                 {
                     _targetPos = _enhance.transform;
                     _search = true;
@@ -589,7 +589,7 @@ public class GameManager : MonoBehaviour
         if (!_search)
             ObjectPool.Instance.ReturnToPool(_enemy.gameObject);
         else
-            _enemy.Initialize(_targetPos);    
+            _enemy.Initialize(_targetPos);
     }
     //=====================================================
     // Main Center Upgrade System
@@ -1098,9 +1098,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        foreach(EnhanceController enhance in m_Enhances)
+        foreach (EnhanceController enhance in m_Enhances)
         {
-            if(enhance != null && !enhance.IsBuilt() && enhance.gameObject.activeInHierarchy)
+            if (enhance != null && !enhance.IsBuilt() && enhance.gameObject.activeInHierarchy)
             {
                 return enhance.transform;
             }
@@ -1339,6 +1339,30 @@ public class GameManager : MonoBehaviour
 
     public List<TurretController> GetTurrets() => m_Turrets;
 
+    /// <summary>
+    /// 업그레이드 가능한 터렛들을 인덱스 순서대로 반환 (IsBuilt이고 아직 업그레이드되지 않은 터렛들)
+    /// </summary>
+    /// <returns>업그레이드 가능한 터렛 리스트</returns>
+    public List<TurretController> GetUpgradeableTurrets()
+    {
+        List<TurretController> upgradeableTurrets = new List<TurretController>();
+
+        for (int i = 0; i < m_Turrets.Count; i++)
+        {
+            TurretController turret = m_Turrets[i];
+
+            // 터렛이 존재하고, 건설되었고, 아직 업그레이드되지 않은 경우만 추가
+            if (turret != null && turret.gameObject.activeInHierarchy &&
+                turret.IsBuilt() && !turret.IsUpgraded())
+            {
+                upgradeableTurrets.Add(turret);
+            }
+        }
+
+        Debug.Log($"Found {upgradeableTurrets.Count} upgradeable turrets out of {m_Turrets.Count} total turrets");
+        return upgradeableTurrets;
+    }
+
     public List<MineController> GetMines() => m_Mines;
 
     //=====================================================
@@ -1555,7 +1579,7 @@ public class GameManager : MonoBehaviour
     /// <param name="position">확인할 위치</param>
     /// <param name="excludeTransform">제외할 Transform (자기 자신)</param>
     /// <returns>충돌하면 true</returns>
-    public bool IsPositionCollidingWithBuilding(Vector3 position, Transform excludeTransform = null,bool _isPlayer = false)
+    public bool IsPositionCollidingWithBuilding(Vector3 position, Transform excludeTransform = null, bool _isPlayer = false)
     {
         if (!enableBuildingCollision) return false;
 
@@ -1590,7 +1614,7 @@ public class GameManager : MonoBehaviour
             if (wall != null && wall.transform != excludeTransform &&
                 wall.gameObject.activeInHierarchy && wall.IsBuilt())
             {
-                if(wall.ClampToBoundary(position, wall.IsHasGate(), _isPlayer))
+                if (wall.ClampToBoundary(position, wall.IsHasGate(), _isPlayer))
                 {
                     return true;
                 }
@@ -1635,7 +1659,7 @@ public class GameManager : MonoBehaviour
     /// <param name="targetPos">목표 위치</param>
     /// <param name="excludeTransform">제외할 Transform</param>
     /// <returns>조정된 위치</returns>
-    public Vector3 GetValidMovePosition(Vector3 currentPos, Vector3 targetPos, Transform excludeTransform = null, bool _isPlayer =false)
+    public Vector3 GetValidMovePosition(Vector3 currentPos, Vector3 targetPos, Transform excludeTransform = null, bool _isPlayer = false)
     {
         // 목표 위치가 충돌하지 않으면 그대로 반환
         if (!IsPositionCollidingWithBuilding(targetPos, excludeTransform))

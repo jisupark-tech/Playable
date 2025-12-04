@@ -1,4 +1,5 @@
-using System.Collections;
+Ôªøusing System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public enum GimmicKType
@@ -9,7 +10,7 @@ public enum GimmicKType
     Pet,
 }
 
-public class EnhanceController : MonoBehaviour , IHealth
+public class EnhanceController : MonoBehaviour, IHealth
 {
 
     [Header("Enhance Settings")]
@@ -35,7 +36,18 @@ public class EnhanceController : MonoBehaviour , IHealth
     [Header("Animation")]
     [SerializeField] private float AnimationDuration = 1f;
     private bool isBuilt = false;
-    private bool isVisible = true; // º¯¬˜ ∞«º≥¿« ∞°Ω√º∫ ∞¸∏Æ
+    private bool isVisible = true;
+
+    [Header("Quest")]
+    [SerializeField] private GameObject QuestContent;
+    [SerializeField] private Transform m_spawnPos;
+    [SerializeField] private TextMeshPro TxtQuestGold;
+    [SerializeField] private TextMeshPro TxtMaxQuestCnt;
+    [SerializeField] private TextMeshPro TxtCurQuestCnt;
+    [SerializeField] private int MaxQuestCnt;
+    private int CurQuestCnt;
+    [SerializeField] private int QuestPrice;
+    private int CurQuestPaid;
 
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
@@ -53,7 +65,6 @@ public class EnhanceController : MonoBehaviour , IHealth
 
         SetBuildState(false);
 
-        // ∞°Ω√º∫¿Ã »∞º∫»≠µ» ∞ÊøÏø°∏∏ ∞«º≥ √º≈© Ω√¿€
         if (isVisible && this.gameObject.activeInHierarchy)
         {
             StartCoroutine(CheckAndBuildBehavior());
@@ -62,7 +73,7 @@ public class EnhanceController : MonoBehaviour , IHealth
 
     void InitializeDamageEffect()
     {
-        // mineOBJ «œ¿ß¿« ∏µÁ ∑ª¥ı∑Ø ºˆ¡˝
+
         if (enhanceOBJ != null)
         {
             buildingRenderers = enhanceOBJ.GetComponentsInChildren<Renderer>();
@@ -76,7 +87,6 @@ public class EnhanceController : MonoBehaviour , IHealth
                 }
             }
 
-            // ø¯∫ª ≈©±‚ ¿˙¿Â
             originalScale = enhanceOBJ.transform.localScale;
         }
     }
@@ -89,12 +99,24 @@ public class EnhanceController : MonoBehaviour , IHealth
             enhanceOBJ.SetActive(built);
 
         if (outLine != null)
-            outLine.SetActive(!built && isVisible); // ∞°Ω√º∫µµ ∞Ì∑¡
+            outLine.SetActive(!built && isVisible); 
 
         if (coin != null)
-            coin.SetActive(!built && isVisible); // ∞°Ω√º∫µµ ∞Ì∑¡
+            coin.SetActive(!built && isVisible);
 
-        // ∞«º≥ øœ∑· Ω√ ø√∂Ûø¿¥¬ æ÷¥œ∏ﬁ¿Ãº« π◊ √§±º Ω√¿€
+        if (QuestContent != null)
+            QuestContent.SetActive(built);
+
+        if (QuestContent != null && QuestContent.activeInHierarchy)
+        {
+            if (TxtMaxQuestCnt != null)
+                TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
+            if (TxtCurQuestCnt != null)
+                TxtCurQuestCnt.text = CurQuestCnt.ToString();
+            if (TxtQuestGold != null)
+                TxtQuestGold.text = CurQuestPaid.ToString();
+        }
+
         if (built)
         {
             StartCoroutine(EnhanceRiseAnimation());
@@ -107,11 +129,9 @@ public class EnhanceController : MonoBehaviour , IHealth
 
         if (visible)
         {
-            // ±§ªÍ¿ª ∫∏¿Ã∞‘ «“ ∂ß
             gameObject.SetActive(true);
-            SetBuildState(isBuilt); // «ˆ¿Á ∞«º≥ ªÛ≈¬ø° ∏¬∞‘ UI æ˜µ•¿Ã∆Æ
+            SetBuildState(isBuilt); 
 
-            // æ∆¡˜ ∞«º≥µ«¡ˆ æ æ“∞Ì ∞«º≥ √º≈©∞° Ω««‡ ¡ﬂ¿Ã æ∆¥œ∂Û∏È Ω√¿€
             if (!isBuilt)
             {
                 StartCoroutine(CheckAndBuildBehavior());
@@ -121,11 +141,9 @@ public class EnhanceController : MonoBehaviour , IHealth
         }
         else
         {
-            // ±§ªÍ¿ª º˚±Ê ∂ß
             if (outLine != null) outLine.SetActive(false);
             if (coin != null) coin.SetActive(false);
 
-            // ∞«º≥µ«¡ˆ æ ¿∫ ±§ªÍ¿∫ øœ¿¸»˜ ∫Ò»∞º∫»≠
             if (!isBuilt)
             {
                 gameObject.SetActive(false);
@@ -139,8 +157,6 @@ public class EnhanceController : MonoBehaviour , IHealth
     {
         if (enhanceOBJ == null) yield break;
 
-        //TODO 2025-11-26
-        //º“«ˆ¥‘ 0.5f¡§µµ ¥Î±‚
         Vector3 originalenhnaceScale = enhanceOBJ.transform.localScale;
 
         enhanceOBJ.transform.localScale = Vector3.zero;
@@ -157,45 +173,39 @@ public class EnhanceController : MonoBehaviour , IHealth
         }
 
 
-        // ±§ªÍ¿ª ∂• æ∆∑°∑Œ ¿Ãµø«œ∞Ì ¿€¿∫ ≈©±‚∑Œ º≥¡§
+
         enhanceOBJ.transform.localScale = originalenhnaceScale * 0.3f;
 
-        float _animationDuration = AnimationDuration; // 1√ ∑Œ ¥‹√‡
+        float _animationDuration = AnimationDuration; 
         float elapsedTime = 0f;
 
-        // ∂• æ∆∑°º≠ ¿ß∑Œ ø√∂Ûø¿∏Èº≠ ≈©±‚ ∫Ø»≠«œ¥¬ æ÷¥œ∏ﬁ¿Ãº«
         while (elapsedTime < _animationDuration)
         {
             elapsedTime += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsedTime / _animationDuration); // NaN πÊ¡ˆ
+            float progress = Mathf.Clamp01(elapsedTime / _animationDuration); 
 
-            // ≈©±‚: ¥‹º¯«œ∞Ì æ»¿¸«— ≈∫º∫ æ÷¥œ∏ﬁ¿Ãº«
             float scaleMultiplier = 1.0f;
 
             if (progress <= 0.5f)
             {
-                // 0~50%: 0.3 °Ê 1.15 (∫¸∏£∞‘ ƒø¡¸)
                 float t = progress / 0.5f;
                 t = Mathf.Clamp01(t);
                 scaleMultiplier = Mathf.Lerp(0.3f, 1.15f, t);
             }
             else if (progress <= 0.8f)
             {
-                // 50~80%: 1.15 °Ê 0.9 (≈∫º∫ ºˆ√‡)
                 float t = (progress - 0.5f) / 0.3f;
                 t = Mathf.Clamp01(t);
                 scaleMultiplier = Mathf.Lerp(1.15f, 0.9f, t);
             }
             else
             {
-                // 80~100%: 0.9 °Ê 1.0 (√÷¡æ ≈©±‚)
                 float t = (progress - 0.8f) / 0.2f;
                 t = Mathf.Clamp01(t);
                 scaleMultiplier = Mathf.Lerp(0.9f, 1.0f, t);
             }
 
-            // æ»¿¸«— Ω∫ƒ…¿œ ∞ËªÍ
-            scaleMultiplier = Mathf.Clamp(scaleMultiplier, 0.1f, 2.0f); // æ»¿¸ π¸¿ß ¡¶«—
+            scaleMultiplier = Mathf.Clamp(scaleMultiplier, 0.1f, 2.0f);
             Vector3 currentEnhanceScale = originalenhnaceScale * scaleMultiplier;
 
 
@@ -212,25 +222,71 @@ public class EnhanceController : MonoBehaviour , IHealth
             enhanceOBJ.transform.localScale = originalenhnaceScale;
         }
 
-        // ∞«º≥ øœ∑· æÀ∏≤¿ª GameManagerø° ¿¸º€
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnEnhanceBuilt(this);
+            StartCoroutine(CheckAndQuestBehavior());
         }
-        //TODO ø©±‚ø° ±‚¥… √ﬂ∞°
-        //2025-11-27
-        //NPC «√∑π¿ÃæÓ√≥∑≥
     }
+    IEnumerator CheckAndQuestBehavior()
+    {
+        while (isBuilt && isVisible)
+        {
+            if (_player != null)
+            {
+                if (CurQuestCnt <= MaxQuestCnt)
+                {
+                    float distance = Vector3.Distance(_player.transform.position, transform.position);
+                    if (distance <= ditectDistance)
+                    {
+                        if (GameManager.Instance.GetCurrentGold() > 0 && CurQuestPaid < QuestPrice)
+                        {
+                            SendGoldToQuest();
+                        }
+                    }
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    void SendGoldToQuest()
+    {
+        if (GameManager.Instance.SpendGold(1))
+        {
+            _player.OnSendGoldToTurret(QuestContent.transform);
+
+            CurQuestPaid++;
+
+            if (TxtQuestGold != null)
+            {
+                int _remainGold = QuestPrice - CurQuestPaid;
+                TxtQuestGold.text = $"{_remainGold}";
+            }
+            if (TxtMaxQuestCnt != null)
+                TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
+            if (TxtCurQuestCnt != null)
+                TxtCurQuestCnt.text = CurQuestCnt.ToString();
+
+            //// ÔøΩÔøΩ«• ÔøΩÔøΩÎø° ÔøΩÔøΩÔøΩÔøΩÔøΩœ∏ÔøΩ 
+            if (CurQuestPaid >= QuestPrice)
+            {
+                SpawnNPC();
+            }
+
+        }
+    }
+
     IEnumerator CheckAndBuildBehavior()
     {
-        while (!isBuilt && isVisible) // ∞°Ω√º∫ √º≈© √ﬂ∞°
+        while (!isBuilt && isVisible) // ÔøΩÔøΩÔøΩ√ºÔøΩ √º≈© ÔøΩﬂ∞ÔøΩ
         {
             if (_player != null)
             {
                 float distance = Vector3.Distance(_player.transform.position, transform.position);
-                if (distance <= ditectDistance) // ∞«º≥ π¸¿ß
+                if (distance <= ditectDistance) // ÔøΩ«ºÔøΩ ÔøΩÔøΩÔøΩÔøΩ
                 {
-                    // «√∑π¿ÃæÓ ∞ÒµÂ∏¶ ∞°¡ˆ∞Ì ¿÷∞Ì æ∆¡˜ ∞«º≥¿Ã øœ∑·µ«¡ˆ æ ¿∫ ∞ÊøÏ
+                    // ÔøΩ√∑ÔøΩÔøΩÃæÔøΩ ÔøΩÔøΩÂ∏¶ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ÷∞ÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩ«ºÔøΩÔøΩÔøΩ ÔøΩœ∑ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩ
                     if (GameManager.Instance.GetCurrentGold() > 0 && currPaidCost < enhanceCost)
                     {
                         SendGoldToEnhance();
@@ -244,8 +300,8 @@ public class EnhanceController : MonoBehaviour , IHealth
     {
         if (GameManager.Instance.SpendGold(1))
         {
-            // «√∑π¿ÃæÓ∑Œ∫Œ≈Õ ∞ÒµÂ∏¶ Ω√∞¢¿˚¿∏∑Œ ∫∏≥ª¥¬ ∏ﬁº≠µÂ »£√‚
-            _player.OnSendGoldToTurret(transform); // ±‚¡∏ ∏ﬁº≠µÂ ¿ÁªÁøÎ
+            // ÔøΩ√∑ÔøΩÔøΩÃæÔøΩŒ∫ÔøΩÔøΩÔøΩ ÔøΩÔøΩÂ∏¶ ÔøΩ√∞ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩﬁºÔøΩÔøΩÔøΩ »£ÔøΩÔøΩ
+            _player.OnSendGoldToTurret(transform); // ÔøΩÔøΩÔøΩÔøΩ ÔøΩﬁºÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
 
             currPaidCost++;
             if (TxtGold != null)
@@ -255,7 +311,7 @@ public class EnhanceController : MonoBehaviour , IHealth
             }
             Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
 
-            // ∏Ò«• ∫ÒøÎø° µµ¥ﬁ«œ∏È ∞«º≥ øœ∑·
+            // ÔøΩÔøΩ«• ÔøΩÔøΩÎø° ÔøΩÔøΩÔøΩÔøΩÔøΩœ∏ÔøΩ ÔøΩ«ºÔøΩ ÔøΩœ∑ÔøΩ
             if (currPaidCost >= enhanceCost)
             {
                 BuildEnhance();
@@ -267,7 +323,37 @@ public class EnhanceController : MonoBehaviour , IHealth
         Debug.Log($"Enhance {gameObject.name} construction completed!");
         SetBuildState(true);
     }
+    void SpawnNPC()
+    {
+        Vector3 _spawnPos = m_spawnPos != null ? m_spawnPos.position : this.transform.position;
+        NPCController _npc = ObjectPool.Instance.SpawnFromPool("NPC", _spawnPos, Quaternion.identity).GetComponent<NPCController>();
+        if (_npc != null)
+        {
+            //TODO TEST
 
+            // ÏóÖÍ∑∏Î†àÏù¥Îìú Í∞ÄÎä•Ìïú ÌÑ∞Î†õÎì§ÏùÑ Ïù∏Îç±Ïä§ ÏàúÏÑúÎåÄÎ°ú Í∞ÄÏ†∏Ïò§Í∏∞
+            List<TurretController> upgradeableTurrets = GameManager.Instance.GetUpgradeableTurrets();
+
+            if (upgradeableTurrets.Count > 0)
+            {
+                // Ï≤´ Î≤àÏß∏ ÏóÖÍ∑∏Î†àÏù¥Îìú Í∞ÄÎä•Ìïú ÌÑ∞Î†õÏùÑ ÌÉÄÍ≤üÏúºÎ°ú ÏÑ§Ï†ï
+                TurretController targetTurret = upgradeableTurrets[0];
+                _npc.Init(targetTurret.transform);
+
+                Debug.Log($"NPC spawned and targeting turret: {targetTurret.name} for upgrade");
+            }
+            else
+            {
+                // ÏóÖÍ∑∏Î†àÏù¥Îìú Í∞ÄÎä•Ìïú ÌÑ∞Î†õÏù¥ ÏóÜÏúºÎ©¥ NPCÎ•º Îã§Ïãú ÌíÄÏóê Î∞òÌôò
+                Debug.LogWarning("No upgradeable turrets available. NPC returned to pool.");
+                ObjectPool.Instance.ReturnToPool(_npc.gameObject);
+                return;
+            }
+
+            CurQuestPaid = 0;
+            CurQuestCnt++;
+        }
+    }
     public bool IsBuilt() => isBuilt;
 
     void StartDamageFlashEffect()
@@ -283,7 +369,6 @@ public class EnhanceController : MonoBehaviour , IHealth
 
         isFlashingDamage = true;
 
-        // 1. ªˆªÛ »≠¿Ã∆Æ «√∑°Ω√
         for (int i = 0; i < buildingRenderers.Length; i++)
         {
             if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
@@ -292,14 +377,10 @@ public class EnhanceController : MonoBehaviour , IHealth
             }
         }
 
-        // 2. ≈©±‚ ¡ı∞°
         Vector3 scaledSize = originalScale * damageScaleMultiplier;
         enhanceOBJ.transform.localScale = scaledSize;
 
-        // 3. »≠¿Ã∆Æ «√∑°Ω√ ¡ˆº” Ω√∞£
         yield return new WaitForSeconds(damageFlashDuration);
-
-        // 4. ø¯∫ª ªˆªÛ¿∏∑Œ ∫π±Õ
         for (int i = 0; i < buildingRenderers.Length; i++)
         {
             if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
@@ -307,22 +388,18 @@ public class EnhanceController : MonoBehaviour , IHealth
                 buildingRenderers[i].material.color = originalColors[i];
             }
         }
-
-        // 5. ≈©±‚ ∫π±Õ æ÷¥œ∏ﬁ¿Ãº«
         float elapsedTime = 0f;
         while (elapsedTime < damageScaleDuration)
         {
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / damageScaleDuration;
 
-            // Ease-out »ø∞˙
             progress = 1f - Mathf.Pow(1f - progress, 2f);
 
             enhanceOBJ.transform.localScale = Vector3.Lerp(scaledSize, originalScale, progress);
             yield return null;
         }
 
-        // 6. ¡§»Æ«— ø¯∫ª ≈©±‚∑Œ ∫π±Õ
         enhanceOBJ.transform.localScale = originalScale;
         isFlashingDamage = false;
     }
@@ -346,7 +423,6 @@ public class EnhanceController : MonoBehaviour , IHealth
 
         OnHealthChanged(currentHealth, maxHealth);
 
-        // ««∞› ø¨√‚ »ø∞˙
         StartDamageFlashEffect();
 
         if (currentHealth <= 0)
@@ -377,23 +453,21 @@ public class EnhanceController : MonoBehaviour , IHealth
 
     public void OnHealthChanged(int currentHealth, int maxHealth)
     {
-        // HPπŸ UI æ˜µ•¿Ã∆Æ µÓ (« ø‰Ω√ ±∏«ˆ)
-        // Debug.Log($"Mine Health: {currentHealth}/{maxHealth}");
+        //TODO 2025-12-03
+        //ÏïÑÎßà Îã§Ïùå ÎπåÎìúÎçò Îã§Ïùå Î≤ÑÏ†ÑÏóêÏÑúÎäî Ï≤¥Î†•Ïù¥ Ï§ÑÏñ¥Îì§Í±∞ÎÇò ÌååÍ¥¥ÎêòÎäî Í±∏ ÎÑ£Ïñ¥ÏïºÌïòÍ∏∞ ÎïåÎ¨∏Ïóê ÏùºÎã® Í∏∞Îä•ÏùÄ ÏÇ¥Î†§ÎëêÍ∏∞ 
     }
 
     public void OnDeath()
     {
-        // ±§ªÍ ∆ƒ±´
         DestroyEnhance();
     }
 
     void DestroyEnhance()
     {
-        // ∆ƒ±´ ¿Ã∆Â∆Æ ¿Áª˝ (ø…º«)
-        gameObject.SetActive(false);
 
-        // ∂«¥¬ ObjectPool∑Œ π›»Ø («Æ∏µ ªÁøÎ Ω√)
-        // ObjectPool.Instance.ReturnToPool(gameObject);
+        gameObject.SetActive(false);
+        //TODO ÌååÍ¥¥ ÎêòÍ≥† ÎÇòÎ©¥ Ïñ¥ÎñªÍ≤å?
+        //ÏßÄÍ∏à ÎπåÎìúÏóêÏÑúÎäî ÌååÍ¥¥ Í≥†ÎØº X 
     }
     #endregion
 }
