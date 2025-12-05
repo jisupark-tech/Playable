@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GoldPickup
   flySpeed: 10
   pickupRange: 4
-  delayBeforeFly: 1
+  delayBeforeFly: 0
   rotationSpeed: 0
   GoldAccerate: 5
   TargetAccerate: 25

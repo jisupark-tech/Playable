@@ -441,6 +441,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      propertyPath: DitectDistance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
@@ -1375,6 +1379,7 @@ MonoBehaviour:
   goldStartAmount: 0
   killTarget: 400
   FirstSpawnCnt: 7
+  FirstSpawnSpread: 2
   goldText: {fileID: 1242314855}
   timerText: {fileID: 73121220}
   winUI: {fileID: 1560689578}
@@ -1698,6 +1703,10 @@ PrefabInstance:
       propertyPath: TxtMaxQuestCnt
       value: 
       objectReference: {fileID: 1576020006}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: ditectDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
@@ -2705,7 +2714,7 @@ PrefabInstance:
       objectReference: {fileID: 496982740}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -2953,7 +2962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -6260,7 +6269,7 @@ MonoBehaviour:
   maxGoldPerLayer: 4
   layerHeight: 0.12
   goldSpacing: 0.4
-  playerDetectionRange: 1.5
+  playerDetectionRange: 0.23
   checkInterval: 0.1
 --- !u!1 &815257999 stripped
 GameObject:
@@ -6636,7 +6645,7 @@ PrefabInstance:
       objectReference: {fileID: 815257999}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -6884,7 +6893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -7365,7 +7374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -7613,7 +7622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -7938,7 +7947,7 @@ PrefabInstance:
       objectReference: {fileID: 508431881}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -8186,7 +8195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -8748,7 +8757,7 @@ PrefabInstance:
       objectReference: {fileID: 152572395}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -8996,7 +9005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -10896,15 +10905,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2125963981259900842, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: attackRange
-      value: 3.5
+      value: 3.85
       objectReference: {fileID: 0}
     - target: {fileID: -2125963981259900842, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: targetUpdateRate
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: -2125963981259900842, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: maxTargetSearchDistance
-      value: 3.5
+      value: 3.85
       objectReference: {fileID: 0}
     - target: {fileID: 654793372413367524, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10964,7 +10973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3770301918638931578, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: weaponData.range
-      value: 3.5
+      value: 3.85
       objectReference: {fileID: 0}
     - target: {fileID: 3770301918638931578, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: weaponData.fireRate
@@ -11426,7 +11435,7 @@ PrefabInstance:
       objectReference: {fileID: 350604636}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -11674,7 +11683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -11955,7 +11964,7 @@ PrefabInstance:
       objectReference: {fileID: 142196048}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -12203,7 +12212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -49235,7 +49244,7 @@ PrefabInstance:
       objectReference: {fileID: 1698681169}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -49483,7 +49492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -49626,6 +49635,10 @@ PrefabInstance:
       propertyPath: TxtMaxQuestCnt
       value: 
       objectReference: {fileID: 2083540601}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: ditectDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: AnimationDuration
       value: 0.5
@@ -50804,7 +50817,7 @@ PrefabInstance:
       objectReference: {fileID: 859387140}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: AnimationDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: FirstShowGoldStack
@@ -51060,7 +51073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: playerDetectionRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8449128415994233216, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_SortingLayer
@@ -51278,6 +51291,10 @@ PrefabInstance:
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
+      propertyPath: DitectDistance
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: goldStoragePoint

@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     public int goldStartAmount = 0;
     public int killTarget = 10;
     public int FirstSpawnCnt = 7;
+    public float FirstSpawnSpread = 3f;
     private List<EnemyController> m_firstEnemies = new List<EnemyController>();
     [Header("UI References")]
     public Text goldText;
@@ -257,7 +258,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < FirstSpawnCnt; i++)
         {
-            Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
+            Vector2 _randomOffset = Random.insideUnitCircle * FirstSpawnSpread;
 
             // 3D 위치 (Vector3)로 변환 (y값은 고정)
             //TODO 거리

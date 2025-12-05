@@ -262,7 +262,14 @@ public class GoldPickup : MonoBehaviour
             // 플레이어에게 골드 지급 (GameManager 골드 증가)
             GameManager.Instance?.AddGold(goldValue);
         }
-
+        else
+        {
+            ICollectable _collect = target.GetComponent<ICollectable>();
+            if(_collect!=null)
+            {
+                _collect.CollectGold();
+            }
+        }
         // 오브젝트 풀로 반환
         ObjectPool.Instance.ReturnToPool(gameObject);
         AudioManager.Instance.PlayGoldCollectSound();

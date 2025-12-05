@@ -2,14 +2,14 @@
 using UnityEngine;
 using TMPro;
 
-public class MineController : MonoBehaviour, IHealth
+public class MineController : MonoBehaviour, IHealth , ICollectable
 {
     [Header("Mine Settings")]
     public int mineCost = 15; // 광산 건설 비용
     public float goldGenerationInterval = 3f; // 골드 생성 주기 (초)
     public int goldPerGeneration = 1; // 한 번에 생성되는 골드 수
     public int currPaidCost = 0; // 현재 지불된 비용
-    public float ditectDIsatnce = 2f;
+    public float DitectDistance = 2f;
 
     [Header("Health Settings")]
     public int maxHealth = 80; // 광산의 체력
@@ -275,7 +275,7 @@ public class MineController : MonoBehaviour, IHealth
             if (_player != null)
             {
                 float distance = Vector3.Distance(_player.transform.position, transform.position);
-                if (distance <= ditectDIsatnce) // 건설 범위
+                if (distance <= DitectDistance) // 건설 범위
                 {
                     // 플레이어 골드를 가지고 있고 아직 건설이 완료되지 않은 경우
                     if (GameManager.Instance.GetCurrentGold() > 0 && currPaidCost < mineCost)
@@ -294,23 +294,24 @@ public class MineController : MonoBehaviour, IHealth
         {
             // 플레이어로부터 골드를 시각적으로 보내는 메서드 호출
             _player.OnSendGoldToTurret(transform); // 기존 메서드 재사용
-
-            currPaidCost++;
-            if(TxtGold!=null)
-            {
-                int _remainGold = mineCost - currPaidCost;
-                TxtGold.text = $"{_remainGold}";
-            }
-            Debug.Log($"Mine received gold: {currPaidCost}/{mineCost}");
-
-            // 목표 비용에 도달하면 건설 완료
-            if (currPaidCost >= mineCost)
-            {
-                BuildMine();
-            }
         }
     }
+    public void CollectGold()
+    {
+        currPaidCost++;
+        if (TxtGold != null)
+        {
+            int _remainGold = mineCost - currPaidCost;
+            TxtGold.text = $"{_remainGold}";
+        }
+        Debug.Log($"Mine received gold: {currPaidCost}/{mineCost}");
 
+        // 목표 비용에 도달하면 건설 완료
+        if (currPaidCost == mineCost)
+        {
+            BuildMine();
+        }
+    }
     void BuildMine()
     {
         Debug.Log($"Mine {gameObject.name} construction completed!");

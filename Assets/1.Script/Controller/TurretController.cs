@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TurretController : MonoBehaviour, IHealth
+public class TurretController : MonoBehaviour, IHealth , ICollectable
 {
     [Header("Turret Settings")]
     public int turretCost = 20; // 터렛 건설 비용
@@ -11,7 +11,7 @@ public class TurretController : MonoBehaviour, IHealth
     public int turretDamage = 25; // 터렛 공격력
     public float fireRate = 1f; // 발사 속도 (초당)
     public int currPaidCost = 0; // 현재 지불된 비용
-    public float ditectDIsatnce = 2f; // 플레이어 감지 거리
+    public float DitectDistance = 2f; // 플레이어 감지 거리
     public bool canCollectGold = true;
 
     [Header("Upgrade Settings")]
@@ -39,7 +39,7 @@ public class TurretController : MonoBehaviour, IHealth
 
     [Header("Animation")]
     [SerializeField] private float AnimationDuration = 1f;
-
+    [SerializeField] private float WaitTimeBeforeRising = 0.15f;
     // 피격 연출용 원본 데이터 저장
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
@@ -350,7 +350,7 @@ public class TurretController : MonoBehaviour, IHealth
 
         //TODO CHECK
         //2025-12-04
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(WaitTimeBeforeRising);
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
@@ -475,7 +475,7 @@ public class TurretController : MonoBehaviour, IHealth
             if (_player != null)
             {
                 float distance = Vector3.Distance(_player.transform.position, transform.position);
-                if (distance <= ditectDIsatnce) // 건설 범위
+                if (distance <= DitectDistance) // 건설 범위
                 {
                     // 플레이어 골드를 가지고 있고 아직 건설이 완료되지 않은 경우
                     if (GameManager.Instance.GetCurrentGold() > 0 && currPaidCost < turretCost)
@@ -494,22 +494,24 @@ public class TurretController : MonoBehaviour, IHealth
         {
             // 플레이어로부터 골드를 시각적으로 보내는 메서드 호출
             _player.OnSendGoldToTurret(transform);
-
-            currPaidCost++;
-
-            // 비용 표시 업데이트 (슬라이더 포함)
-            UpdateCostDisplay();
-
-            Debug.Log($"Turret received gold: {currPaidCost}/{turretCost}");
-
-            // 목표 비용에 도달하면 건설 완료
-            if (currPaidCost >= turretCost)
-            {
-                BuildTurret();
-            }
         }
     }
 
+    public void CollectGold()
+    {
+        currPaidCost++;
+
+        // 비용 표시 업데이트 (슬라이더 포함)
+        UpdateCostDisplay();
+
+        Debug.Log($"Turret received gold: {currPaidCost}/{turretCost}");
+
+        // 목표 비용에 도달하면 건설 완료
+        if (currPaidCost == turretCost)
+        {
+            BuildTurret();
+        }
+    }
     void BuildTurret()
     {
         Debug.Log($"Turret {gameObject.name} construction completed!");

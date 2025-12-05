@@ -10,7 +10,7 @@ public enum GimmicKType
     Pet,
 }
 
-public class EnhanceController : MonoBehaviour, IHealth
+public class EnhanceController : MonoBehaviour, IHealth , ICollectable
 {
 
     [Header("Enhance Settings")]
@@ -259,27 +259,27 @@ public class EnhanceController : MonoBehaviour, IHealth
         if (GameManager.Instance.SpendGold(1))
         {
             _player.OnSendGoldToTurret(QuestContent.transform);
-
-            CurQuestPaid++;
-
-            if (TxtQuestGold != null)
-            {
-                int _remainGold = QuestPrice - CurQuestPaid;
-                TxtQuestGold.text = $"{_remainGold}";
-            }
-            if (TxtMaxQuestCnt != null)
-                TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
-            if (TxtCurQuestCnt != null)
-                TxtCurQuestCnt.text = CurQuestCnt.ToString();
-
-            if (CurQuestPaid >= QuestPrice)
-            {
-                SpawnNPC();
-            }
-
         }
     }
+    public void CollectGold()
+    {
+        CurQuestPaid++;
 
+        if (TxtQuestGold != null)
+        {
+            int _remainGold = QuestPrice - CurQuestPaid;
+            TxtQuestGold.text = $"{_remainGold}";
+        }
+        if (TxtMaxQuestCnt != null)
+            TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
+        if (TxtCurQuestCnt != null)
+            TxtCurQuestCnt.text = CurQuestCnt.ToString();
+
+        if (CurQuestPaid >= QuestPrice)
+        {
+            SpawnNPC();
+        }
+    }
     IEnumerator CheckAndBuildBehavior()
     {
         while (!isBuilt && isVisible) 
@@ -312,7 +312,7 @@ public class EnhanceController : MonoBehaviour, IHealth
             }
             Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
 
-            if (currPaidCost >= enhanceCost)
+            if (currPaidCost == enhanceCost)
             {
                 BuildEnhance();
             }
