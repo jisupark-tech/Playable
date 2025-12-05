@@ -282,12 +282,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1248698526, guid: 15585481775767f438de41bce5170edd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c8d9f829cc617b4bb9bfbbdaa2612a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 4}
+  m_Size: {x: 3.4133334, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -347,7 +347,12 @@ MonoBehaviour:
   turretDamage: 25
   fireRate: 1
   currPaidCost: 0
-  ditectDIsatnce: 2
+  DitectDistance: 2
+  canCollectGold: 1
+  isUpgraded: 0
+  maxBulletCount: 2
+  multiShotAngle: 15
+  upgradedFireRate: 1.5
   maxHealth: 100
   turretOBJ: {fileID: 525529048166338587}
   outLine: {fileID: 8814912968686102750}
@@ -358,6 +363,7 @@ MonoBehaviour:
   damageScaleDuration: 0.2
   damageScaleMultiplier: 1.1
   AnimationDuration: 1
+  WaitTimeBeforeRising: 0.15
   textMeshPro: {fileID: 167860956982302775}
 --- !u!114 &3046649939179844122
 MonoBehaviour:
@@ -380,6 +386,9 @@ MonoBehaviour:
   turnOnRotation: 0
   usePhysicsDetection: 0
   maxTargetSearchDistance: 12
+  maxCombatTime: 300
+  maxAttacksPerSecond: 10
+  weaponComponent: {fileID: 0}
 --- !u!114 &4163364958273767614
 MonoBehaviour:
   m_ObjectHideFlags: 0

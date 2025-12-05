@@ -669,7 +669,7 @@ public class GameManager : MonoBehaviour
             Debug.Log($"Phase {currentPhaseIndex} progress: {completedBuildingsInPhase}/{currentPhase.requiredCompletions}");
 
             // 필요한 건설 수가 충족되면 다음 단계로
-            if (completedBuildingsInPhase >= currentPhase.requiredCompletions)
+            if (completedBuildingsInPhase == currentPhase.requiredCompletions)
             {
                 AdvanceToNextPhase();
             }
@@ -750,6 +750,7 @@ public class GameManager : MonoBehaviour
                 EnhanceController enhance = m_Enhances[enhanceIndex];
                 enhance.Init();
                 enhance.SetVisibility(true);
+                Debug.Log($"enhance[{enhanceIndex}] condition rechecked: {enhance.name}");
             }
         }
     }
@@ -768,7 +769,7 @@ public class GameManager : MonoBehaviour
                     if (IsValidIndex(turretIndex, m_Turrets.Count))
                     {
                         disabledTurretIndices.Add(turretIndex);
-                        m_Turrets[turretIndex].SetVisibility(false);
+                        m_Turrets[turretIndex].SetVisibility(false,true);
                         Debug.Log($"Disabled turret[{turretIndex}]: {m_Turrets[turretIndex].name}");
                     }
                 }
@@ -978,8 +979,8 @@ public class GameManager : MonoBehaviour
 
             if (currentAvailableMineIndex < m_Mines.Count)
             {
-                m_Mines[currentAvailableMineIndex].Init();
-                m_Mines[currentAvailableMineIndex].SetVisibility(true);
+                //m_Mines[currentAvailableMineIndex].Init();
+                //m_Mines[currentAvailableMineIndex].SetVisibility(true);
                 Debug.Log($"Sequential: Next mine {currentAvailableMineIndex} available");
             }
             else
@@ -1017,12 +1018,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log($"Sequential: Enhancce {builtIndex} construction completed!");
 
-            currentAvailableEnhanceIndex++;
-
             if (currentAvailableEnhanceIndex < m_Enhances.Count)
             {
-                m_Enhances[currentAvailableEnhanceIndex].Init();
-                m_Enhances[currentAvailableEnhanceIndex].SetVisibility(true);
+                //m_Enhances[currentAvailableEnhanceIndex].Init();
+                //m_Enhances[currentAvailableEnhanceIndex].SetVisibility(true);
+                currentAvailableEnhanceIndex++;
                 Debug.Log($"Sequential: Next enhance {currentAvailableEnhanceIndex} available");
             }
             else

@@ -278,7 +278,7 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
         }
     }
 
-    public void SetVisibility(bool visible)
+    public void SetVisibility(bool visible,bool _ruleHide = false)
     {
         isVisible = visible;
 
@@ -301,7 +301,8 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
             // 터렛을 숨길 때
             if (outLine != null) outLine.SetActive(false);
             if (coin != null) coin.SetActive(false);
-
+            if (_ruleHide && turretOBJ != null)
+                turretOBJ.SetActive(false);
             // 건설되지 않은 터렛은 완전히 비활성화
             if (!isBuilt)
             {

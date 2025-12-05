@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 15585481775767f438de41bce5170edd
+guid: b51f2daa31515b44bae3673f666b51fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,23 +123,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Turret_0
+      name: Effect_09_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 512
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70dfc22d6ab8fe5438623b39c0e4e0a3
-      internalID: 1248698526
+      spriteID: fcb23e7ab28c17a4aa0fcca87eec8434
+      internalID: -251697187
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5beb21390c0bc0444903a42c3608f62d
+    spriteID: 99be145814fabe140b9e23e5b0916eec
     internalID: 0
     vertices: []
     indices: 
@@ -158,9 +158,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":768.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Turret_0: 1248698526
+      Effect_09_0: -251697187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

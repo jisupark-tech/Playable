@@ -47,19 +47,21 @@ public class GoldPickup : MonoBehaviour
 
         goldValue = value;
         isFlying = false;
-
-        StartCoroutine(RotateGold());
-
-        if (_type == AnimationType.Fly && _target != null)
+        if(gameObject.activeInHierarchy)
         {
-            StartCoroutine(FlyToTarget(_target));
-        }
-        else
-        {
-            if (SetFlytoPlayer)
-                StartCoroutine(FlyToPlayer());
+            StartCoroutine(RotateGold());
+
+            if (_type == AnimationType.Fly && _target != null)
+            {
+                StartCoroutine(FlyToTarget(_target));
+            }
             else
-                StartCoroutine(DropDownInPlace());
+            {
+                if (SetFlytoPlayer)
+                    StartCoroutine(FlyToPlayer());
+                else
+                    StartCoroutine(DropDownInPlace());
+            }
         }
     }
 

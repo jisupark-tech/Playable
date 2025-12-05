@@ -226,6 +226,7 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnEnhanceBuilt(this);
+            //TODO 여기서 UI 수정 
             StartCoroutine(CheckAndQuestBehavior());
         }
     }
@@ -242,7 +243,7 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
                         float distance = Vector3.Distance(_player.transform.position, transform.position);
                         if (distance <= ditectDistance)
                         {
-                            if (GameManager.Instance.GetCurrentGold() > 0 && CurQuestPaid < QuestPrice)
+                            if (GameManager.Instance.GetCurrentGold() > 0 && CurQuestPaid <QuestPrice)
                             {
                                 SendGoldToQuest();
                             }
@@ -259,29 +260,29 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
         if (GameManager.Instance.SpendGold(1))
         {
             _player.OnSendGoldToTurret(QuestContent.transform);
+
+            CurQuestPaid++;
+
+            if (TxtQuestGold != null)
+            {
+                int _remainGold = QuestPrice - CurQuestPaid;
+                TxtQuestGold.text = $"{_remainGold}";
+            }
+            if (TxtMaxQuestCnt != null)
+                TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
+            if (TxtCurQuestCnt != null)
+                TxtCurQuestCnt.text = CurQuestCnt.ToString();
+
+            if (CurQuestPaid >= QuestPrice)
+            {
+                SpawnNPC();
+            }
         }
     }
-    public void CollectGold()
-    {
-        CurQuestPaid++;
-
-        if (TxtQuestGold != null)
-        {
-            int _remainGold = QuestPrice - CurQuestPaid;
-            TxtQuestGold.text = $"{_remainGold}";
-        }
-        if (TxtMaxQuestCnt != null)
-            TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
-        if (TxtCurQuestCnt != null)
-            TxtCurQuestCnt.text = CurQuestCnt.ToString();
-
-        if (CurQuestPaid >= QuestPrice)
-        {
-            SpawnNPC();
-        }
-    }
+   
     IEnumerator CheckAndBuildBehavior()
     {
+        Debug.LogError("======CheckAndBulldBehavior!!!!!!!!!!!");
         while (!isBuilt && isVisible) 
         {
             if (_player != null)
@@ -302,20 +303,22 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
     {
         if (GameManager.Instance.SpendGold(1))
         {
-            _player.OnSendGoldToTurret(transform); 
+            _player.OnSendGoldToTurret(transform);  
+        }
+    }
+    public void CollectGold()
+    {
+        currPaidCost++;
+        if (TxtGold != null)
+        {
+            int _remainGold = enhanceCost - currPaidCost;
+            TxtGold.text = $"{_remainGold}";
+        }
+        Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
 
-            currPaidCost++;
-            if (TxtGold != null)
-            {
-                int _remainGold = enhanceCost - currPaidCost;
-                TxtGold.text = $"{_remainGold}";
-            }
-            Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
-
-            if (currPaidCost == enhanceCost)
-            {
-                BuildEnhance();
-            }
+        if (currPaidCost == enhanceCost)
+        {
+            BuildEnhance();
         }
     }
     void BuildEnhance()

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd311f47717c884aa1ecfc82f6a69ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
-  durationLength: 0.5
+  durationLength: 0.4
   speed: 2
   noiseScale: 0.1
   fadeCurve:
@@ -61,8 +61,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.36037123
+      value: 0.86406827
+      inSlope: 1.4997689
+      outSlope: 1.4997689
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7898663
+      value: 0.92829037
+      inSlope: 1.0053964
+      outSlope: 1.0053964
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6554976
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.979187
+      value: 0.9952469
       inSlope: 0
       outSlope: 0
       tangentMode: 0

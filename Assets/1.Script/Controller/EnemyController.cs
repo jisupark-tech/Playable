@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour, IHealth
     public float moveSpeed = 3f;
     public int goldValue = 1;
     public float waypointReachDistance = 1f;
+    public Transform EffectPos;
 
     [Header("Building Attack Settings")]
     public float buildingDetectionRange = 3f;
@@ -720,7 +721,7 @@ public class EnemyController : MonoBehaviour, IHealth
     {
         health -= damage;
 
-        EffectController _effect = ObjectPool.Instance.SpawnFromPool("HittedEffect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
+        EffectController _effect = ObjectPool.Instance.SpawnFromPool("HittedEffect", EffectPos.position , Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
             _effect.Init(EffectType.Hit);
 
