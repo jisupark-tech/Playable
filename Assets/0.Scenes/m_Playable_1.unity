@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: DitectDistance
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: AnimationDuration
@@ -2709,7 +2709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -6280,7 +6280,7 @@ MonoBehaviour:
   maxGoldPerLayer: 4
   layerHeight: 0.12
   goldSpacing: 0.4
-  playerDetectionRange: 0.23
+  playerDetectionRange: 0.5
   checkInterval: 0.1
 --- !u!1 &815257999 stripped
 GameObject:
@@ -6644,7 +6644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -7381,7 +7381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -7954,7 +7954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -8768,7 +8768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -10996,7 +10996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: rotationSpeed
@@ -11462,7 +11462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -11991,7 +11991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: canCollectGold
@@ -49279,7 +49279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -50852,7 +50852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: canCollectGold
@@ -51349,7 +51349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: DitectDistance
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4006244561619617413, guid: 2ebf2320743dcae46a2b4f918c40041b, type: 3}
       propertyPath: goldStoragePoint
