@@ -268,9 +268,6 @@ public class GameManager : MonoBehaviour
             m_firstEnemies.Add(_enemy.GetComponent<EnemyController>());
         }
 
-
-
-
         UpdateGuideLine();
     }
 
@@ -690,6 +687,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log($"Starting Phase {currentPhaseIndex}: {buildingPhases[currentPhaseIndex].phaseName}");
             ShowCurrentPhaseBuildings();
+            UpdateGuideLine();
         }
         else
         {
@@ -989,6 +987,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        //UpdateGuideLine();
         //CheckWallConditions();
     }
 
@@ -1030,7 +1029,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Sequential: All enhance unlocked!");
             }
         }
-
+        //UpdateGuideLine();
         //CheckWallConditions();
     }
 
@@ -1054,29 +1053,69 @@ public class GameManager : MonoBehaviour
 
     Transform GetNextBuildableBuilding()
     {
-        foreach (TurretController turret in m_Turrets)
+        BuildingPhase _curPhase = buildingPhases[currentPhaseIndex];
+        if (_curPhase.turretIndices.Count > 0)
         {
-            if (turret != null && !turret.IsBuilt() && turret.gameObject.activeInHierarchy)
+            for(int i= 0; i < _curPhase.turretIndices.Count; i++)
             {
-                return turret.transform;
+                TurretController _turret = m_Turrets[_curPhase.turretIndices[i]];
+
+                if (_turret!=null && !_turret.IsBuilt() && _turret.gameObject.activeInHierarchy)
+                {
+                    Debug.Log("====Turret is Not Null");
+                    return _turret.transform;
+                }
+            }
+        }
+        else if(_curPhase.mineIndices.Count > 0)
+        {
+            Debug.Log($"====GetNextBuildableBuilding() mineIndices.count :  {_curPhase.mineIndices.Count} Current Phase Index  : {currentPhaseIndex}");
+            for (int i = 0; i < _curPhase.mineIndices.Count; i++)
+            {
+                MineController _mine = m_Mines[_curPhase.mineIndices[i]];
+                if (_mine != null && !_mine.IsBuilt() && _mine.gameObject.activeInHierarchy)
+                {
+                    return _mine.transform;
+                }
+            }
+        }
+        else if(_curPhase.enhances.Count > 0)
+        {
+            Debug.Log($"====GetNextBuildableBuilding() mineIndices.count :  {_curPhase.enhances.Count} Current Phase Index  : {currentPhaseIndex}");
+            for (int i = 0; i < _curPhase.enhances.Count; i++)
+            {
+                EnhanceController _enhance = m_Enhances[_curPhase.enhances[i]];
+                if (_enhance != null && !_enhance.IsBuilt() && _enhance.gameObject.activeInHierarchy)
+                {
+                    return _enhance.transform;
+                }
             }
         }
 
-        foreach (MineController mine in m_Mines)
-        {
-            if (mine != null && !mine.IsBuilt() && mine.gameObject.activeInHierarchy)
-            {
-                return mine.transform;
-            }
-        }
+        //TODO 변경 필요함 
+        //foreach (TurretController turret in m_Turrets)
+        //{
+        //    if (turret != null && !turret.IsBuilt() && turret.gameObject.activeInHierarchy)
+        //    {
+        //        return turret.transform;
+        //    }
+        //}
 
-        foreach (EnhanceController enhance in m_Enhances)
-        {
-            if (enhance != null && !enhance.IsBuilt() && enhance.gameObject.activeInHierarchy)
-            {
-                return enhance.transform;
-            }
-        }
+        //foreach (MineController mine in m_Mines)
+        //{
+        //    if (mine != null && !mine.IsBuilt() && mine.gameObject.activeInHierarchy)
+        //    {
+        //        return mine.transform;
+        //    }
+        //}
+
+        //foreach (EnhanceController enhance in m_Enhances)
+        //{
+        //    if (enhance != null && !enhance.IsBuilt() && enhance.gameObject.activeInHierarchy)
+        //    {
+        //        return enhance.transform;
+        //    }
+        //}
 
         return null;
     }
