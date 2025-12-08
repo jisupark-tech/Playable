@@ -53,7 +53,7 @@ public class GoldStorage : MonoBehaviour
             if (goldObj != null)
             {
                 GoldPickup goldPickup = goldObj.GetComponent<GoldPickup>();
-                goldPickup.Initialize(1, AnimationType.Stack);
+                goldPickup.Initialize(1, AnimationType.TurretStack);
 
                 // ⑷營 類 瓊晦 傳朝 億 類 儅撩
                 int currentLayer = totalGoldCount / maxGoldPerLayer;

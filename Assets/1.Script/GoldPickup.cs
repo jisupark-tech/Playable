@@ -7,6 +7,7 @@ public enum AnimationType
     Stack = 0,
     Drop = 1,
     Fly = 2,
+    TurretStack=3,
 }
 
 public class GoldPickup : MonoBehaviour
@@ -44,8 +45,14 @@ public class GoldPickup : MonoBehaviour
 
         if (_type == AnimationType.Stack)
         {
+
             transform.localRotation = Quaternion.Euler(0, 0, 90);
 
+            return;
+        }
+
+        if ( _type == AnimationType.TurretStack)
+        {
             return;
         }
 
@@ -53,7 +60,7 @@ public class GoldPickup : MonoBehaviour
         isFlying = false;
         if(gameObject.activeInHierarchy)
         {
-            //StartCoroutine(RotateGold());
+            StartCoroutine(RotateGold());
 
             if (_type == AnimationType.Fly && _target != null)
             {
