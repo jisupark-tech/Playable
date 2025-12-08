@@ -49,21 +49,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2060814876382105077, guid: a5d175d72a473234ab78e8ebcffd2f17, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 13c22b05de5396e478224a0f5ffff839, type: 2}
     - target: {fileID: 919132149155446097, guid: a5d175d72a473234ab78e8ebcffd2f17, type: 3}
       propertyPath: m_Name
-      value: MOB_Boss_Cactus_Mesh
+      value: MOB_Boss_Cactus
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a5d175d72a473234ab78e8ebcffd2f17, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c99e789461c3bf04bbb8154002f9f60e, type: 2}
     - target: {fileID: 9093329056294714129, guid: a5d175d72a473234ab78e8ebcffd2f17, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4f1ab14bd2e1fd942912ad0956834db4, type: 2}
+      objectReference: {fileID: 2100000, guid: a2601b58a287b714dbb5a427e48b76b0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

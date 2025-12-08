@@ -18,6 +18,8 @@ public class EffectController : MonoBehaviour
     public float noiseScale = 0.1f;
     public AnimationCurve fadeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("Offset")]
+    public Vector3 m_offest;
     private float curDuration = 0;
     private EffectType m_type;
 
@@ -30,7 +32,7 @@ public class EffectController : MonoBehaviour
         {
             case EffectType.Building:
                 // GameObject의 위치를 설정
-                transform.position = new Vector3(_x, 0f, _z);
+                transform.position = new Vector3(_x + m_offest.x, 0f + m_offest.y, _z + m_offest.z);
                 StartCoroutine(ShowAnim());
                 break;
             case EffectType.Hit:

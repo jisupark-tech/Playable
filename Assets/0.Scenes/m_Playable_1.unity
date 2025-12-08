@@ -2536,7 +2536,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 1.44, y: 13, z: -14.8}
+  m_LocalPosition: {x: 4.85, y: 13, z: -14.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4729,10 +4729,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VirtualPad
   padTransform: {fileID: 770870931}
-  moveRange: 100
+  moveRangeRatio: 0.15
   returnSpeed: 5
   enableDynamicPosition: 1
   padFadeSpeed: 10
+  useUniversalScaling: 1
+  targetSizeInInches: 0.7
+  debugMode: 0
 --- !u!1 &659390643
 GameObject:
   m_ObjectHideFlags: 0
@@ -6430,7 +6433,7 @@ MonoBehaviour:
     canExpand: 0
     maxSize: 100
   - tag: Effect
-    prefab: {fileID: 896825539390854365, guid: 599df2a28262a0645b8077700cabef0b, type: 3}
+    prefab: {fileID: 5121804608419314050, guid: f7ac5b39894c9674591deb1a41c908e7, type: 3}
     size: 50
     canExpand: 0
     maxSize: 100
@@ -10948,7 +10951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2125963981259900842, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: targetUpdateRate
-      value: 0.15
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: -2125963981259900842, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: maxTargetSearchDistance
@@ -10996,11 +10999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1907240947533435294, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

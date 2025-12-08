@@ -83,6 +83,9 @@ MonoBehaviour:
   goldValue: 1
   waypointReachDistance: 1
   EffectPos: {fileID: 2266590882980548793}
+  m_DeadMaterial: {fileID: 2100000, guid: f310f67c406a22049a30713349df332c, type: 2}
+  m_AlliveMaterial: {fileID: 2100000, guid: b53ceb0b3f6a9334288761bf60da4055, type: 2}
+  m_skinMeshRender: {fileID: 8006726491120520163}
   buildingDetectionRange: 2
   buildingDamage: 1
   buildingAttackRate: 1
@@ -252,6 +255,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MOB_Cactus01
       objectReference: {fileID: 0}
+    - target: {fileID: 7716772983529089857, guid: ba7744230b25cc446910b6f6c76046c9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716772983529089857, guid: ba7744230b25cc446910b6f6c76046c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b53ceb0b3f6a9334288761bf60da4055, type: 2}
+    - target: {fileID: 7716772983529089857, guid: ba7744230b25cc446910b6f6c76046c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f310f67c406a22049a30713349df332c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -260,6 +275,11 @@ PrefabInstance:
 --- !u!4 &2829477158879100511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2544169897428393725, guid: ba7744230b25cc446910b6f6c76046c9, type: 3}
+  m_PrefabInstance: {fileID: 291299623457775778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8006726491120520163 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7716772983529089857, guid: ba7744230b25cc446910b6f6c76046c9, type: 3}
   m_PrefabInstance: {fileID: 291299623457775778}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8188809285143897125 stripped

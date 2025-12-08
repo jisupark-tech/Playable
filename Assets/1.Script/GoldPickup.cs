@@ -24,7 +24,7 @@ public class GoldPickup : MonoBehaviour
     [Header("Animation and the other thing")]
     public bool SetFlytoPlayer = false;
     public bool HorizontalStand = false;
-
+    public bool PatternizeCoinArray = false;
     [Header("Bounce Animation Settings")]
     public int bounceCount = 3; // 바운스 횟수
     public float maxBounceHeight = 1.0f; // 첫 번째 바운스 최대 높이
@@ -43,13 +43,17 @@ public class GoldPickup : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (_type == AnimationType.Stack)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 90);
+
             return;
+        }
 
         goldValue = value;
         isFlying = false;
         if(gameObject.activeInHierarchy)
         {
-            StartCoroutine(RotateGold());
+            //StartCoroutine(RotateGold());
 
             if (_type == AnimationType.Fly && _target != null)
             {

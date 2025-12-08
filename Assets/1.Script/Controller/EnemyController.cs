@@ -10,6 +10,9 @@ public class EnemyController : MonoBehaviour, IHealth
     public int goldValue = 1;
     public float waypointReachDistance = 1f;
     public Transform EffectPos;
+    public Material m_DeadMaterial;
+    public Material m_AlliveMaterial;
+    public SkinnedMeshRenderer m_skinMeshRender;
 
     [Header("Building Attack Settings")]
     public float buildingDetectionRange = 3f;
@@ -104,6 +107,11 @@ public class EnemyController : MonoBehaviour, IHealth
 
     public void Initialize(Transform[] enemyPath)
     {
+        if (m_skinMeshRender != null && m_AlliveMaterial!= null)
+        {
+            m_skinMeshRender.material = m_AlliveMaterial;
+        }
+
         path = enemyPath;
 
         if (path != null && path.Length > 0)
@@ -115,6 +123,11 @@ public class EnemyController : MonoBehaviour, IHealth
 
     public void Initialize(Transform _targetPos)
     {
+        if (m_skinMeshRender != null && m_AlliveMaterial != null)
+        {
+            m_skinMeshRender.material = m_AlliveMaterial;
+        }
+
         path = new Transform[1];
         path[0] = _targetPos;
         if (path != null && path.Length > 0 && this.gameObject.activeInHierarchy)
@@ -236,6 +249,7 @@ public class EnemyController : MonoBehaviour, IHealth
 
             if (anim != null)
             {
+                //anim.SetBool("IsDead", false);
                 anim.SetBool("IsAttacking", isAttackingBuilding);
             }
 
@@ -733,7 +747,32 @@ public class EnemyController : MonoBehaviour, IHealth
 
     void Die(BulletOwner killer, TurretController killerTurret = null)
     {
-        gameObject.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(ShowDeadAnim(killer, killerTurret));
+    }
+
+    void DropGoldAtLocation()
+    {
+        float _offsetSize = Random.Range(0, 1.1f);
+        Vector3 _offset = new Vector3(_offsetSize, 0, _offsetSize);
+        GameObject gold = ObjectPool.Instance.SpawnFromPool("Gold", transform.position + _offset, Quaternion.identity);
+        AudioManager.Instance.PlayGoldSpawnSound();
+        if (gold != null)
+        {
+            GoldPickup goldPickup = gold.GetComponent<GoldPickup>();
+            goldPickup.Initialize(1);
+        }
+    }
+
+    IEnumerator ShowDeadAnim(BulletOwner killer, TurretController killerTurret = null)
+    {
+        if (m_skinMeshRender != null && m_DeadMaterial != null)
+            m_skinMeshRender.material = m_DeadMaterial;
+
+        if(anim != null)
+        {
+            anim.SetTrigger("Dead");
+        }
 
         for (int i = 0; i < goldValue; i++)
         {
@@ -750,24 +789,15 @@ public class EnemyController : MonoBehaviour, IHealth
                     DropGoldAtLocation();
             }
         }
+        yield return new WaitForSeconds(1f);
+
+        gameObject.SetActive(false);
+
 
         GameManager.Instance.OnEnemyKilled();
         ObjectPool.Instance.ReturnToPool(gameObject);
-    }
 
-    void DropGoldAtLocation()
-    {
-        float _offsetSize = Random.Range(0, 1.1f);
-        Vector3 _offset = new Vector3(_offsetSize, 0, _offsetSize);
-        GameObject gold = ObjectPool.Instance.SpawnFromPool("Gold", transform.position + _offset, Quaternion.identity);
-        AudioManager.Instance.PlayGoldSpawnSound();
-        if (gold != null)
-        {
-            GoldPickup goldPickup = gold.GetComponent<GoldPickup>();
-            goldPickup.Initialize(1);
-        }
     }
-
     #region IHealth Implementation
     public int GetCurrentHealth()
     {
