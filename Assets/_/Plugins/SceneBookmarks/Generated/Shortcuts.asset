@@ -22,24 +22,24 @@ MonoBehaviour:
       is2D: 0
       size: 14
       thumbnail: {fileID: 0}
-    - name: Playable R45_D06
+    - name: Playable R45_D10
       position: {x: 0, y: -1, z: 1}
       rotation: {x: 45.000004, y: 0, z: 0}
       isOrthographic: 1
       is2D: 0
+      size: 10
+      thumbnail: {fileID: 0}
+    - name: Playable R45_D06
+      position: {x: 0, y: -1, z: 1}
+      rotation: {x: 45, y: 0, z: 0}
+      isOrthographic: 1
+      is2D: 0
       size: 6
       thumbnail: {fileID: 0}
-    - name: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
-      isOrthographic: 0
+    - name: Playable R45_D04
+      position: {x: 0, y: -1, z: 1}
+      rotation: {x: 45, y: 0, z: 0}
+      isOrthographic: 1
       is2D: 0
-      size: 0
-      thumbnail: {fileID: 0}
-    - name: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
-      isOrthographic: 0
-      is2D: 0
-      size: 0
+      size: 4
       thumbnail: {fileID: 0}
