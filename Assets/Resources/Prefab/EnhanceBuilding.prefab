@@ -334,6 +334,14 @@ MonoBehaviour:
   damageScaleDuration: 0.2
   damageScaleMultiplier: 1.1
   AnimationDuration: 1
+  QuestContent: {fileID: 0}
+  m_spawnPos: {fileID: 0}
+  TxtQuestGold: {fileID: 0}
+  TxtMaxQuestCnt: {fileID: 0}
+  TxtCurQuestCnt: {fileID: 0}
+  MaxQuestCnt: 0
+  QuestPrice: 0
+  m_interverSpawnTime: 5
 --- !u!1 &2568678974686862959
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +517,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.4133334, y: 3.4133334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
