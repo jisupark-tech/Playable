@@ -626,8 +626,10 @@ public class WallController : MonoBehaviour, IHealth
         }
 
         // HP 바 표시
+        //TODO 2025-12-09
+        //안보이게(기존은 true)
         if (hpBarParent != null)
-            hpBarParent.gameObject.SetActive(true);
+            hpBarParent.gameObject.SetActive(false);
 
         // 문 시스템 초기화 (문이 있는 벽이면)
         if (haveGate)

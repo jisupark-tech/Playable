@@ -13,7 +13,7 @@ public class GoldStorage : MonoBehaviour
     [Header("Player Interaction")]
     public float playerDetectionRange = 1.5f; // 플레이어 감지 범위
     public float checkInterval = 0.1f; // 체크 간격
-
+    public float intervalTime = 0.2f;
     private List<List<GoldPickup>> goldLayers = new List<List<GoldPickup>>();
     private int totalGoldCount = 0;
     private PlayerController playerController;
@@ -36,11 +36,6 @@ public class GoldStorage : MonoBehaviour
         {
             StartCoroutine(CheckPlayerNear());
         }
-        //else
-        //{
-        //    // 비활성화 상태라면 나중에 활성화될 때 시작하도록 예약
-        //    StartCoroutine(WaitForActivationAndStart());
-        //}
     }
 
     public void AddGold(int amount = 1)
@@ -108,6 +103,10 @@ public class GoldStorage : MonoBehaviour
 
     public void TransferGoldTo(Transform target, int amount = 1)
     {
+        StartCoroutine(TransferGoldWithInterval(amount, target));  
+    }
+    public IEnumerator TransferGoldWithInterval(int amount, Transform target)
+    {
         int transferAmount = Mathf.Min(amount, totalGoldCount);
 
         for (int i = 0; i < transferAmount; i++)
@@ -131,10 +130,11 @@ public class GoldStorage : MonoBehaviour
                 {
                     goldLayers.RemoveAt(topLayer);
                 }
+
+                yield return new WaitForSeconds(intervalTime);
             }
         }
     }
-
     //TODO 2025-12-02
     //마이너스로 되는 Y 값의 좌표 위치 수정
     Vector3 GetNextGoldPosition()
