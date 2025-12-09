@@ -2028,6 +2028,10 @@ PrefabInstance:
       propertyPath: AnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: m_interverSpawnTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4306733303440444420, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3161,7 +3165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -3373,11 +3377,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3426,6 +3430,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -7539,7 +7547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -7751,11 +7759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7804,6 +7812,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -8315,7 +8327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -8523,11 +8535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8576,6 +8588,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -9020,7 +9036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -9232,11 +9248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9285,6 +9301,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -9873,7 +9893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -10085,11 +10105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10138,6 +10158,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -12866,7 +12890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -13078,11 +13102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13131,6 +13155,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -13403,7 +13431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: canCollectGold
@@ -13619,11 +13647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13672,6 +13700,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -50827,7 +50859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxBulletCount
@@ -51039,11 +51071,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51092,6 +51124,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
@@ -51248,6 +51284,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
       propertyPath: AnimationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555001768117327900, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
+      propertyPath: m_interverSpawnTime
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4306733303440444420, guid: 68c8e55f01fb5d3489f6dd2833f263b5, type: 3}
@@ -52524,7 +52564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: DitectDistance
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: canCollectGold
@@ -52740,11 +52780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469078148814095181, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52801,6 +52841,10 @@ PrefabInstance:
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: layerHeight
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: intervalTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7700549891343481277, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxGoldPerLayer
