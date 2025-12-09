@@ -59,6 +59,23 @@ public class BuildingRule
     public List<int> disableWallIndices = new List<int>();
 }
 
+[System.Serializable]
+public class SpawnMonsterRuleByBuilding
+{
+    public List<MonsterTypePerCntPack> LinePerMonsterCnt = new List<MonsterTypePerCntPack>();
+}
+
+[System.Serializable]
+public class MonsterTypePerCntPack
+{
+    [Tooltip("몬스터를 소환할 장소 번호,GameManager 상단에 있는 Roots에 들어있는 경로 Index 번호(현재 0~5까지 있음)")]
+    public int RootIdx;
+    [Tooltip("해당 트리거에 소환될 일반 몬스터 숫자")]
+    public int NormalMonsterCnt;
+    [Tooltip("해당 트리거에 소환될 보스 몬스터 숫자")]
+    public int BossMonsterCnt;
+}
+
 public enum EnemySpawnWay
 {
     Road,
@@ -129,6 +146,12 @@ public class GameManager : MonoBehaviour
     [Header("Phase Building Configuration")]
     public List<BuildingPhase> buildingPhases = new List<BuildingPhase>();
     public List<BuildingRule> buildingRules = new List<BuildingRule>();
+
+    //TODO 2025-12-09
+    [Header("Spawn Monster Trigger Event")]
+    private int MonsterSpawnEventIdx = 0;
+    //해당 리스트의 인덱스는 포탑의 총갯수와 같아야 함
+    public  List<SpawnMonsterRuleByBuilding> MonsterSpawnTriggerRules = new List<SpawnMonsterRuleByBuilding>();
 
     // Phase Building System 내부 변수들
     private int currentPhaseIndex = 0;
@@ -450,7 +473,9 @@ public class GameManager : MonoBehaviour
                 case EnemySpawnWay.Seperate:
                     if (m_Roots.Count > 0)
                     {
-                        for (int i = 0; i < m_Roots.Count; i++)
+                        int maxRoot = Mathf.Clamp(activeRootCount, 1, m_Roots.Count);
+
+                        for (int i = 0; i < maxRoot; i++)
                         {
                             for (int j = 0; j < m_PerSpawnEnemyCnt; j++)
                             {
@@ -492,6 +517,50 @@ public class GameManager : MonoBehaviour
                     }
                     break;
             }
+        }
+    }
+
+    //TODO 
+    //건물이 건설 되었을때, 추가로 소환하는 특수 소환 기술
+    public void SpawnEnemiesByBuildingComplete()
+    {
+        if (MonsterSpawnTriggerRules.Count > 0)
+        {
+            for(int i=0; i < MonsterSpawnTriggerRules[MonsterSpawnEventIdx].LinePerMonsterCnt.Count; i++ )
+            {
+                for(int j= 0;  j < MonsterSpawnTriggerRules[MonsterSpawnEventIdx].LinePerMonsterCnt[i].BossMonsterCnt; j++)
+                {
+                    Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
+                    Vector3 _randomPos = m_Roots[MonsterSpawnTriggerRules[MonsterSpawnEventIdx].LinePerMonsterCnt[i].RootIdx].SpawnPos.position + new Vector3(_randomOffset.x, 0, _randomOffset.y);
+                    EnemyController _enemyController = ObjectPool.Instance.SpawnFromPool("Boss", _randomPos, Quaternion.identity).GetComponent<EnemyController>();
+                    _enemyController.Initialize(m_MainCenter.transform);
+
+                    // Phase에 맞는 스탯 적용
+                    int phaseHealth = GetEnemyHealthForCurrentPhase();
+                    float phaseSpeed = GetEnemySpeedForCurrentPhase();
+
+                    phaseHealth = Mathf.RoundToInt(phaseHealth * BossHpMultiple); // 보스는 n배 체력
+                    phaseSpeed *= 0.8f; // 보스는 80% 속도
+
+                    _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
+                }
+
+                for(int k = 0; k < MonsterSpawnTriggerRules[MonsterSpawnEventIdx].LinePerMonsterCnt[i].NormalMonsterCnt; k++)
+                {
+                    Vector2 _randomOffset = Random.insideUnitCircle * m_enemySpreadVal;
+                    Vector3 _randomPos = m_Roots[MonsterSpawnTriggerRules[MonsterSpawnEventIdx].LinePerMonsterCnt[i].RootIdx].SpawnPos.position + new Vector3(_randomOffset.x, 0, _randomOffset.y);
+                    EnemyController _enemyController = ObjectPool.Instance.SpawnFromPool("Enemy", _randomPos, Quaternion.identity).GetComponent<EnemyController>();
+                    _enemyController.Initialize(m_MainCenter.transform);
+
+                    // Phase에 맞는 스탯 적용
+                    int phaseHealth = GetEnemyHealthForCurrentPhase();
+                    float phaseSpeed = GetEnemySpeedForCurrentPhase();
+
+                    _enemyController.SetStatsForPhase(phaseHealth, phaseSpeed);
+                }
+            }
+            MonsterSpawnEventIdx++;
+            Debug.Log($"=====MonsterSpawnEventIdx : {MonsterSpawnEventIdx}");
         }
     }
     //=====================================================
@@ -925,6 +994,7 @@ public class GameManager : MonoBehaviour
             UpdateActiveRootsByTurrets();
             CheckWallConditions();
             UpdateGuideLine();
+            SpawnEnemiesByBuildingComplete();
             return;
         }
 
@@ -946,7 +1016,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Sequential: All turrets unlocked!");
             }
         }
-
+        SpawnEnemiesByBuildingComplete();
         UpdateActiveRootsByTurrets();
         CheckWallConditions();
         UpdateGuideLine();
@@ -986,7 +1056,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Sequential: All mines unlocked!");
             }
         }
-
         //UpdateGuideLine();
         //CheckWallConditions();
     }
@@ -1029,6 +1098,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Sequential: All enhance unlocked!");
             }
         }
+
         //UpdateGuideLine();
         //CheckWallConditions();
     }

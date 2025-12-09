@@ -288,7 +288,20 @@ public class GoldPickup : MonoBehaviour
         isFlying = true;
 
         Vector3 startPosition = transform.position;
-        Vector3 targetPosition = target.position;
+        //TODO 2025-12-09
+        //플레이어의 경우 골드 스텍 쌓여있는 상단에
+        Vector3 targetPosition = Vector3.zero;
+        if (IsTargetPlayer(target))
+        {
+            PlayerController _player = target.gameObject.GetComponent<PlayerController>();
+            if (_player != null)
+            {
+                targetPosition = _player.GetGoldStackTopPos().localPosition;
+            }
+        }
+        else
+            targetPosition = target.position;
+
         float elapsed = 0f;
 
         // X, Z축은 직선 이동을 위한 시작 위치 저장
@@ -301,7 +314,7 @@ public class GoldPickup : MonoBehaviour
             float t = elapsed / arcDuration;
 
             // 타겟이 움직일 수 있으므로 실시간으로 목표 위치 업데이트
-            targetPosition = target.position;
+            targetPosition = IsTargetPlayer(target) ? target.GetComponent<PlayerController>().GetGoldStackTopPos().position :target.position;
             Vector3 targetXZ = new Vector3(targetPosition.x, 0, targetPosition.z);
 
             // X, Z축은 선형 보간 (직선 이동)

@@ -499,6 +499,15 @@ public class PlayerController : MonoBehaviour,IHealth
         }
     }
 
+    public Transform GetGoldStackTopPos()
+    {
+        if(m_golds.Count>0)
+        {
+            return m_golds.Peek().transform;
+        }
+
+        return GoldBag;
+    }
     #region Range Indicator
     void InitializeRangeIndicator()
     {
