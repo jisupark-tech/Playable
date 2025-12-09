@@ -20,6 +20,8 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     public GameObject outLine; // OutLine
     public GameObject coin; // Coin
     public GameObject goldStoragePoint; // 골드 저장소 위치
+    public GameObject MineSlider;
+    private float oriSliderSize = 1.7f;
 
     [Header("Visual Effects")]
     public ParticleSystem miningEffect; // 채굴 파티클 (옵션)
@@ -51,7 +53,7 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
         // 골드 저장소 초기화
         InitializeGoldStorage();
         InitializeDamageEffect();
-
+        InitializeGoldSlider();
         SetBuildState(false);
 
         // 가시성이 활성화된 경우에만 건설 체크 시작
@@ -102,7 +104,13 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
 
         Debug.Log($"MineController: GoldStorage initialized on {goldStoragePoint.name}");
     }
-
+    void InitializeGoldSlider()
+    {
+        if (MineSlider != null)
+        {
+            MineSlider.transform.localScale = new Vector3(0, oriSliderSize, 0);
+        }
+    }
     void SetBuildState(bool built)
     {
         isBuilt = built;
@@ -179,7 +187,7 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
-            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z, mineOBJ.transform.localRotation.y, 0.3f);
 
         if (float.IsNaN(originalMineScale.x) || float.IsNaN(originalMineScale.y) || float.IsNaN(originalMineScale.z))
         {
@@ -299,10 +307,22 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     public void CollectGold()
     {
         currPaidCost++;
-        if (TxtGold != null)
+
+        if (!isBuilt && isVisible)
         {
-            int _remainGold = mineCost - currPaidCost;
-            TxtGold.text = $"{_remainGold}";
+            int remainingCost = mineCost - currPaidCost;
+            if (remainingCost > 0)
+            {
+                if (TxtGold != null)
+                {
+                    int _remainGold = mineCost - currPaidCost;
+                    TxtGold.text = $"{_remainGold}";
+                }
+
+                // 건설 진행도에 따른 슬라이더 업데이트
+                float progress = (float)currPaidCost / mineCost;
+                UpdateGoldSlider(progress);
+            }
         }
         Debug.Log($"Mine received gold: {currPaidCost}/{mineCost}");
 
@@ -312,6 +332,26 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
             BuildMine();
         }
     }
+    void UpdateGoldSlider(float progress)
+    {
+        if (MineSlider == null) return;
+
+        // 진행도에 따른 Y축 스케일 조정
+        progress = Mathf.Clamp01(progress);
+        float targetScaleX = oriSliderSize * progress;
+
+        Vector3 currentScale = MineSlider.transform.localScale;
+        Vector3 targetScale = new Vector3(targetScaleX, currentScale.y, currentScale.z);
+
+        MineSlider.transform.localScale = targetScale;
+
+        // 슬라이더가 보이도록 활성화
+        if (!MineSlider.activeInHierarchy && progress > 0 && !isBuilt)
+        {
+            MineSlider.SetActive(true);
+        }
+    }
+
     void BuildMine()
     {
         Debug.Log($"Mine {gameObject.name} construction completed!");
@@ -556,4 +596,8 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
             GameManager.Instance.EndGame(false);
     }
     #endregion
+    public int GetRemainPaidGold()
+    {
+        return mineCost - currPaidCost;
+    }
 }

@@ -28,6 +28,9 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
     public GameObject outLine; // OutLine
     public GameObject coin; // Coin
     public TextMeshPro TxtGold;
+    public GameObject BuildingSlider;
+    public GameObject QuestSlider;
+    private float oriSliderSize = 1.7f;
 
     [Header("Visual Effects")]
     [SerializeField] private float damageFlashDuration = 0.15f;
@@ -63,7 +66,7 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
         _player = GameManager.Instance.m_Player;
 
         InitializeDamageEffect();
-
+        InitializeSlider();
         SetBuildState(false);
 
         if (isVisible && this.gameObject.activeInHierarchy)
@@ -91,7 +94,18 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
             originalScale = enhanceOBJ.transform.localScale;
         }
     }
+    void InitializeSlider()
+    {
+        if (BuildingSlider != null)
+        {
+            BuildingSlider.transform.localScale = new Vector3(0, oriSliderSize, 0);
+        }
 
+        if(QuestSlider != null)
+        {
+            QuestSlider.transform.localScale = new Vector3(0, oriSliderSize, 0);
+        }
+    }
     void SetBuildState(bool built)
     {
         isBuilt = built;
@@ -166,7 +180,7 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
-            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z, enhanceOBJ.transform.localRotation.y,0.3f);
 
         if (float.IsNaN(originalenhnaceScale.x) || float.IsNaN(originalenhnaceScale.y) || float.IsNaN(originalenhnaceScale.z))
         {
@@ -273,6 +287,9 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
             if (TxtCurQuestCnt != null)
                 TxtCurQuestCnt.text = CurQuestCnt.ToString();
 
+            float progress = (float)CurQuestPaid / QuestPrice;
+            UpdateQuestSlider(progress);
+
             if (CurQuestPaid >= QuestPrice)
             {
                 SpawnNPC();
@@ -309,16 +326,65 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
     public void CollectGold()
     {
         currPaidCost++;
-        if (TxtGold != null)
+        if (!isBuilt && isVisible)
         {
-            int _remainGold = enhanceCost - currPaidCost;
-            TxtGold.text = $"{_remainGold}";
+            int remainingCost = enhanceCost - currPaidCost;
+            if (remainingCost > 0)
+            {
+                if (TxtGold != null)
+                {
+                    int _remainGold = enhanceCost - currPaidCost;
+                    TxtGold.text = $"{_remainGold}";
+                }
+
+                // 건설 진행도에 따른 슬라이더 업데이트
+                float progress = (float)currPaidCost / enhanceCost;
+                UpdateGoldSlider(progress);
+            }
         }
+
         Debug.Log($"enhanceCost received gold: {currPaidCost}/{enhanceCost}");
 
         if (currPaidCost == enhanceCost)
         {
             BuildEnhance();
+        }
+    }
+    void UpdateGoldSlider(float progress)
+    {
+        if (BuildingSlider == null) return;
+
+        // 진행도에 따른 Y축 스케일 조정
+        progress = Mathf.Clamp01(progress);
+        float targetScaleX = oriSliderSize * progress;
+
+        Vector3 currentScale = BuildingSlider.transform.localScale;
+        Vector3 targetScale = new Vector3(targetScaleX, currentScale.y, currentScale.z);
+
+        BuildingSlider.transform.localScale = targetScale;
+
+        // 슬라이더가 보이도록 활성화
+        if (!BuildingSlider.activeInHierarchy && progress > 0 && !isBuilt)
+        {
+            BuildingSlider.SetActive(true);
+        }
+    }
+    void UpdateQuestSlider(float progress)
+    {
+        if (QuestSlider == null) return;
+
+        // 진행도에 따른 Y축 스케일 조정
+        progress = Mathf.Clamp01(progress);
+        float targetScaleX = oriSliderSize * progress;
+        Vector3 currentScale = QuestSlider.transform.localScale;
+        Vector3 targetScale = new Vector3(targetScaleX, currentScale.y, currentScale.z);
+
+        QuestSlider.transform.localScale = targetScale;
+
+        // 슬라이더가 보이도록 활성화
+        if (!QuestSlider.activeInHierarchy && progress > 0)
+        {
+            QuestSlider.SetActive(true);
         }
     }
     void BuildEnhance()
@@ -486,4 +552,8 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
         //지금 빌드에서는 파괴 고민 X 
     }
     #endregion
+    public int GetRemainPaidGold()
+    {
+        return enhanceCost - currPaidCost;
+    }
 }

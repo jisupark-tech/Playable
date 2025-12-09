@@ -355,7 +355,7 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
-            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z, turretOBJ.transform.localRotation.y, 0.3f);
 
         if (float.IsNaN(originalTurretScale.x) || float.IsNaN(originalTurretScale.y) || float.IsNaN(originalTurretScale.z))
         {
@@ -908,6 +908,10 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
 
     public bool IsBuild => isBuilt;
     #endregion
+    public int GetRemainPaidGold()
+    {
+        return turretCost - currPaidCost;
+    }
 
     #region Gizmos (기즈모)
     void OnDrawGizmosSelected()

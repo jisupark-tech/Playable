@@ -545,7 +545,7 @@ public class WallController : MonoBehaviour, IHealth
 
         EffectController _effect = ObjectPool.Instance.SpawnFromPool("Effect", this.transform.position, Quaternion.identity, ObjectPool.Instance.transform).GetComponent<EffectController>();
         if (_effect)
-            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z);
+            _effect.Init(EffectType.Building, this.transform.position.x, this.transform.position.z,this.transform.rotation.y);
 
         // 벽 오브젝트 활성화
         wallObj.SetActive(true);

@@ -1136,6 +1136,39 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        TurretController _turret = target.GetComponent<TurretController>();
+        if(_turret!=null)
+        {
+            int _cost = _turret.GetRemainPaidGold();
+            if (_cost > currentGold)
+            {
+                ClearGuideLine();
+                return;
+            }
+        }
+
+        MineController _mine = target.GetComponent<MineController>();
+        if (_mine != null)
+        {
+            int _cost = _mine.GetRemainPaidGold();
+            if (_cost > currentGold)
+            {
+                ClearGuideLine();
+                return;
+            }
+        }
+
+        EnhanceController _enhance = target.GetComponent<EnhanceController>();
+        if (_enhance != null)
+        {
+            int _cost = _enhance.GetRemainPaidGold();
+            if (_cost > currentGold)
+            {
+                ClearGuideLine();
+                return;
+            }
+        }
+
         if (_currentGuide == null)
         {
             GameObject guideObj = ObjectPool.Instance
@@ -1292,6 +1325,7 @@ public class GameManager : MonoBehaviour
     {
         currentGold += amount;
         UpdateGoldUI();
+        UpdateGuideLine();
 
         if (m_Player)
             m_Player.OnGoldStackCall(currentGold);

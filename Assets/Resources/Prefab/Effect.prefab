@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
   durationLength: 0.4
-  speed: 2
+  speed: 25.54
   noiseScale: 0.1
   fadeCurve:
     serializedVersion: 2
@@ -90,7 +90,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_offest: {x: 0.2, y: 0.05, z: 0.2}
+  m_offest: {x: 0, y: -0.6, z: 0}
 --- !u!1001 &1416614603487684912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,6 +99,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5932058666183914322}
     m_Modifications:
+    - target: {fileID: 5825121492419579035, guid: 4dd6dd1d5f97aeb4991eeb6c0371bc22, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825121492419579035, guid: 4dd6dd1d5f97aeb4991eeb6c0371bc22, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825121492419579035, guid: 4dd6dd1d5f97aeb4991eeb6c0371bc22, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2072346943
+      objectReference: {fileID: 0}
     - target: {fileID: 6402335598532025151, guid: 4dd6dd1d5f97aeb4991eeb6c0371bc22, type: 3}
       propertyPath: m_Name
       value: Smoke

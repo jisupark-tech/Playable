@@ -54,6 +54,60 @@ MonoBehaviour:
   SetFlytoPlayer: 0
   HorizontalStand: 1
   PatternizeCoinArray: 1
+  UseParabolicArc: 1
+  arcHeight: 4
+  arcDuration: 0.5
+  arcCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.06318045
+      value: 0.47834218
+      inSlope: 3.0151618
+      outSlope: 3.0151618
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.438834
+      value: 0.90099114
+      inSlope: 0.10544949
+      outSlope: 0.10544949
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.94299287
+      value: 0.47053796
+      inSlope: -2.439275
+      outSlope: -2.439275
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -0.002380371
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   bounceCount: 2
   maxBounceHeight: 0.7
   bounceDecayRate: 0.95

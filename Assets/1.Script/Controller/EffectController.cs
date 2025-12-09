@@ -23,11 +23,12 @@ public class EffectController : MonoBehaviour
     private float curDuration = 0;
     private EffectType m_type;
 
-    public void Init(EffectType _type, float _x = 0, float _z = 0)
+    public void Init(EffectType _type, float _x = 0, float _z = 0, float _rotationY = 0, float _scale = 1f)
     {
         curDuration = 0;
         m_type = _type;
-
+        transform.eulerAngles = new Vector3(0, _rotationY,0);
+        transform.localScale = Vector3.one*_scale;
         switch (m_type)
         {
             case EffectType.Building:
