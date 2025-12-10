@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour, IHealth
 {
+    [Header("Can Targetable")]
+    public bool targetable = true;
     [Header("Enemy Settings")]
     public int health = 1;
     public float moveSpeed = 3f;
@@ -204,7 +206,7 @@ public class EnemyController : MonoBehaviour, IHealth
 
         // IHealth 체크만 (간단하게)
         IHealth health = target.GetComponent<IHealth>();
-        if (health != null && health.IsDead())
+        if (health != null && health.IsDead() && health.CanTargetable())
             return false;
 
         return true;
@@ -504,7 +506,7 @@ public class EnemyController : MonoBehaviour, IHealth
         targetBuildingTransform = newTarget;
         targetBuilding = newTarget.GetComponent<IHealth>();
 
-        if (targetBuilding == null || !targetBuilding.IsDead())
+        if (targetBuilding == null || (!targetBuilding.IsDead()&& targetBuilding.CanTargetable()))
         {
             isAttackingBuilding = true;
             hasAssignedPosition = false;
@@ -714,7 +716,7 @@ public class EnemyController : MonoBehaviour, IHealth
 
     void AttackTargetBuilding()
     {
-        if (targetBuilding != null && !targetBuilding.IsDead())
+        if (targetBuilding != null && !targetBuilding.IsDead() && targetBuilding.CanTargetable())
         {
             targetBuilding.TakeDamage(buildingDamage);
             Debug.Log($"Enemy {gameObject.name} attacked building for {buildingDamage} damage!");
@@ -834,6 +836,10 @@ public class EnemyController : MonoBehaviour, IHealth
     public void OnDeath()
     {
         Die(BulletOwner.Player, null);
+    }
+    public bool CanTargetable()
+    {
+        return targetable;
     }
     #endregion
 

@@ -326,6 +326,7 @@ MonoBehaviour:
   currPaidCost: 0
   ditectDistance: 2
   m_type: 0
+  targetable: 1
   maxHealth: 80
   enhanceOBJ: {fileID: 2601679280143115893}
   outLine: {fileID: 6998943195543586768}
@@ -345,6 +346,15 @@ MonoBehaviour:
   MaxQuestCnt: 0
   QuestPrice: 0
   m_interverSpawnTime: 5
+  hpBarParent: {fileID: 8797425989446896004}
+  hpBackgroundRenderer: {fileID: 4306733303440444420}
+  hpFillRenderer: {fileID: 7401208207509629540}
+  hpBackgroundSprite: {fileID: 876701767, guid: acaba5be711437b4f981f15d1aee1b04, type: 3}
+  hpFillSprite: {fileID: 876701767, guid: acaba5be711437b4f981f15d1aee1b04, type: 3}
+  hpBarOffset: {x: 0, y: 0.4, z: 0}
+  hpBarSize: {x: 0.9, y: 0.8}
+  hpFullColor: {r: 0, g: 1, b: 0, a: 1}
+  hpLowColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2435839545699942111
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.366, y: 0}
+  m_AnchoredPosition: {x: 0.347, y: 0}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4052229441536282283
@@ -911,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 4682706615541388529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: 0}
+  m_LocalPosition: {x: -0.409, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.255, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

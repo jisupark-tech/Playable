@@ -1,12 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class WallController : MonoBehaviour, IHealth
 {
     [Header("Wall Requirements")]
     public TurretController[] requiredTurrets; // 건설에 필요한 터렛들
     public bool haveGate = false; // 문이 있는 벽인지
+    [Header("Can Targetable")]
+    public bool targetable = true;
+    [Header("Wall Cost Parts")]
+    public GameObject OutLine;
+    public TextMeshPro TxtGold;
+    public GameObject GoldSlider;
+    public int RestorePrice;
+    private int CurpaidGold;
+    public float ditectDistance;
+    private float oriSliderSize = 1.7f;
 
     [Header("Wall Objects - Wood (Pre-Upgrade)")]
     public GameObject gateWall_Wood; // 문이 있는 벽 (나무)
@@ -189,9 +199,6 @@ public class WallController : MonoBehaviour, IHealth
         if (gateWall != null && gateWall.activeSelf) gateWall.SetActive(false);
         if (noneGateWall != null && noneGateWall.activeSelf) noneGateWall.SetActive(false);
 
-        // 체력 초기화
-        currentHealth = maxHealth;
-
         // HP 바 초기화
         InitializeHealthBar();
 
@@ -203,18 +210,22 @@ public class WallController : MonoBehaviour, IHealth
             InitializeGatePositions();
         }
 
+        InitGoldPaid();
+
         // 건설 조건 체크 시작
         StartCoroutine(CheckBuildCondition());
 
         DebugLog("Wall initialization completed");
     }
 
+    //TODO 수정
+    //2025-12-10 성벽은 3D이기때문에 단순 Renderer로는 안됨.
+
     void InitializeDamageEffect()
     {
         if (activeWall != null)
         {
             buildingRenderers = activeWall.GetComponentsInChildren<Renderer>();
-
             originalColors = new Color[buildingRenderers.Length];
 
             for (int i = 0; i < buildingRenderers.Length; i++)
@@ -224,38 +235,15 @@ public class WallController : MonoBehaviour, IHealth
                     originalColors[i] = buildingRenderers[i].material.color;
                 }
             }
+
+            originalScale = activeWall.transform.localScale;
         }
     }
 
     void InitializeHealthBar()
     {
-        //if (hpBarParent == null)
-        //{
-        //    // HP 바 부모 오브젝트가 없으면 자동 생성
-        //    GameObject hpBarObj = new GameObject("HPBar");
-        //    hpBarObj.transform.SetParent(transform);
-        //    hpBarObj.transform.localPosition = hpBarOffset;
-        //    hpBarParent = hpBarObj.transform;
-        //}
-
-        //// HP 배경 설정
-        //if (hpBackgroundRenderer == null)
-        //{
-        //    GameObject hpBg = new GameObject("HPBackground");
-        //    hpBg.transform.SetParent(hpBarParent);
-        //    hpBg.transform.localPosition = Vector3.zero;
-        //    hpBackgroundRenderer = hpBg.AddComponent<SpriteRenderer>();
-        //}
-
-        //// HP 채우기 설정
-        //if (hpFillRenderer == null)
-        //{
-        //    GameObject hpFill = new GameObject("HPFill");
-        //    hpFill.transform.SetParent(hpBarParent);
-        //    hpFill.transform.localPosition = Vector3.zero;
-        //    hpFillRenderer = hpFill.AddComponent<SpriteRenderer>();
-        //}
-
+        // 체력 초기화
+        currentHealth = maxHealth;
         // 스프라이트 설정
         if (hpBackgroundSprite != null)
             hpBackgroundRenderer.sprite = hpBackgroundSprite;
@@ -277,21 +265,28 @@ public class WallController : MonoBehaviour, IHealth
         UpdateHealthBar();
     }
 
+    void InitGoldPaid()
+    {
+        if (TxtGold != null)
+            TxtGold.text = CurpaidGold.ToString();
+
+        if(GoldSlider!=null)
+        {
+            GoldSlider.transform.localScale = new Vector3(0, oriSliderSize, 0);
+        }
+
+        if (OutLine != null)
+            OutLine.SetActive(false);
+    }
     void UpdateHealthBar()
     {
         if (hpFillRenderer == null) return;
 
-        float healthRatio = (float)currentHealth / maxHealth;
-
+        float healthRatio = (float)currentHealth / GetMaxHealth();
         // HP 바 크기 조정 (왼쪽에서부터 채워지도록)
         Vector2 fillSize = hpBarSize;
         fillSize.x *= healthRatio;
-        hpFillRenderer.size = fillSize;
-
-        // 위치 조정 (중앙 정렬 유지)
-        Vector3 fillPos = Vector3.zero;
-        fillPos.x = -(hpBarSize.x - fillSize.x) * 0.5f;
-        hpFillRenderer.transform.localPosition = fillPos;
+        hpFillRenderer.gameObject.transform.localScale = new Vector3(fillSize.x, fillSize.y, 1);
 
         // 색상 변경
         Color targetColor = Color.Lerp(hpLowColor, hpFullColor, healthRatio);
@@ -335,6 +330,82 @@ public class WallController : MonoBehaviour, IHealth
             //TODO Check
             //2025-12-04
             yield return new WaitForSeconds(0.1f); // 0.5초마다 체크
+        }
+    }
+
+    IEnumerator CheckRebuildCondition()
+    {
+        if(OutLine!=null && !OutLine.activeInHierarchy)
+        {
+            OutLine.SetActive(true);
+
+            PlayerController _player = GameManager.Instance.m_Player;
+
+            while (!isBuilt && _player != null)
+            {
+                if (_player != null)
+                {
+
+                    if (CurpaidGold <= RestorePrice)
+                    {
+                        float distance = Vector3.Distance(_player.transform.position, transform.position);
+                        if (distance <= ditectDistance)
+                        {
+                            if (GameManager.Instance.GetCurrentGold() > 0 && CurpaidGold < RestorePrice)
+                            {
+                                SendGoldToRespawn();
+                            }
+                        }
+                    }
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+    }
+    void SendGoldToRespawn()
+    {
+        if (GameManager.Instance.SpendGold(1))
+        {
+            PlayerController _player = GameManager.Instance.m_Player;
+
+            _player.OnSendGoldToTurret(OutLine.transform);
+
+            CurpaidGold++;
+
+            if (TxtGold != null)
+            {
+                int _remainGold = RestorePrice - CurpaidGold;
+                TxtGold.text = $"{_remainGold}";
+            }
+
+            float progress = (float)CurpaidGold / RestorePrice;
+            UpdateRespawnSlider(progress);
+
+            if (CurpaidGold >= RestorePrice)
+            {
+                ShowWall();
+                InitializeHealthBar();
+                if (OutLine != null && OutLine.activeInHierarchy)
+                    OutLine.SetActive(false);
+            }
+        }
+    }
+    void UpdateRespawnSlider(float progress)
+    {
+        if (GoldSlider == null) return;
+
+        // 진행도에 따른 Y축 스케일 조정
+        progress = Mathf.Clamp01(progress);
+        float targetScaleX = oriSliderSize * progress;
+        Vector3 currentScale = GoldSlider.transform.localScale;
+        Vector3 targetScale = new Vector3(targetScaleX, currentScale.y, currentScale.z);
+
+        GoldSlider.transform.localScale = targetScale;
+
+        // 슬라이더가 보이도록 활성화
+        if (!GoldSlider.activeInHierarchy && progress > 0)
+        {
+            GoldSlider.SetActive(true);
         }
     }
 
@@ -478,8 +549,9 @@ public class WallController : MonoBehaviour, IHealth
         {
             gameObject.SetActive(true);
             DebugLog("Wall shown and construction started");
-            BuildWall();
         }
+
+        BuildWall();
     }
 
     void HideWall()
@@ -511,8 +583,8 @@ public class WallController : MonoBehaviour, IHealth
         {
             activeWall = wallToActivate;
             isUpgraded = shouldUpgrade;
-
-            DebugLog($"벽 건설: {activeWall.name} (업그레이드 상태: {isUpgraded})");
+            InitializeDamageEffect();
+            Debug.Log($"벽 건설: {activeWall.name} (업그레이드 상태: {isUpgraded})");
 
             StartCoroutine(BuildWallAnimation(activeWall));
         }
@@ -629,7 +701,7 @@ public class WallController : MonoBehaviour, IHealth
         //TODO 2025-12-09
         //안보이게(기존은 true)
         if (hpBarParent != null)
-            hpBarParent.gameObject.SetActive(false);
+            hpBarParent.gameObject.SetActive(true);
 
         // 문 시스템 초기화 (문이 있는 벽이면)
         if (haveGate)
@@ -754,21 +826,6 @@ public class WallController : MonoBehaviour, IHealth
     void UpdateGateReferences()
     {
         if (!haveGate || activeWall == null) return;
-
-        // 활성 벽에서 문짝들을 다시 찾기
-        //Transform[] childTransforms = activeWall.GetComponentsInChildren<Transform>();
-
-        //foreach (Transform child in childTransforms)
-        //{
-        //    if (child.name.Contains("Gate_L") || child.name.Contains("Left"))
-        //    {
-        //        Gate_L_Parent = child;
-        //    }
-        //    else if (child.name.Contains("Gate_R") || child.name.Contains("Right"))
-        //    {
-        //        Gate_R_Parent = child;
-        //    }
-        //}
 
         // 문 위치 다시 초기화
         if (Gate_L_Parent != null && Gate_R_Parent != null)
@@ -924,7 +981,7 @@ public class WallController : MonoBehaviour, IHealth
 
         StartDamageFlashEffect();
 
-        DebugLog($"Wall healed {amount}. Health: {currentHealth}/{maxHealth}");
+        Debug.Log($"Wall healed {amount}. Health: {currentHealth}/{maxHealth}");
     }
     void StartDamageFlashEffect()
     {
@@ -941,29 +998,29 @@ public class WallController : MonoBehaviour, IHealth
         isFlashingDamage = true;
 
         // 1. 색상 화이트 플래시
-        for (int i = 0; i < buildingRenderers.Length; i++)
-        {
-            if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
-            {
-                buildingRenderers[i].material.color = Color.red;
-            }
-        }
+        //for (int i = 0; i < buildingRenderers.Length; i++)
+        //{
+        //    if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
+        //    {
+        //        buildingRenderers[i].material.color = Color.red;
+        //    }
+        //}
 
         // 2. 크기 증가
         Vector3 scaledSize = originalScale * damageScaleMultiplier;
         activeWall.transform.localScale = scaledSize;
 
         // 3. 화이트 플래시 지속 시간
-        yield return new WaitForSeconds(damageFlashDuration);
+        //yield return new WaitForSeconds(damageFlashDuration);
 
         // 4. 원본 색상으로 복귀
-        for (int i = 0; i < buildingRenderers.Length; i++)
-        {
-            if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
-            {
-                buildingRenderers[i].material.color = originalColors[i];
-            }
-        }
+        //for (int i = 0; i < buildingRenderers.Length; i++)
+        //{
+        //    if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
+        //    {
+        //        buildingRenderers[i].material.color = originalColors[i];
+        //    }
+        //}
 
         // 5. 크기 복귀 애니메이션
         float elapsedTime = 0f;
@@ -1002,7 +1059,19 @@ public class WallController : MonoBehaviour, IHealth
     {
         // 체력 변화 시 호출되는 이벤트
         // UI 업데이트나 다른 시스템에 알림을 보낼 수 있음
-        DebugLog($"Health changed: {currentHealth}/{maxHealth} ({GetHealthRatio():F2})");
+        if (hpFillRenderer == null) return;
+
+        float healthRatio = (float)currentHealth / GetMaxHealth();
+        // HP 바 크기 조정 (왼쪽에서부터 채워지도록)
+        Vector2 fillSize = hpBarSize;
+        fillSize.x *= healthRatio;
+        hpFillRenderer.gameObject.transform.localScale = new Vector3(fillSize.x, fillSize.y, 1);
+
+        // 색상 변경
+        Color targetColor = Color.Lerp(hpLowColor, hpFullColor, healthRatio);
+        hpFillRenderer.color = targetColor;
+
+
     }
 
     public void OnDeath()
@@ -1037,13 +1106,15 @@ public class WallController : MonoBehaviour, IHealth
         activeWall = null;
         currentHealth = maxHealth;
 
-        if (GameManager.Instance != null)
-            GameManager.Instance.EndGame(false);
+        //TODO 2025-12-10
+        //성벽은 게임 종료 조건에서 삭제
+        //if (GameManager.Instance != null)
+        //    GameManager.Instance.EndGame(false);
 
         //TODO 2025-12-04
         //아래 조건 삭제
         // 건설 조건 다시 체크 시작
-        //StartCoroutine(CheckBuildCondition());
+        StartCoroutine(CheckRebuildCondition());
 
     }
 
@@ -1108,7 +1179,10 @@ public class WallController : MonoBehaviour, IHealth
     {
         return _min <= _target && _target <= _max;
     }
-
+    public bool CanTargetable()
+    {
+        return targetable;
+    }
     //=====================================================
     // 디버그 및 Gizmos
     //=====================================================

@@ -16,4 +16,5 @@ public interface IHealth
 
     void OnDeath();
     float GetHealthRatio();
+    bool CanTargetable();
 }

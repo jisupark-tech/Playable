@@ -10,7 +10,8 @@ public class MainCenterController : MonoBehaviour, IHealth
     public GameObject outLine;   // 아웃라인
     public GameObject coin;      // 골드 아이콘
     public TextMeshPro txtRemainGold; // 필요 골드 표시
-
+    [Header("Can Targetable")]
+    public bool targetable = true;
     [Header("Upgrade Settings")]
     [SerializeField] private int upgradeCost = 50;           // 업그레이드 비용
     [SerializeField] private int currentPaidGold = 0;        // 현재 지불한 골드
@@ -177,16 +178,10 @@ public class MainCenterController : MonoBehaviour, IHealth
         if (hpFillRenderer == null) return;
 
         float healthRatio = (float)currentHealth / GetMaxHealth();
-
         // HP 바 크기 조정 (왼쪽에서부터 채워지도록)
         Vector2 fillSize = hpBarSize;
         fillSize.x *= healthRatio;
-        hpFillRenderer.size = fillSize;
-
-        // 위치 조정 (중앙 정렬 유지)
-        //Vector3 fillPos = Vector3.zero;
-        //fillPos.x = -(hpBarSize.x - fillSize.x) * 0.5f;
-        //hpFillRenderer.transform.localPosition = fillPos;
+        hpFillRenderer.gameObject.transform.localScale = new Vector3(fillSize.x, fillSize.y,1);
 
         // 색상 변경
         Color targetColor = Color.Lerp(hpLowColor, hpFullColor, healthRatio);
@@ -694,6 +689,10 @@ public class MainCenterController : MonoBehaviour, IHealth
     {
         int maxHP = GetMaxHealth();
         return maxHP > 0 ? (float)currentHealth / maxHP : 0f;
+    }
+    public bool CanTargetable()
+    {
+        return targetable;
     }
     #endregion
 

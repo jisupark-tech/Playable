@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour,IHealth
 {
+    [Header("Can Targetable")]
+    public bool targetable = true;
     [Header("Gold Bag")]
     public Transform GoldBag;
     public Stack<GoldPickup> m_golds = new Stack<GoldPickup>();
@@ -656,15 +658,18 @@ public class PlayerController : MonoBehaviour,IHealth
         //플레이어는 무조건 살이있게
         return false;
     }
-
+    public bool CanTargetable()
+    {
+        return targetable;
+    }
     public void OnHealthChanged(int currentHealth, int maxHealth)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public float GetHealthRatio()

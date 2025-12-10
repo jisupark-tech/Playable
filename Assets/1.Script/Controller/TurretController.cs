@@ -13,7 +13,8 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     public int currPaidCost = 0; // 현재 지불된 비용
     public float DitectDistance = 2f; // 플레이어 감지 거리
     public bool canCollectGold = true;
-
+    [Header("Can Targetable")]
+    public bool targetable = true;
     [Header("Upgrade Settings")]
     public bool isUpgraded = false; // 업그레이드 여부
     public int maxBulletCount = 2; // 업그레이드 후 최대 발사 개수
@@ -40,6 +41,16 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     [Header("Animation")]
     [SerializeField] private float AnimationDuration = 1f;
     [SerializeField] private float WaitTimeBeforeRising = 0.15f;
+    [Header("HP Display (SpriteRenderer)")]
+    public Transform hpBarParent; // HP 바 부모 오브젝트
+    public SpriteRenderer hpBackgroundRenderer; // HP 배경 스프라이트 (HPBack)
+    public SpriteRenderer hpFillRenderer; // HP 채우기 스프라이트 (HP)
+    public Sprite hpBackgroundSprite; // HP 배경 스프라이트
+    public Sprite hpFillSprite; // HP 채우기 스프라이트
+    public Vector3 hpBarOffset = new Vector3(0, 3f, 0); // 메인센터 위 HP 바 위치
+    public Vector2 hpBarSize = new Vector2(2f, 0.3f); // HP 바 크기 (World Space)
+    public Color hpFullColor = Color.green; // 체력 100% 색상
+    public Color hpLowColor = Color.red; // 체력 낮을 때 색상
     // 피격 연출용 원본 데이터 저장
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
@@ -78,6 +89,7 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
 
         InitializeGoldSlider();
         InitializeGoldStorage();
+        InitializeHPBar();
         InitializeCostDisplay(); // 비용 표시 초기화
         SetBuildState(false);
 
@@ -95,6 +107,11 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
         }
     }
 
+    void InitializeHPBar()
+    {
+        if (hpBackgroundRenderer != null)
+            hpBackgroundRenderer.gameObject.SetActive(false);
+    }
     /// <summary>
     /// 피격 연출을 위한 초기화 (렌더러와 원본 색상 저장)
     /// </summary>
@@ -874,6 +891,20 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     {
         // HP바 UI 업데이트 등 (필요시 구현)
         // Debug.Log($"Turret Health: {currentHealth}/{maxHealth}");
+        if (hpFillRenderer == null) return;
+
+        if (hpFillRenderer.gameObject.activeInHierarchy == false)
+            return;
+
+        float healthRatio = (float)currentHealth / GetMaxHealth();
+        // HP 바 크기 조정 (왼쪽에서부터 채워지도록)
+        Vector2 fillSize = hpBarSize;
+        fillSize.x *= healthRatio;
+        hpFillRenderer.gameObject.transform.localScale = new Vector3(fillSize.x, fillSize.y, 1);
+
+        // 색상 변경
+        Color targetColor = Color.Lerp(hpLowColor, hpFullColor, healthRatio);
+        hpFillRenderer.color = targetColor;
     }
 
     public void OnDeath()
@@ -912,7 +943,10 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     {
         return turretCost - currPaidCost;
     }
-
+    public bool CanTargetable()
+    {
+        return targetable;
+    }
     #region Gizmos (기즈모)
     void OnDrawGizmosSelected()
     {

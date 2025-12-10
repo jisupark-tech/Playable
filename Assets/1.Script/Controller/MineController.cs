@@ -10,7 +10,8 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     public int goldPerGeneration = 1; // 한 번에 생성되는 골드 수
     public int currPaidCost = 0; // 현재 지불된 비용
     public float DitectDistance = 2f;
-
+    [Header("Can Targetable")]
+    public bool targetable = true;
     [Header("Health Settings")]
     public int maxHealth = 80; // 광산의 체력
     private int currentHealth;
@@ -34,6 +35,16 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     private bool isVisible = true; // 순차 건설의 가시성 관리
     private bool isGeneratingGold = false;
 
+    [Header("HP Display (SpriteRenderer)")]
+    public Transform hpBarParent; // HP 바 부모 오브젝트
+    public SpriteRenderer hpBackgroundRenderer; // HP 배경 스프라이트 (HPBack)
+    public SpriteRenderer hpFillRenderer; // HP 채우기 스프라이트 (HP)
+    public Sprite hpBackgroundSprite; // HP 배경 스프라이트
+    public Sprite hpFillSprite; // HP 채우기 스프라이트
+    public Vector3 hpBarOffset = new Vector3(0, 3f, 0); // 메인센터 위 HP 바 위치
+    public Vector2 hpBarSize = new Vector2(2f, 0.3f); // HP 바 크기 (World Space)
+    public Color hpFullColor = Color.green; // 체력 100% 색상
+    public Color hpLowColor = Color.red; // 체력 낮을 때 색상
     // 피격 연출 관련 변수
     private Renderer[] buildingRenderers;
     private Color[] originalColors;
@@ -556,6 +567,17 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     {
         // HP바 UI 업데이트 등 (필요시 구현)
         // Debug.Log($"Mine Health: {currentHealth}/{maxHealth}");
+        if (hpFillRenderer == null) return;
+
+        float healthRatio = (float)currentHealth / GetMaxHealth();
+        // HP 바 크기 조정 (왼쪽에서부터 채워지도록)
+        Vector2 fillSize = hpBarSize;
+        fillSize.x *= healthRatio;
+        hpFillRenderer.gameObject.transform.localScale = new Vector3(fillSize.x, fillSize.y, 1);
+
+        // 색상 변경
+        Color targetColor = Color.Lerp(hpLowColor, hpFullColor, healthRatio);
+        hpFillRenderer.color = targetColor;
     }
 
     public void OnDeath()
@@ -599,5 +621,9 @@ public class MineController : MonoBehaviour, IHealth , ICollectable
     public int GetRemainPaidGold()
     {
         return mineCost - currPaidCost;
+    }
+    public bool CanTargetable()
+    {
+        return targetable;
     }
 }

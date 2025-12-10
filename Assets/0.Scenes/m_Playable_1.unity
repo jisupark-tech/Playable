@@ -1276,11 +1276,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -1397,7 +1405,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &198455366 stripped
 Transform:
@@ -2708,11 +2719,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -2825,7 +2844,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &328713824 stripped
 Transform:
@@ -3158,6 +3180,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -4300,11 +4326,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -4417,7 +4451,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &483403523 stripped
 Transform:
@@ -4929,11 +4966,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -5050,7 +5095,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &488614055 stripped
 Transform:
@@ -5756,7 +5804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -6016,11 +6064,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -6125,7 +6181,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &662086262 stripped
 Transform:
@@ -6563,7 +6622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -6867,11 +6926,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -6988,7 +7055,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &747240699 stripped
 Transform:
@@ -7540,6 +7610,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -8322,6 +8396,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
       value: 5
       objectReference: {fileID: 0}
@@ -9029,6 +9107,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -9888,6 +9970,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
       value: 15
       objectReference: {fileID: 0}
@@ -10533,7 +10619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -10837,11 +10923,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -10950,7 +11044,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &1493493884 stripped
 Transform:
@@ -11310,7 +11407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -11558,11 +11655,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -11667,7 +11772,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &1620016299 stripped
 Transform:
@@ -11949,7 +12057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -12221,11 +12329,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -12330,7 +12446,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &1641903986 stripped
 Transform:
@@ -12483,7 +12602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1289368750648223430, guid: 3539cf0ea2ec97c46a1d65032da633de, type: 3}
       propertyPath: rotationSpeed
@@ -12973,6 +13092,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
@@ -13516,6 +13639,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
       value: 5
       objectReference: {fileID: 0}
@@ -14029,7 +14156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -14337,11 +14464,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -14458,7 +14593,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &1937287242 stripped
 Transform:
@@ -14882,7 +15020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3093278381459996934, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_SortingLayer
@@ -15190,11 +15328,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -15311,7 +15457,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!4 &2005079665 stripped
 Transform:
@@ -50950,6 +51099,10 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
       value: 20
       objectReference: {fileID: 0}
@@ -51900,7 +52053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2160025241149335982, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2679333649791390343, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: m_CastShadows
@@ -52176,11 +52329,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.5
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: hpBarSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      propertyPath: RestorePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8261796582236478650, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
       propertyPath: hpFillSprite
@@ -52285,7 +52446,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6275045519995450991, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c17b308204fff24e83b3c9a077a723f, type: 3}
 --- !u!1001 &5047436413157120845
 PrefabInstance:
@@ -52385,15 +52549,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: maxHealth
-      value: 50000
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: hpBarSize.x
-      value: 1.2
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: hpBarSize.y
-      value: 0.29
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: hpFillSprite
@@ -52421,7 +52585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: upgradedMaxHealth
-      value: 50000
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 4263592344331591369, guid: 4a7582014dc01104eb49a911f7754ca0, type: 3}
       propertyPath: hpBackgroundSprite
@@ -52743,6 +52907,10 @@ PrefabInstance:
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
+      propertyPath: targetable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 934002245762656022, guid: 932aaf2a05e054544bdf1bcd9edd07b0, type: 3}
       propertyPath: turretCost
