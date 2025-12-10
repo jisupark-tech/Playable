@@ -214,8 +214,9 @@ public class WallController : MonoBehaviour, IHealth
 
         // 건설 조건 체크 시작
         StartCoroutine(CheckBuildCondition());
-
+#if !PLAYABLE_AD
         DebugLog("Wall initialization completed");
+#endif
     }
 
     //TODO 수정
@@ -304,8 +305,10 @@ public class WallController : MonoBehaviour, IHealth
             // 열린 위치 계산 (왼쪽은 더 왼쪽으로, 오른쪽은 더 오른쪽으로)
             Gate_L_OpenPos = Gate_L_ClosedPos + Vector3.left * 0.65f;
             Gate_R_OpenPos = Gate_R_ClosedPos + Vector3.right * 0.65f;
-
+#if !PLAYABLE_AD
             DebugLog("Gate positions initialized");
+#endif
+
         }
     }
 
@@ -426,17 +429,24 @@ public class WallController : MonoBehaviour, IHealth
             // 1-2. Phase에서 벽 조건을 무시하도록 설정된 경우
             if (ShouldIgnoreRequirements())
             {
-                DebugLog("Phase Building mode: Ignoring wall requirements - can build");
+#if !PLAYABLE_AD
+            DebugLog("Phase Building mode: Ignoring wall requirements - can build");
+#endif
+
                 return true;
             }
-
+#if !PLAYABLE_AD
             // 1-3. Phase에서 벽 조건을 유지하도록 설정된 경우 → requiredTurrets 확인
             DebugLog("Phase Building mode: Checking required turrets");
+#endif
+
             return AreAllRequiredTurretsBuilt();
         }
-
+#if !PLAYABLE_AD
         // 2. Phase Building이 비활성화된 경우 (기존 방식)
         DebugLog("Sequential Building mode: Checking required turrets");
+#endif
+
         return AreAllRequiredTurretsBuilt();
     }
     bool IsInPhaseBuilding()
@@ -455,7 +465,10 @@ public class WallController : MonoBehaviour, IHealth
         // Building Rules에 의해 비활성화된 경우 체크
         if (IsWallDisabledByRules(wallIndex))
         {
+#if !PLAYABLE_AD
             DebugLog($"Wall[{wallIndex}] disabled by Building Rules");
+#endif
+
             return false;
         }
 
@@ -467,8 +480,10 @@ public class WallController : MonoBehaviour, IHealth
 
         var currentPhase = phases[currentPhaseIndex];
         bool isInPhase = currentPhase.wallIndices.Contains(wallIndex);
-
+#if !PLAYABLE_AD
         DebugLog($"Wall[{wallIndex}] in Phase[{currentPhaseIndex}]: {isInPhase}");
+#endif
+
         return isInPhase;
     }
 
@@ -510,7 +525,10 @@ public class WallController : MonoBehaviour, IHealth
     {
         if (requiredTurrets == null || requiredTurrets.Length == 0)
         {
+#if !PLAYABLE_AD
             DebugLog("No required turrets specified - wall can be built");
+#endif
+
             return true;
         }
 
@@ -520,13 +538,19 @@ public class WallController : MonoBehaviour, IHealth
         {
             if (turret == null)
             {
+#if !PLAYABLE_AD
                 DebugLog("Warning: Null turret reference in required turrets");
+#endif
+
                 continue;
             }
 
             if (!turret.IsBuilt())
             {
+#if !PLAYABLE_AD
                 DebugLog($"Required turret {turret.name} not built yet");
+#endif
+
                 allBuilt = false;
                 break;
             }
@@ -534,7 +558,9 @@ public class WallController : MonoBehaviour, IHealth
 
         if (allBuilt)
         {
+#if !PLAYABLE_AD
             DebugLog("All required turrets are built!");
+#endif     
         }
 
         return allBuilt;
@@ -548,7 +574,10 @@ public class WallController : MonoBehaviour, IHealth
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
+#if !PLAYABLE_AD
             DebugLog("Wall shown and construction started");
+#endif
+
         }
 
         BuildWall();
@@ -559,7 +588,10 @@ public class WallController : MonoBehaviour, IHealth
         if (!isBuilt && gameObject.activeInHierarchy)
         {
             gameObject.SetActive(false);
+#if !PLAYABLE_AD
             DebugLog("Wall hidden - conditions not met");
+#endif
+
         }
     }
 
@@ -567,11 +599,16 @@ public class WallController : MonoBehaviour, IHealth
     {
         if (isBuilt)
         {
+#if !PLAYABLE_AD
             DebugLog("이미 건설된 벽입니다");
+#endif
+
             return;
         }
+#if !PLAYABLE_AD
+            DebugLog("벽 건설 시작!");
+#endif
 
-        DebugLog("벽 건설 시작!");
 
         // 메인 센터 업그레이드 상태 확인
         bool shouldUpgrade = mainCenterController != null && mainCenterController.IsUpgraded();
@@ -584,13 +621,19 @@ public class WallController : MonoBehaviour, IHealth
             activeWall = wallToActivate;
             isUpgraded = shouldUpgrade;
             InitializeDamageEffect();
+#if !PLAYABLE_AD
             Debug.Log($"벽 건설: {activeWall.name} (업그레이드 상태: {isUpgraded})");
+#endif
+
 
             StartCoroutine(BuildWallAnimation(activeWall));
         }
         else
         {
+#if !PLAYABLE_AD
             DebugLog("활성화할 벽을 찾을 수 없습니다!");
+#endif
+
         }
     }
 
@@ -694,7 +737,10 @@ public class WallController : MonoBehaviour, IHealth
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnWallBuilt(this);
+#if !PLAYABLE_AD
             DebugLog("Notified GameManager of wall construction completion");
+#endif
+
         }
 
         // HP 바 표시
@@ -709,8 +755,10 @@ public class WallController : MonoBehaviour, IHealth
             UpdateGateReferences();
             StartCoroutine(GateControlCoroutine());
         }
+#if !PLAYABLE_AD
+            DebugLog($"벽 건설 완료! {wallObj.name}");
+#endif
 
-        DebugLog($"벽 건설 완료! {wallObj.name}");
     }
 
     //=====================================================
@@ -728,11 +776,16 @@ public class WallController : MonoBehaviour, IHealth
     {
         if (!isBuilt || isUpgraded)
         {
+#if !PLAYABLE_AD
             DebugLog($"벽 업그레이드 불가 - 건설됨: {isBuilt}, 이미 업그레이드됨: {isUpgraded}");
+#endif
+
             return;
         }
+#if !PLAYABLE_AD
+            DebugLog("벽 업그레이드 시작!");
+#endif
 
-        DebugLog("벽 업그레이드 시작!");
         StartCoroutine(WallUpgradeAnimation());
     }
 
@@ -743,7 +796,10 @@ public class WallController : MonoBehaviour, IHealth
 
         if (newWall == null)
         {
+#if !PLAYABLE_AD
             DebugLog("업그레이드할 벽을 찾을 수 없습니다!");
+#endif
+
             yield break;
         }
 
@@ -767,7 +823,10 @@ public class WallController : MonoBehaviour, IHealth
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnWallBuilt(this);
+#if !PLAYABLE_AD
             DebugLog("Notified GameManager of wall upgrade completion");
+#endif
+
         }
 
         // 문 시스템 업데이트
@@ -775,8 +834,10 @@ public class WallController : MonoBehaviour, IHealth
         {
             UpdateGateReferences();
         }
-
+#if !PLAYABLE_AD
         DebugLog($"벽 업그레이드 완료! 새 벽: {activeWall.name}");
+#endif
+
     }
 
     IEnumerator WallDownAnimation()
@@ -831,7 +892,10 @@ public class WallController : MonoBehaviour, IHealth
         if (Gate_L_Parent != null && Gate_R_Parent != null)
         {
             InitializeGatePositions();
+#if !PLAYABLE_AD
             DebugLog("Gate references updated after upgrade");
+#endif
+
         }
     }
 
@@ -877,7 +941,10 @@ public class WallController : MonoBehaviour, IHealth
     IEnumerator OpenGate()
     {
         isGateOpen = true;
+#if !PLAYABLE_AD
         DebugLog("Opening gate");
+#endif
+
 
         float elapsedTime = 0f;
         Vector3 startL = Gate_L_Parent.localPosition;
@@ -901,8 +968,10 @@ public class WallController : MonoBehaviour, IHealth
     IEnumerator CloseGate()
     {
         isGateOpen = false;
-        DebugLog("Closing gate");
 
+#if !PLAYABLE_AD
+        DebugLog("Closing gate");
+#endif
         float elapsedTime = 0f;
         Vector3 startL = Gate_L_Parent.localPosition;
         Vector3 startR = Gate_R_Parent.localPosition;
@@ -929,7 +998,10 @@ public class WallController : MonoBehaviour, IHealth
     {
         if (!isBuilt)
         {
+#if !PLAYABLE_AD
             DebugLog("Rechecking wall build condition");
+#endif
+
 
             bool canBuild = CanBuildWall();
             if (canBuild)
@@ -958,8 +1030,10 @@ public class WallController : MonoBehaviour, IHealth
         OnHealthChanged(currentHealth, maxHealth);
 
         StartDamageFlashEffect();
-
+#if !PLAYABLE_AD
         DebugLog($"Wall took {damage} damage. Health: {currentHealth}/{maxHealth}");
+#endif
+
 
         if (currentHealth <= 0)
         {
@@ -980,8 +1054,10 @@ public class WallController : MonoBehaviour, IHealth
         OnHealthChanged(currentHealth, maxHealth);
 
         StartDamageFlashEffect();
-
+#if !PLAYABLE_AD
         Debug.Log($"Wall healed {amount}. Health: {currentHealth}/{maxHealth}");
+#endif
+
     }
     void StartDamageFlashEffect()
     {
@@ -1077,7 +1153,10 @@ public class WallController : MonoBehaviour, IHealth
     public void OnDeath()
     {
         // 죽을 때 호출되는 이벤트
+#if !PLAYABLE_AD
         DebugLog("Wall has been destroyed!");
+#endif
+
 
         // 추가 사망 처리 로직을 여기에 넣을 수 있음
         // 예: 파티클 이펙트, 사운드, 다른 오브젝트들에 알림 등
@@ -1090,8 +1169,10 @@ public class WallController : MonoBehaviour, IHealth
 
     void DestroyWall()
     {
-        DebugLog("Wall destroyed!");
 
+#if !PLAYABLE_AD
+        DebugLog("Wall destroyed!");
+#endif
         // 활성 벽 비활성화
         if (activeWall != null)
             activeWall.SetActive(false);
@@ -1186,6 +1267,7 @@ public class WallController : MonoBehaviour, IHealth
     //=====================================================
     // 디버그 및 Gizmos
     //=====================================================
+#if !PLAYABLE_AD
     void DebugLog(string message)
     {
         if (enableDebugLogs)
@@ -1193,7 +1275,9 @@ public class WallController : MonoBehaviour, IHealth
             Debug.Log($"[{gameObject.name}] {message}");
         }
     }
+#endif
 
+#if !PLAYABLE_AD
     void OnDrawGizmosSelected()
     {
         // 문 감지 범위 표시
@@ -1259,4 +1343,5 @@ public class WallController : MonoBehaviour, IHealth
         Gizmos.DrawLine(rotatedCorners[2], rotatedCorners[3]); // 상단
         Gizmos.DrawLine(rotatedCorners[3], rotatedCorners[0]); // 좌측
     }
+#endif
 }

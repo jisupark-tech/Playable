@@ -476,7 +476,7 @@ public class MainCenterController : MonoBehaviour, IHealth
 
         Debug.Log("MainCenter upgrade completed!");
     }
-
+#if !PLAYABLE_AD
     // 강제 업그레이드 (치트/테스트용)
     [ContextMenu("Force Upgrade")]
     public void ForceUpgrade()
@@ -520,9 +520,10 @@ public class MainCenterController : MonoBehaviour, IHealth
             SetAvailableForUpgrade(true);
         }
     }
-
+#endif
     // 공개 API
     public bool IsUpgraded() => isUpgraded;
+#if !PLAYABLE_AD
     public bool IsUpgradeInProgress() => isUpgradeInProgress;
     public bool IsAvailableForUpgrade() => isAvailableForUpgrade;
     public int GetPaidGold() => currentPaidGold;
@@ -554,7 +555,7 @@ public class MainCenterController : MonoBehaviour, IHealth
     {
         goldCollectionRange = Mathf.Max(1f, range);
     }
-
+#endif
     /// <summary>
     /// 피격 시 화이트 플래시 + 크기 변화 연출
     /// </summary>
@@ -616,7 +617,7 @@ public class MainCenterController : MonoBehaviour, IHealth
         isFlashingDamage = false;
     }
 
-    #region IHealth Implementation
+#region IHealth Implementation
     public int GetCurrentHealth()
     {
         return currentHealth;
@@ -695,7 +696,7 @@ public class MainCenterController : MonoBehaviour, IHealth
         return targetable;
     }
     #endregion
-
+#if !PLAYABLE_AD
     #region Gizmos
     void OnDrawGizmosSelected()
     {
@@ -723,4 +724,5 @@ public class MainCenterController : MonoBehaviour, IHealth
         Gizmos.DrawWireCube(transform.position + hpBarOffset, new Vector3(hpBarSize.x, hpBarSize.y, 0.1f));
     }
     #endregion
+#endif
 }

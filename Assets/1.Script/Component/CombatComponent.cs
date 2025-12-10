@@ -272,13 +272,14 @@ public class CombatComponent : MonoBehaviour, ICombat
     /// </summary>
     void FindNearestTargetWebGL()
     {
+#if !PLAYABLE_AD
         if (usePhysicsDetection)
         {
             // 레거시 물리 기반 방식 (WebGL에서는 사용하지 않음)
             FindNearestTargetPhysics();
             return;
         }
-
+#endif
         // WebGL 최적화: 거리 계산 기반
         Transform nearestTarget = null;
         float nearestDistance = float.MaxValue;
@@ -327,7 +328,7 @@ public class CombatComponent : MonoBehaviour, ICombat
             }
         }
     }
-
+#if !PLAYABLE_AD
     /// <summary>
     /// 레거시 물리 기반 타겟 찾기 (WebGL에서는 사용하지 않음)
     /// </summary>
@@ -366,7 +367,7 @@ public class CombatComponent : MonoBehaviour, ICombat
 
         currentTarget = nearestTarget;
     }
-
+#endif
     private BulletOwner GetBulletOwner()
     {
         if (GetComponent<PlayerController>() != null)
@@ -376,7 +377,7 @@ public class CombatComponent : MonoBehaviour, ICombat
         else
             return BulletOwner.Player;
     }
-
+#if !PLAYABLE_AD
     public WeaponComponent GetWeaponComponent() => weaponComponent;
 
     void OnDrawGizmosSelected()
@@ -397,7 +398,7 @@ public class CombatComponent : MonoBehaviour, ICombat
             Gizmos.DrawLine(transform.position, currentTarget.position);
         }
     }
-
+#endif
     void OnDestroy()
     {
         // 오브젝트가 파괴될 때 전투 중지

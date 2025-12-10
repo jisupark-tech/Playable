@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4471c307b0397ae46aa3d24f2b26d253
+guid: c8df52d70e8db8d45a306ba96d611209
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,7 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: WebGL
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: 29
     textureCompression: 1
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa94407ae2d07cd4989e06d04eeadeef
-      internalID: -452988284
+      spriteID: 775f53d0ebea6f146a169a94ca8662da
+      internalID: 1136373383
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f02a42f1b55d9ce499dc493940ba5cf7
+    spriteID: fe798187b5490da4fa5543c1dfa9ab07
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Effect_08_0: -452988284
+      Effect_08_0: 1136373383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

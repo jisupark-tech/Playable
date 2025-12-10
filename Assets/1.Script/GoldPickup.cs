@@ -244,7 +244,7 @@ public class GoldPickup : MonoBehaviour
             yield return null; // 매 프레임마다 거리 체크
         }
     }
-
+#if !PLAYABLE_AD
     IEnumerator FlyToPlayerFromNear()
     {
         if (player == null)
@@ -275,6 +275,8 @@ public class GoldPickup : MonoBehaviour
 
         AudioManager.Instance.PlayGoldCollectSound();
     }
+#endif
+
 
     // Y축에만 Arc를 적용한 포물선 이동 메서드
     IEnumerator FlyToTargetWithArc(Transform target)

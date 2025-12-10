@@ -89,9 +89,10 @@ public class WeaponComponent : MonoBehaviour, IWeapon
     {
         return firePoint;
     }
-
+#if !PLAYABLE_AD
     public void SetWeaponData(WeaponData newData)
     {
         weaponData = newData;
     }
+#endif
 }

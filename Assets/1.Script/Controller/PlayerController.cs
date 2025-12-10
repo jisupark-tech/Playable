@@ -583,7 +583,7 @@ public class PlayerController : MonoBehaviour,IHealth
         }
     }
     #endregion
-
+#if !PLAYABLE_AD
     #region Gizmos (씬 뷰에서 경계 표시)
     void OnDrawGizmosSelected()
     {
@@ -620,7 +620,7 @@ public class PlayerController : MonoBehaviour,IHealth
         Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
     #endregion
-
+#endif
     /// <summary>
     /// 플레이어 이동 시 건물 충돌 체크 (GameManager의 시스템 사용)
     /// </summary>

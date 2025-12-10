@@ -42,7 +42,7 @@ public class VirtualPad : MonoBehaviour
 #elif UNITY_IOS
         private const float PLATFORM_DPI = 326f;
         private const float PLATFORM_SCALE_MODIFIER = 1.0f;
-#elif UNITY_WEBGL
+#elif PLAYABLE_AD
     private const float PLATFORM_DPI = 96f;
     private const float PLATFORM_SCALE_MODIFIER = 1.0f;
 #else

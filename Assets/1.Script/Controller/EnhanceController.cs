@@ -271,7 +271,7 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
                             {
                                 SendGoldToQuest();
                             }
-                        }
+                        } 
                     }
                 }
             }
@@ -296,8 +296,13 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
                 TxtMaxQuestCnt.text = MaxQuestCnt.ToString();
             if (TxtCurQuestCnt != null)
                 TxtCurQuestCnt.text = CurQuestCnt.ToString();
-
+            
             float progress = (float)CurQuestPaid / QuestPrice;
+            //TODO 수정 2025-12-10
+            //완료시 슬라이더 0으로 
+            if (CurQuestCnt == MaxQuestCnt)
+                progress = 0;
+
             UpdateQuestSlider(progress);
 
             if (CurQuestPaid >= QuestPrice)
@@ -309,7 +314,6 @@ public class EnhanceController : MonoBehaviour, IHealth , ICollectable
    
     IEnumerator CheckAndBuildBehavior()
     {
-        Debug.LogError("======CheckAndBulldBehavior!!!!!!!!!!!");
         while (!isBuilt && isVisible) 
         {
             if (_player != null)

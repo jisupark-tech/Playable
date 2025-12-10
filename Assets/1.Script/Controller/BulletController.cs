@@ -198,7 +198,7 @@ public class BulletController : MonoBehaviour
         lineRenderer.endColor = bulletColor;
         ObjectPool.Instance.ReturnToPool(gameObject);
     }
-
+#if !PLAYABLE_AD
     // 색상 설정 메소드
     public void SetBulletColor(Color color)
     {
@@ -225,4 +225,5 @@ public class BulletController : MonoBehaviour
     {
         speed = newSpeed;
     }
+#endif
 }

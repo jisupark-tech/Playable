@@ -461,14 +461,6 @@ public class NPCController : MonoBehaviour
                obj.CompareTag("Obstacle");
     }
 
-    //void UpdateAnimation(bool isMoving)
-    //{
-    //    if (anim != null && !string.IsNullOrEmpty(MoveParameter))
-    //    {
-    //        anim.SetFloat(MoveParameter, 1);
-    //    }
-    //}
-
     void ReachTarget()
     {
         // Stop movement
@@ -507,7 +499,7 @@ public class NPCController : MonoBehaviour
         Debug.Log($"NPC {gameObject.name} force-reached target due to timeout or stuck situation");
         ReachTarget();
     }
-
+#if !PLAYABLE_AD
     // Public methods for external control
     public void SetMoveSpeed(float newSpeed)
     {
@@ -567,7 +559,7 @@ public class NPCController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(startPosition, 1f);
     }
-
+#endif
     void OnDestroy()
     {
         // 오브젝트가 파괴될 때 이동 중지

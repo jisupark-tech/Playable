@@ -551,13 +551,13 @@ public class EnemyController : MonoBehaviour, IHealth
         lastAvoidanceDirection = avoidance;
         return avoidance;
     }
-
+#if !PLAYABLE_AD
     // 기존 메서드들 유지
     void CheckForBuildingsWebGL()
     {
         CheckForBuildingsImproved(); // 개선된 버전으로 대체
     }
-
+#endif
     IEnumerator AttackBuilding()
     {
         if (targetBuildingTransform == null || (targetBuilding != null && targetBuilding.IsDead()))
@@ -800,7 +800,7 @@ public class EnemyController : MonoBehaviour, IHealth
         ObjectPool.Instance.ReturnToPool(gameObject);
 
     }
-    #region IHealth Implementation
+#region IHealth Implementation
     public int GetCurrentHealth()
     {
         return health;
@@ -841,7 +841,7 @@ public class EnemyController : MonoBehaviour, IHealth
     {
         return targetable;
     }
-    #endregion
+#endregion
 
     public void IncreaseHealth(int newMaxHealth)
     {

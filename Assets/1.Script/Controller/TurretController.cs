@@ -518,7 +518,6 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     public void CollectGold()
     {
         currPaidCost++;
-
         // 비용 표시 업데이트 (슬라이더 포함)
         UpdateCostDisplay();
 
@@ -947,6 +946,7 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
     {
         return targetable;
     }
+#if !PLAYABLE_AD
     #region Gizmos (기즈모)
     void OnDrawGizmosSelected()
     {
@@ -963,4 +963,5 @@ public class TurretController : MonoBehaviour, IHealth , ICollectable
         }
     }
     #endregion
+#endif
 }

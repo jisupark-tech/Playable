@@ -196,7 +196,7 @@ public class GoldStorage : MonoBehaviour
             yield return new WaitForSeconds(checkInterval);
         }
     }
-
+#if !PLAYABLE_AD
     // 디버그용 메소드들
     public void SetPlayerDetectionRange(float range)
     {
@@ -216,4 +216,6 @@ public class GoldStorage : MonoBehaviour
             Gizmos.DrawWireCube(storageCenter.position, Vector3.one * 0.5f);
         }
     }
+#endif
+
 }
