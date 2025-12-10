@@ -998,29 +998,29 @@ public class WallController : MonoBehaviour, IHealth
         isFlashingDamage = true;
 
         // 1. 색상 화이트 플래시
-        //for (int i = 0; i < buildingRenderers.Length; i++)
-        //{
-        //    if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
-        //    {
-        //        buildingRenderers[i].material.color = Color.red;
-        //    }
-        //}
+        for (int i = 0; i < buildingRenderers.Length; i++)
+        {
+            if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
+            {
+                buildingRenderers[i].material.color = Color.red;
+            }
+        }
 
         // 2. 크기 증가
         Vector3 scaledSize = originalScale * damageScaleMultiplier;
         activeWall.transform.localScale = scaledSize;
 
         // 3. 화이트 플래시 지속 시간
-        //yield return new WaitForSeconds(damageFlashDuration);
+        yield return new WaitForSeconds(damageFlashDuration);
 
         // 4. 원본 색상으로 복귀
-        //for (int i = 0; i < buildingRenderers.Length; i++)
-        //{
-        //    if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
-        //    {
-        //        buildingRenderers[i].material.color = originalColors[i];
-        //    }
-        //}
+        for (int i = 0; i < buildingRenderers.Length; i++)
+        {
+            if (buildingRenderers[i] != null && buildingRenderers[i].material != null)
+            {
+                buildingRenderers[i].material.color = originalColors[i];
+            }
+        }
 
         // 5. 크기 복귀 애니메이션
         float elapsedTime = 0f;
