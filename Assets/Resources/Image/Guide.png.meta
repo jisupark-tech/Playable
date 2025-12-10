@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 570269685e2fba04bb05999ea0072c6e
+guid: 65c4489a3859b894bab3e857791d4854
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.4982773, y: 0.99956924}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Guide_0
+      name: Guide 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6444aaf71c422414c83d2c84616df500
-      internalID: -1065359787
+      spriteID: b800be26f15ae7e4b8c2d34131638b71
+      internalID: -1923177844
       vertices: []
       indices: 
       edges: []
@@ -148,8 +148,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2b3d739f80aaeda4eb30376b3798868d
-    internalID: 1524587559
+    spriteID: 09584fc7d1fddb545adb4ef7fc97ded7
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -158,9 +158,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":111.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Guide_0: -1065359787
+      Guide 1_0: -1923177844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
