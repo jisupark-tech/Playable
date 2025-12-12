@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class Paths
@@ -195,7 +194,7 @@ public class GameManager : MonoBehaviour
     private bool gameEnded = false;
 
     // New Input System용 첫 클릭 액션
-    private InputAction _firstClickAction;
+    //private InputAction _firstClickAction;
 
     // 적 강화 통계
     private int baseEnemyHealth = 1;
@@ -209,28 +208,6 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-    }
-
-    void OnEnable()
-    {
-        // 첫 클릭 감지용 InputAction 생성
-        _firstClickAction = new InputAction(
-            "FirstClick",
-            InputActionType.Button
-        );
-
-        _firstClickAction.AddBinding("<Pointer>/press");
-        _firstClickAction.performed += OnFirstClickPerformed;
-        _firstClickAction.Enable();
-    }
-
-    void OnDisable()
-    {
-        if (_firstClickAction != null)
-        {
-            _firstClickAction.performed -= OnFirstClickPerformed;
-            _firstClickAction.Disable();
-        }
     }
 
     void Start()
@@ -299,6 +276,15 @@ public class GameManager : MonoBehaviour
         if (M_TEST)
             return;
 
+        if (!m_IsTouched && !gameEnded)
+        {
+            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+            {
+                StartGameplay();
+            }
+        }
+
+
         if (!m_IsTouched)
             return;
 
@@ -308,16 +294,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //=====================================================
-    // First Click & Gameplay Start
-    //=====================================================
-    private void OnFirstClickPerformed(InputAction.CallbackContext ctx)
-    {
-        if (m_IsTouched || M_TEST || gameEnded)
-            return;
-
-        StartGameplay();
-    }
 
     void StartGameplay()
     {

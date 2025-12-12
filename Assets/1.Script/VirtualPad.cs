@@ -372,7 +372,7 @@ public class VirtualPad : MonoBehaviour
         isDragging = false;
         isActive = false;
 
-        // 🔥 핵심: 즉시 정지 (관성 제거)
+        // 핵심: 즉시 정지 (관성 제거)
         inputDirection = Vector2.zero;
 
         // VirtualPad 전체 숨김

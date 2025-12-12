@@ -10,13 +10,13 @@ public enum BulletOwner
 public class BulletController : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    [SerializeField] private float speed = 20f; // LineRenderer이므로 더 빠르게
+    [SerializeField] private float speed = 20f;
     [SerializeField] private float lineWidth = 0.1f;
     [SerializeField] private Material lineMaterial;
-    [SerializeField] private AnimationCurve widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f); // 끝으로 갈수록 가늘어짐
+    [SerializeField] private AnimationCurve widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
     [SerializeField] private Color bulletColor = Color.yellow;
-    [SerializeField] private float fadeDuration = 0.2f; // 페이드아웃 시간
-    [SerializeField] private float trailLength = 0.5f; // 궤적(짧은 꼬리) 길이
+    [SerializeField] private float fadeDuration = 0.2f;
+    [SerializeField] private float trailLength = 0.5f;
 
     private Transform m_Target;
     private BulletOwner m_Owner = BulletOwner.Player;
@@ -49,7 +49,6 @@ public class BulletController : MonoBehaviour
             lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         }
 
-        // 색상 설정
         lineRenderer.startColor = bulletColor;
         lineRenderer.endColor = bulletColor;
         lineRenderer.enabled = false;
@@ -81,12 +80,14 @@ public class BulletController : MonoBehaviour
             startPosition = transform.position;
             targetPosition = m_Target.position;
 
-            // 타겟이 Rigidbody를 가지고 있으면, 약간의 예측 사격
-            if (m_Target.GetComponent<Rigidbody>() != null)
+            // Rigidbody 예측 사격 제거 - 단순히 현재 위치로 조준
+            // 예측 사격이 필요하다면 MovementComponent의 velocity 사용
+            MovementComponent targetMovement = m_Target.GetComponent<MovementComponent>();
+            if (targetMovement != null && targetMovement.IsMoving())
             {
-                Vector3 targetVelocity = m_Target.GetComponent<Rigidbody>().linearVelocity;
+                Vector3 targetVelocity = targetMovement.GetCurrentVelocity();
                 float timeToHit = Vector3.Distance(startPosition, targetPosition) / speed;
-                targetPosition += targetVelocity * timeToHit * 0.5f;
+                targetPosition += targetVelocity * timeToHit * 0.3f; // 약간의 예측
             }
 
             isInitialized = true;
@@ -119,20 +120,15 @@ public class BulletController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / totalTime;
 
-            // 현재 탄환 위치 계산
             Vector3 currentBulletPos = Vector3.Lerp(startPosition, targetPosition, progress);
-
-            // 탄환 오브젝트 자체를 이동
             transform.position = currentBulletPos;
 
-            // 진행 방향에 맞춰 회전 (화살 머리가 타겟 방향을 보게)
             Vector3 dir = (targetPosition - startPosition).normalized;
             if (dir != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(dir);
             }
 
-            // LineRenderer는 '짧은 꼬리'만 그려 궤적처럼 사용
             if (lineRenderer != null)
             {
                 Vector3 tailStart = currentBulletPos - dir * trailLength;
@@ -141,7 +137,6 @@ public class BulletController : MonoBehaviour
                 lineRenderer.SetPosition(0, tailStart);
                 lineRenderer.SetPosition(1, tailEnd);
 
-                // 색상 페이드 효과
                 Color currentColor = bulletColor;
                 currentColor.a = Mathf.Lerp(1f, 0.3f, progress);
                 lineRenderer.startColor = currentColor;
@@ -151,7 +146,6 @@ public class BulletController : MonoBehaviour
             yield return null;
         }
 
-        // 도착 시점에 타겟 처리 (Collider 없이 시간 기반 판정)
         HitTarget();
     }
 
@@ -193,13 +187,12 @@ public class BulletController : MonoBehaviour
     void ReturnToPool()
     {
         lineRenderer.enabled = false;
-        // 색상 초기화
         lineRenderer.startColor = bulletColor;
         lineRenderer.endColor = bulletColor;
         ObjectPool.Instance.ReturnToPool(gameObject);
     }
+
 #if !PLAYABLE_AD
-    // 색상 설정 메소드
     public void SetBulletColor(Color color)
     {
         bulletColor = color;
@@ -210,7 +203,6 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    // 두께 설정 메소드
     public void SetBulletWidth(float width)
     {
         lineWidth = width;
